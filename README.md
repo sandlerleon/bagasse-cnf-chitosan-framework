@@ -56,7 +56,7 @@ Code: MIT (`LICENSE`). Manuscript, Supplementary Information, cover letter and f
 
 ## AI use
 
-Claude (Anthropic) was used as an assistive tool for code drafting, code review, figure-script drafting, literature-record retrieval scripts and language editing. The author defined the research question, requirements and assumptions, directed the workflow and verification, reviewed the literature interpretation and approved all conclusions. This is documented in Methods Section 5.5 of the manuscript.
+Claude (Anthropic) was used as an assistive tool for code drafting, code review, figure-script drafting, literature-record retrieval scripts, and drafting and language editing of the manuscript text. The author defined the research question, requirements and assumptions, directed the workflow and verification, reviewed the literature interpretation and approved all conclusions. This is documented in Methods Section 5.5 of the manuscript.
 
 ## Changelog
 

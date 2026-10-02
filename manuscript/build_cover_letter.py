@@ -84,7 +84,7 @@ para(doc, "**Data and code.** The model, verification suite, figure scripts, the
 para(doc, "**Declarations.** The manuscript is original, has not been published elsewhere other than as the preprint noted above, and "
      "is not under consideration at any other journal. I am the sole author and approve the submission. I have no competing "
      "interests, and the work received no external funding. Generative AI (Claude, Anthropic) was used as an assistive tool for code "
-     "drafting, code review, figure-script drafting, literature-record retrieval scripts and language editing, as documented in "
+     "drafting, code review, figure-script drafting, literature-record retrieval scripts, and drafting and language editing of the manuscript text, as documented in "
      "the Methods (Section 5.5). I defined the research question, requirements and assumptions, directed the workflow and the "
      "verification criteria, reviewed the interpretation of the literature and approved all conclusions. No AI-generated data, "
      "references or conclusions were accepted without my verification, and I take full responsibility for the accuracy, integrity "
