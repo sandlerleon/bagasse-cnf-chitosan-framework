@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Build TNCC_Supplementary_Information.docx (S1-S6). Numbers come from code/results.json and
+"""Build TNCC_Supplementary_Information.docx (S1-S10). Numbers come from code/results.json and
 the model; references from the verified cache."""
 import io
 import json
 import math
 import os
+import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -16,7 +17,7 @@ sys.path.insert(0, os.path.join(ROOT, "references"))
 import refs as rf                                              # noqa: E402
 import tncc_model as m                                         # noqa: E402
 from docx_helpers import (DELIM, FRAC, SUB, SUP, T, V, Vs, PI, TAU, LAM, EPS, DELTA,   # noqa: E402
-                          EQ, PLUS, MINUS, bullet, caption, equation, heading, new_document,
+                          EQ, PLUS, MINUS, SQRT, bullet, caption, equation, heading, new_document,
                           page_numbers_and_line_numbers, para, table)
 
 OUT = os.path.join(HERE, "TNCC_Supplementary_Information.docx")
@@ -25,6 +26,11 @@ C, G, E, S, B, F_ = R["C_monte_carlo"], R["G_additions"], R["E_envelope"], R["D_
 DB = rf.load()
 ay = lambda k: "%s %s" % (rf.short_author(k, DB), rf.year_of(k, DB))
 P = lambda x, n=0: ("%." + str(n) + "f%%") % (100 * x)
+
+_ver = subprocess.run([sys.executable, os.path.join(ROOT, "code", "verify_model.py")], capture_output=True, text=True,
+                      encoding="utf-8", cwd=os.path.join(ROOT, "code"))
+N_PASS = _ver.stdout.count("[PASS]")
+assert _ver.returncode == 0 and "[FAIL]" not in _ver.stdout, "verification failed"
 
 doc = new_document(size=10.5, line=1.3)
 page_numbers_and_line_numbers(doc, line_numbers=False)
@@ -35,7 +41,8 @@ para(doc, "Toward transparent rigid packaging from sugarcane bagasse: a consiste
 para(doc, "Leon Sandler, Independent Researcher, Northbrook, Illinois, USA. sandler.leon@gmail.com", size=10, space_after=8)
 para(doc, "Contents: S1 optical screen (derivation, angular correction, calibration checks, full haze budget); S2 wet-stiffness "
      "screen; S3 forming geometry; S4 literature dataset, per-reference support and documented searches; S5 uncertainty "
-     "propagation and sensitivity; S6 experimental matrix. All numbers are produced by code/run_analysis.py (seed 20261002) and are "
+     "propagation and sensitivity; S6 experimental matrix; S7 surface and coarse scattering; S8 prior schemes and the robustness panel; S9 thickness "
+     "coupling; S10 wax-layer sensitivity. All numbers are produced by code/run_analysis.py (seed 20261002) and are "
      "reproduced by running that script.", size=10)
 
 # ================================================================== S1
@@ -186,7 +193,7 @@ ABSTRACT_READ = {"nogi2009", "fukuzumi2009", "hsieh2017", "fang2014", "nogi2013"
                  "otenda2022", "kim2011", "kabeyi2023", "ndikumana2025", "hiranobe2024", "melro2021", "azeredo2010", "fernandez2024",
                  "szymanska2019", "ghormade2017", "sirvio2021", "wang2017", "vishtal2012", "hauptmann2011", "lyu2019", "arvidsson2015",
                  "kargupta2022", "debye1949", "debye1957", "astm2021", "tao2017", "rol2020", "makela2016", "semple2022", "guzman2022",
-                 "lavoine2012", "hubbe2017", "benitez2017"}
+                 "lavoine2012", "hubbe2017", "benitez2017", "jager2009"}
 DATASET = {"fao2024"}
 caption(doc, "**Table S6** Numerical anchors taken from the literature and where each is used.", keep_next=True)
 table(doc, [
@@ -238,10 +245,18 @@ bullet(doc, "**Wax-coated and chitosan-containing transparent cellulose films** 
 para(doc, "These are searches of one index by title and abstract, not systematic reviews; absence from them is evidence, not proof, "
      "of absence from the literature.", italic=True)
 
+_alog = io.open(os.path.join(ROOT, "references", "audit_log.md"), encoding="utf-8").read()
+_n_ok, _n_anch = _alog.count("| ok |"), _alog.count("| found |")
+para(doc, "**Final audit.** Before submission every cited DOI was re-resolved against Crossref (references/audit_refs.py; "
+     "references/audit_log.md): %d records matched the cached title, first author, journal and volume, none carried a retraction or "
+     "withdrawal notice, and %d numerical or qualitative anchors used in the text and in Table 3 were located in the cited abstracts "
+     "(for example 4.9–11.7%% haze and 1.29–1.55 g cm^{−3} in %s, 8.76 and 14.71 GPa in %s, 28%% and 4 GPa in %s). Numbers that sit "
+     "only in a full text were not checked." % (_n_ok, _n_anch, ay("hsieh2017"), ay("szymanska2019"), ay("toivonen2015")), align="justify")
+
 # ================================================================== S5
 heading(doc, "S5 Uncertainty propagation and sensitivity", 1)
 para(doc, "**Sampling.** N = 200,000 per test; seed 20261002 (NumPy default_rng, offsets +1, +10, +20, +30, +40, +50 for the calibration, "
-     "optical, mechanical, forming, joint and sensitivity draws, so the streams are independent). Parameters are drawn independently "
+     "optical, mechanical, forming, joint and sensitivity draws, and +60 to +100 for the extensions, so the streams are independent). Parameters are drawn independently "
      "from the registry (Table 3 of the main text), uniformly or log-uniformly; the void fraction is derived from the sampled film and "
      "wall densities and clipped to 0–0.5. A sample passes a test when its haze, wet stiffness or forming window meets the "
      "stated requirement; the joint share is the share of samples passing all three.", align="justify")
@@ -271,22 +286,171 @@ table(doc, [
     ["I Material", "Fibril width and length; crystallinity; density", "AFM or TEM; XRD; helium pycnometry and thickness", "Report; compare bagasse with wood pulp", "–"],
     ["I Material", "Void fraction and correlation length", "Small-angle X-ray scattering, Debye–Bueche plot", "φ(1−φ)a^{3} ≤ %.0f nm^{3} (100 µm, 5%% haze); a ≤ %.0f nm at 5%% voids (100 µm, 10%% haze)" % (B["t100_haze5"]["phi_1mphi_a3_budget_nm3"], G["a_max_nm"]["t100_haze10_phi05"]), "Derived"],
     ["I Material", "Haze and transmittance versus thickness", "ASTM D1003 at 40, 100, 200 µm; report thickness", "Haze ∝ t (bulk) or constant (surface)", "Derived"],
+    ["I Material", "Surface roughness of both faces; coarse scatterers in the bulk", "AFM or optical profilometry; microscopy, wide-angle scattering", "Two-face haze from roughness ≤ 1%; coarse volume fraction below the haze budget (S7)", "Derived"],
     ["I Material", "Effect of delignification and bleaching", "Haze, colour, lignin content", "Haze within budget at target thickness", "Proposed"],
     ["II Composite", "Wet and dry tensile properties at 0, 5, 10, 20, 30 wt% chitosan", "Tensile test, saturated and 50% RH", "E_{wet} ≥ 1 GPa; gain over plain CNF > 0", "Proposed / derived"],
     ["II Composite", "Acid exposure", "Wet modulus after soaking in acidic liquids", "Gain near zero is the prediction", "Derived"],
     ["II Composite", "Optical effect of chitosan", "Haze, SAXS", "No rise in φ(1−φ)a^{3}", "Derived"],
-    ["III Barrier", "Wax layer: thickness, haze, contact angle, liquid hold, abrasion", "Profilometry; ASTM D1003; goniometry; 24 h hold; abrasion test", "No added haze; 24 h hold", "Proposed"],
+    ["III Barrier", "Wax layer: thickness, haze, contact angle, liquid hold, abrasion", "Profilometry; ASTM D1003; goniometry; 24 h hold; abrasion test", "Added haze ≤ 1 point (S10); 24 h hold", "Proposed / derived"],
     ["IV Forming", "Biaxial strain to failure, ambient and wet; in situ haze versus strain", "Bulge test with optical haze", "Total tolerance ≥ %.2f (tray), %.2f (bowl)" % (E["strain_budgets"]["tray (lid-like)"], E["strain_budgets"]["bowl"]), "Derived"],
     ["IV Forming", "Wrinkling tolerance", "Draw test with blank holder; LDR at wrinkle onset", "LDR_{max} ≥ %.2f (tray)" % F_["tray (lid-like)"]["required_LDR_if_no_stretching"], "Derived"],
     ["IV Forming", "Shrinkage on drying of any wet-formed part", "Dimensional change; haze after drying", "Report (not modelled)", "%s" % ay("rol2020")],
     ["V Package", "Filled-container drop; lid attachment; thermal cycling; extended containment", "Drop from 1 m; seal test; cycling", "No failure", "Proposed"],
 ], widths=[0.8, 1.7, 1.7, 1.7, 0.7], size=8)
 
+# ================================================================== S7 surface and coarse scattering
+HV, PR, JT, KX, LC = (R["H_optical_validation"], R["I_prior_robustness"], R["J_thickness_coupling"], R["K_wax_bounded"],
+                      R["L_cup_requirement"])
+SN_ = HV["sigma_needed_nm"]
+heading(doc, "S7 Surface and coarse scattering (main text Sections 5.6 and 6.5)", 1)
+para(doc, "These bounded additions test how far the optical conclusions depend on what the core screen omits. All ranges are "
+     "assumptions (Table S10); none enters the 19-parameter registry or the numbers of main-text Sections 6.1–6.4, which are "
+     "unchanged by them (results.json sections A–G are identical in the v1.0.0 and later runs).", align="justify")
+caption(doc, "**Table S10** Registry of the parameters of the bounded extensions. Every range is an assumption.", keep_next=True)
+rows = [["Parameter", "Range", "Unit", "Dist.", "Meaning"]]
+for k, (lo, hi, dist, unit, status, basis) in m.PARAMS_EXT.items():
+    rows.append([k, "%g – %g" % (lo, hi), unit, dist, basis])
+table(doc, rows, widths=[1.0, 0.9, 0.5, 0.45, 3.75], size=8)
+heading(doc, "S7.1 Rough-surface term", 2)
+para(doc, "A thin rough interface with zero-mean height h(x, y) of RMS value σ imposes on a transmitted plane wave the phase "
+     "(2π/λ)(n_{f} − n_{out}) h. For Gaussian heights and small slopes the coherent amplitude is exp(−Φ²/2), with", align="justify")
+equation(doc, V("Φ") + T(EQ) + FRAC(T("2") + V(PI) + DELIM(Vs("n", "f") + T(MINUS) + Vs("n", "out")) + V("σ"), V(LAM)), "S3")
+para(doc, "so the specular transmitted fraction is exp(−Φ²) and the fraction scattered is 1 − exp(−Φ²). The fraction beyond the 2.5° "
+     "cone is f_{s} times that, where f_{s} (0.3–1, assumed) stands in for the lateral correlation length of the roughness, which is "
+     "not represented: long correlation lengths concentrate the scattered light at small angles. The small-roughness limit is "
+     "f_{s}Φ². The relation holds for σ much smaller than λ/[2π(n − 1)], about 175 nm. For two identical faces the roughness "
+     "that alone gives a haze H follows from 1 − (1 − s)² = H:", align="justify")
+equation(doc, V("σ") + T(EQ) + FRAC(V(LAM), T("2") + V(PI) + DELIM(Vs("n", "f") + T(MINUS) + T("1")))
+         + SQRT(DELIM(T("−") + T("ln") + DELIM(T("1") + T(MINUS) + FRAC(T("1") + T(MINUS) + SQRT(T("1") + T(MINUS) + V("H")), Vs("f", "s"))))), "S4")
+para(doc, "Evaluated with n_{f} = 1.5: σ = %.1f nm for H = 4.9%%, %.1f nm for 8%% and %.1f nm for 11.7%% (f_{s} = 1); %.1f nm for 8%% if only "
+     "30%% of the scattered light leaves the cone. The haze of two faces is %.2f%%, %.2f%%, %.2f%% and %.2f%% at σ = 5, 10, 20 and "
+     "30 nm." % (SN_["band_low_4.9pct"], SN_["band_mid_8pct"], SN_["band_high_11.7pct"], SN_["band_mid_if_only_30pct_leaves_cone"],
+                 HV["surface_haze_pct_for_sigma"]["5nm"], HV["surface_haze_pct_for_sigma"]["10nm"],
+                 HV["surface_haze_pct_for_sigma"]["20nm"], HV["surface_haze_pct_for_sigma"]["30nm"]), align="justify")
+heading(doc, "S7.2 Combining faces, network and coarse population", 2)
+para(doc, "Light is followed through the entrance face, the nanofibril network, the coarse population and the exit face, with the "
+     "state (D, F) of direct and diffuse fractions starting at (1, 0). A face of scattered fraction s moves s·D from D to F. A "
+     "bulk layer of optical depth x and forward-haze fraction f_{h} moves f_{h}D(1 − e^{−x}) from D to F and multiplies D by e^{−x}. "
+     "The haze is F/(D + F). With zero face terms and no coarse population this is exactly Eq. (3) of the main text (checked in "
+     "the verification suite). The bookkeeping scatters each ray at most once per element and does not attenuate light that is already "
+     "diffuse, so it is an estimate, optimistic at large optical depth, like Eq. (3).", align="justify")
+caption(doc, "**Table S11** Haze of a wood-pulp-scale sheet (5th, 25th, 50th, 75th, 95th percentile, %) and the share of samples inside, below "
+        "and above the observed 4.9–11.7% band, by thickness and scattering included.", keep_next=True)
+rows = [["Thickness", "Scattering", "Percentiles 5/25/50/75/95", "Inside", "Below", "Above"]]
+for t in (40, 100, 200):
+    for v, lab in (("bulk_only", "bulk only"), ("plus_surface", "+ surfaces"), ("plus_coarse", "+ coarse"), ("plus_both", "+ both")):
+        d = HV["calibration_variants_wood_pulp_scale"]["t%d" % t][v]
+        rows.append(["%d µm" % t, lab, " / ".join("%.1f" % x for x in d["haze_q5_25_50_75_95_pct"]),
+                     P(d["fraction_inside_observed_band"]), P(d["fraction_below_band"]), P(d["fraction_above_band"])])
+table(doc, rows, widths=[0.8, 1.0, 2.5, 0.7, 0.7, 0.7], size=8.5)
+caption(doc, "**Table S12** Inverse calculation: the coarse volume fraction that alone gives 8% haze at 40 µm, and the haze it implies "
+        "thicker. Largest correlation length a (nm) for 100 µm, 10% haze and 5% voids once a baseline is present.", keep_next=True)
+rows = [["Coarse size (nm)", "Volume fraction", "Haze at 100 µm", "Haze at 200 µm"]]
+for k, d in HV["coarse_population_inverse"].items():
+    rows.append([k[1:], "%.4f%%" % (100 * d["phi_coarse_for_8pct_at_40um"]), "%.1f%%" % d["haze_pct_at_100um"], "%.1f%%" % d["haze_pct_at_200um"]])
+table(doc, rows, widths=[1.4, 1.6, 1.5, 1.5], size=8.5)
+AM_ = HV["a_max_with_baseline_t100_haze10_phi05"]
+para(doc, "Largest correlation length at 100 µm, 10%% haze and 5%% voids: %.1f nm with no baseline; %.1f, %.1f and %.1f nm with face "
+     "roughness of 5, 10 and 20 nm RMS; %.1f and %.1f nm with a 100 nm coarse population of 0.001%% and 0.005%%." %
+     (AM_["none"], AM_["surface_sigma_5nm"], AM_["surface_sigma_10nm"], AM_["surface_sigma_20nm"],
+      AM_["coarse_0.001pct_a100nm"], AM_["coarse_0.005pct_a100nm"]), align="justify")
+
+# ================================================================== S8 prior schemes
+heading(doc, "S8 Prior schemes and the full robustness panel (main text Section 6.7)", 1)
+para(doc, "Each scheme draws all 19 parameters independently (N = 200,000, streams seed + 100 + k). Literature-informed ranges are left "
+     "unchanged by the last four schemes; the schemes act on the 11 assumed ranges.", align="justify")
+table(doc, [
+    ["Scheme", "Definition"],
+    ["base", "Uniform, or log-uniform where the range spans an order of magnitude (the distributions of the main text)"],
+    ["uniform", "Uniform in linear space for every parameter"],
+    ["centred", "Triangular, mode at the middle of the range (geometric middle for log-uniform)"],
+    ["widened", "Assumed ranges widened by 50%% of their width on each side, clipped to physical limits (e.g. wrinkle tolerance 0–%.3f, n_{c} %.2f–%.2f)" % (PR["widened_ranges"]["eps_wrinkle"][1], PR["widened_ranges"]["n_cell"][0], PR["widened_ranges"]["n_cell"][1])],
+    ["narrowed", "Assumed ranges narrowed to their central 50%"],
+    ["optimistic", "Assumed parameters triangular with the mode at the end of the range that helps the test"],
+    ["pessimistic", "Assumed parameters triangular with the mode at the end of the range that hurts the test"],
+], widths=[1.1, 5.5], size=8.5)
+caption(doc, "**Table S13** Outputs of Sections 6.1–6.4 under the seven prior schemes (fractions of samples unless stated).", keep_next=True)
+keys = list(PR["panels"]["base"])
+rows = [["Output"] + list(PR["schemes"])]
+for k in keys:
+    row = [k]
+    for s in PR["schemes"]:
+        v = PR["panels"][s][k]
+        row.append(("%.3f" % v) if isinstance(v, float) else ("yes" if v else "no"))
+    rows.append(row)
+table(doc, rows, widths=[2.0] + [0.68] * 7, size=6.8)
+para(doc, "Statements that hold in all seven schemes: tray window > bowl window ≥ cup window (%s); wood-pulp-scale optical pass share > bagasse-range "
+     "(%s); chitosan helps in more samples at neutral pH than in acid (%s); median gain in acid < median gain at neutral pH (%s). "
+     "The cup has a non-zero window only in: %s." % (
+         PR["claims"]["tray_gt_bowl_gt_cup_everywhere"], PR["claims"]["wood_pulp_beats_bagasse_optically_everywhere"],
+         PR["claims"]["chitosan_helps_more_in_neutral_than_acid_everywhere"], PR["claims"]["acid_median_gain_below_neutral_everywhere"],
+         ", ".join(PR["claims"]["cup_window_nonzero_in_schemes"]) or "none"), align="justify")
+Lc = LC
+para(doc, "**What the cup needs.** The strain budget of the cup is %.3f and of the bowl %.3f. With every tensile tolerance at its best case "
+     "(ε_{crit} = %.2f, saturated), the flange must tolerate a wrinkling strain of %.3f (limiting draw ratio %.2f) for the cup and "
+     "%.3f for the bowl; at the median tensile tolerance (%.2f) the cup needs %.3f (draw ratio %.2f). The assumed upper bound of the "
+     "wrinkling tolerance is %.2f (draw ratio %.2f)." % (
+         Lc["cup_budget"], Lc["bowl_budget"], Lc["best_case_tensile_saturated"], Lc["eps_wrinkle_needed_cup_at_best_tensile"],
+         Lc["LDR_max_needed_cup_at_best_tensile"], Lc["eps_wrinkle_needed_bowl_at_best_tensile"], Lc["median_tensile_saturated"],
+         Lc["eps_wrinkle_needed_cup_at_median_tensile"], Lc["LDR_max_needed_cup_at_median_tensile"],
+         Lc["eps_wrinkle_assumed_upper"], Lc["LDR_max_assumed_upper"]), align="justify")
+
+# ================================================================== S9 thickness coupling
+heading(doc, "S9 Thickness coupling of the optical and stiffness screens (main text Section 6.6)", 1)
+para(doc, "For a thin plate of modulus E, thickness t and Poisson ratio ν the flexural rigidity is E t³/[12(1 − ν²)]. Holding ν "
+     "fixed, equal rigidity gives Eq. (12) of the main text,", align="justify")
+equation(doc, Vs("t", "min") + T(EQ) + Vs("t", "ref") + SUP(DELIM(FRAC(Vs("E", "ref"), V("E"))), FRAC(T("1"), T("3"))), "S5")
+para(doc, "which is physics only through its t⁻³ scaling. The anchor (E_{ref} = 1 GPa at t_{ref} = 100 µm) is the reference requirement "
+     "of the main text, an assumption. A different anchor moves t_{min} by the cube root of the ratio: the table gives the effect on the "
+     "median minimum thickness and on the allowed correlation length (5% voids, 10% haze).", align="justify")
+caption(doc, "**Table S14** Thickness coupling at 20 wt% chitosan: minimum thickness from the median wet modulus for three anchors, and the "
+        "shares of samples meeting the 10% haze target at each sample’s own minimum thickness.", keep_next=True)
+rows = [["Liquid", "Median E (GPa)", "Anchor E_{ref} (GPa)", "t_{min} median (µm)", "t_{min} 5–95% (µm), anchor 1 GPa", "a_{max} at t_{min} (nm)",
+         "Haze pass: wood-pulp / bagasse"]]
+for liq in ("neutral", "acid"):
+    d = JT["E_" + liq]
+    for anchor in (0.5, 1.0, 2.0):
+        tm = float(m.thickness_for_rigidity(d["E_median_GPa"], E_anchor=anchor))
+        rows.append([liq, "%.2f" % d["E_median_GPa"], "%.1f" % anchor, "%.0f" % tm,
+                     "%.0f–%.0f" % (d["t_min_um_q5_25_50_75_95"][0], d["t_min_um_q5_25_50_75_95"][4]) if anchor == 1.0 else "–",
+                     "%.1f" % m.a_max_nm(tm, 0.10, 0.05),
+                     "%s / %s" % (P(d["P_coupled_window_ref"]), P(d["P_coupled_window_bag"])) if anchor == 1.0 else "–"])
+table(doc, rows, widths=[0.7, 0.8, 0.9, 0.9, 1.4, 0.9, 1.0], size=8)
+
+# ================================================================== S10 wax layer
+heading(doc, "S10 Wax layer: bounded optical and forming sensitivity (main text Section 6.8)", 1)
+para(doc, "The wax layer enters the optical bookkeeping of S7.2 in two ways: the wax–air face is a rough interface with the index of the "
+     "wax and its own RMS height, and crystallites in the layer are a coarse scattering term with the contrast of crystalline against "
+     "amorphous wax, Δε_{w} = (n_{w} + Δn)² − n_{w}², in Eq. (2) with φ_{w} and a_{w} and with optical depth τ_{w}t_{w}. Haze added is the difference "
+     "between the coated and the uncoated wall on the same film samples (wood-pulp scale, bulk only; one face coated). For forming, a "
+     "coating applied before drawing cracks at the tensile strain ε_{wax}, so the tolerated tensile strain becomes min(ε_{crit}, ε_{wax}). All "
+     "ranges are in Table S10. Liquid containment is not modelled, and so no result here bears on whether the layer holds liquid.", align="justify")
+caption(doc, "**Table S15** Wax-layer sensitivity (assumed ranges).", keep_next=True)
+rows = [["Quantity", "100 µm wall", "200 µm wall"]]
+for lab, key, fmt in (("Added haze, 5/25/50/75/95th percentile (points)", "added_haze_points_q5_25_50_75_95", "list"),
+                      ("Share adding more than 1 point", "P_added_gt_1pt", "p"), ("Share adding more than 2 points", "P_added_gt_2pt", "p"),
+                      ("Share adding more than 5 points", "P_added_gt_5pt", "p"),
+                      ("Median added, wax face only (points)", "median_added_points_surface_only", "f"),
+                      ("Median added, crystallites only (points)", "median_added_points_crystallites_only", "f")):
+    row = [lab]
+    for t in (100, 200):
+        v = KX["optical_t%d" % t][key]
+        row.append(" / ".join("%.2f" % x for x in v) if fmt == "list" else (P(v) if fmt == "p" else "%.2f" % v))
+    rows.append(row)
+table(doc, rows, widths=[3.4, 1.6, 1.6], size=8.5)
+rows = [["Geometry", "Forming window, uncoated", "Coated before forming"]]
+for g in ("tray", "bowl", "cup"):
+    rows.append([g, P(KX["forming_" + g]["P_window_uncoated"], 1), P(KX["forming_" + g]["P_window_coated_before_forming"], 1)])
+table(doc, rows, widths=[1.6, 2.2, 2.2], size=8.5)
+para(doc, "Spearman rank correlation of the added haze (100 µm) with the inputs: " + "; ".join(
+    "%s %+.2f" % (k, v) for k, v in KX["optical_spearman_added_haze_t100"].items()) + ".", align="justify")
+
 heading(doc, "Reproducing every number", 1)
-para(doc, "From the repository root: python code/verify_model.py (43 checks); python code/run_analysis.py (writes code/results.json); "
-     "python code/make_figures.py (writes the figures); python manuscript/build_manuscript.py and "
+para(doc, "From the repository root: python code/verify_model.py (%d checks); python code/run_analysis.py (writes code/results.json); "
+     "python code/make_figures.py (writes the figures) and python code/export_figure_data.py (the numerical tables behind Figures 2–7); python manuscript/build_manuscript.py and "
      "python manuscript/build_si.py (rebuild the documents from results.json). References: python references/refs.py "
      "(formats the list from the cached Crossref records); python references/harvest.py doi <DOI> re-checks a record. Python 3 with NumPy and "
-     "Matplotlib; no other numerical dependencies.", align="justify")
+     "Matplotlib; no other numerical dependencies (pinned versions in requirements.txt). python references/audit_refs.py repeats the "
+     "reference audit." % N_PASS, align="justify")
 doc.save(OUT)
 print("saved", OUT)

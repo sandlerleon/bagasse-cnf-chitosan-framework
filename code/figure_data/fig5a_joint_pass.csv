@@ -1,0 +1,13 @@
+feedstock_range|liquid|geometry,P_optical,P_mechanical,P_forming,P_all
+ref|neutral|tray,0.692635,0.884715,0.855245,0.524725
+ref|neutral|bowl,0.692635,0.884715,0.069325,0.04293
+ref|neutral|cup,0.692635,0.884715,0,0
+ref|acid|tray,0.692635,0.51257,0.855245,0.30414
+ref|acid|bowl,0.692635,0.51257,0.069325,0.025175
+ref|acid|cup,0.692635,0.51257,0,0
+bag|neutral|tray,0.255475,0.884715,0.855245,0.19252
+bag|neutral|bowl,0.255475,0.884715,0.069325,0.015365
+bag|neutral|cup,0.255475,0.884715,0,0
+bag|acid|tray,0.255475,0.51257,0.855245,0.1117
+bag|acid|bowl,0.255475,0.51257,0.069325,0.009015
+bag|acid|cup,0.255475,0.51257,0,0

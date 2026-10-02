@@ -19,6 +19,7 @@ CACHE = os.path.join(HERE, "refs_cache.json")
 # key -> DOI. Order is irrelevant; the list is sorted by author at output.
 DOI = {
     "nogi2009": "10.1002/adma.200803174",
+    "jager2009": "10.1063/1.3254239",
     "fukuzumi2009": "10.1021/bm801065u",
     "saito2007": "10.1021/bm0703970",
     "isogai2011": "10.1039/c0nr00583e",

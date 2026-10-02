@@ -307,3 +307,163 @@ def spearman(x, y):
     rx -= rx.mean()
     ry -= ry.mean()
     return float((rx * ry).sum() / math.sqrt((rx ** 2).sum() * (ry ** 2).sum()))
+
+
+# ================================================================================ EXTENSIONS
+# Bounded sensitivity analyses added in response to review (v1.1). Every range below is an
+# assumption, explored rather than asserted, and none of it enters the core 19-parameter
+# registry or the headline numbers of Sections 6.1-6.4.
+PARAMS_EXT = {
+    # ---- surface scattering and a coarse residual population (optical-model validation)
+    "sigma_surf": (1.0, 30.0, "lu", "nm", "assumed",
+                   "RMS height of each film surface (two surfaces); no measurement is cited"),
+    "f_surf":     (0.3, 1.0, "u", "-", "assumed",
+                   "Fraction of surface-scattered light deviating by more than 2.5 deg"),
+    "phi_coarse": (1e-5, 3e-4, "lu", "-", "assumed",
+                   "Volume fraction of a coarse void or fragment population (residual fibres, aggregates); "
+                   "set from the inverse calculation of run_analysis.py section H so that it is detectable only by its haze"),
+    "a_coarse":   (50.0, 300.0, "lu", "nm", "assumed",
+                   "Correlation length of the coarse population"),
+    # ---- wax layer (H3), optical and forming
+    "t_wax":      (0.2, 1.0, "u", "um", "assumed", "Thickness of the sub-micron wax layer"),
+    "n_wax":      (1.40, 1.50, "u", "-", "assumed", "Refractive index of the wax"),
+    "sigma_wax":  (3.0, 50.0, "lu", "nm", "assumed", "RMS height of the wax surface"),
+    "dn_wax":     (0.02, 0.10, "u", "-", "assumed", "Index contrast between wax crystallites and amorphous wax"),
+    "phi_wax":    (0.05, 0.30, "u", "-", "assumed", "Volume fraction of wax crystallites"),
+    "a_wax":      (50.0, 300.0, "lu", "nm", "assumed", "Correlation length of the wax crystallite structure"),
+    "eps_wax":    (0.01, 0.10, "u", "-", "assumed", "Tensile strain at which the wax layer cracks and stops holding liquid"),
+}
+
+# Direction in which each core parameter helps (+1: a larger value helps the test it enters,
+# -1: a smaller value helps). Used only to build optimistic and pessimistic prior sets.
+FAVOURABLE = {"rho_film": 1, "rho_wall": -1, "n_cell": -1, "a_ref": -1, "a_bag": -1, "f_morph": -1,
+              "E_cnf": 1, "E_chi": 1, "psi": 1, "kappa_cnf": 1, "kappa_chi": 1, "xi_max": 1, "w_star": -1,
+              "kappa_chi_acid": 1, "xi_acid": 1, "eps_f_dry": 1, "d_eps_wet": 1, "r_void": 1, "eps_wrinkle": 1}
+# physical limits used when a range is widened
+HARD_LIMITS = {"rho_film": (1.0, 1.65), "rho_wall": (1.40, 1.70), "n_cell": (1.40, 1.70), "a_ref": (1.0, 200.0),
+               "a_bag": (1.0, 200.0), "f_morph": (0.05, 10.0), "E_cnf": (0.5, 30.0), "E_chi": (0.5, 8.0),
+               "psi": (0.1, 1.3), "kappa_cnf": (0.005, 1.0), "kappa_chi": (0.0, 1.0), "xi_max": (0.0, 1.0),
+               "w_star": (0.01, 0.5), "kappa_chi_acid": (0.0, 1.0), "xi_acid": (0.0, 1.0),
+               "eps_f_dry": (0.01, 0.5), "d_eps_wet": (0.0, 0.6), "r_void": (0.05, 1.0), "eps_wrinkle": (0.0, 2.0)}
+
+PRIOR_SCHEMES = ("base", "uniform", "centred", "widened", "narrowed", "optimistic", "pessimistic")
+
+
+def _tri(lo, hi, mode, n, rng):
+    return rng.triangular(lo, mode, hi, n)
+
+
+def draw_scheme(name, n, rng, scheme="base"):
+    """Draw parameter `name` under an alternative prior scheme.
+
+      base        the distributions of PARAMS
+      uniform     uniform in linear space for every parameter (log-uniform replaced)
+      centred     triangular with the mode at the middle of the range (geometric middle if log-uniform)
+      widened     assumed ranges widened by 50% of their width on each side (clipped to HARD_LIMITS)
+      narrowed    assumed ranges narrowed to their central 50%
+      optimistic  assumed parameters triangular with the mode at the favourable end
+      pessimistic assumed parameters triangular with the mode at the unfavourable end
+    Literature-informed ranges are left unchanged in the last four schemes.
+    """
+    lo, hi, dist, _, status, _ = PARAMS[name]
+    assumed = status == "assumed"
+    if scheme == "base":
+        return draw(name, n, rng)
+    if scheme == "uniform":
+        return rng.uniform(lo, hi, n)
+    if scheme == "centred":
+        mid = math.sqrt(lo * hi) if dist == "lu" else 0.5 * (lo + hi)
+        return _tri(lo, hi, mid, n, rng)
+    if not assumed:
+        return draw(name, n, rng)
+    if scheme in ("widened", "narrowed"):
+        f = 0.5 if scheme == "widened" else -0.25
+        if dist == "lu":
+            l0, h0 = math.log(lo), math.log(hi)
+            w = h0 - l0
+            a, b = l0 - f * w, h0 + f * w
+            a = max(a, math.log(HARD_LIMITS[name][0]))
+            b = min(b, math.log(HARD_LIMITS[name][1]))
+            return np.exp(rng.uniform(a, b, n))
+        w = hi - lo
+        a, b = max(lo - f * w, HARD_LIMITS[name][0]), min(hi + f * w, HARD_LIMITS[name][1])
+        return rng.uniform(a, b, n)
+    if scheme in ("optimistic", "pessimistic"):
+        good = FAVOURABLE[name] > 0
+        at_hi = good if scheme == "optimistic" else not good
+        mode = hi if at_hi else lo
+        if dist == "lu":
+            return np.exp(_tri(math.log(lo), math.log(hi), math.log(mode), n, rng))
+        return _tri(lo, hi, mode, n, rng)
+    raise ValueError(scheme)
+
+
+def scheme_range(name, scheme):
+    """Support (low, high) of a parameter under a scheme: used to report the widened and
+    narrowed ranges and to compute best-case bounds under each."""
+    lo, hi, dist, _, status, _ = PARAMS[name]
+    if scheme in ("base", "uniform", "centred", "optimistic", "pessimistic") or status != "assumed":
+        return lo, hi
+    f = 0.5 if scheme == "widened" else -0.25
+    if dist == "lu":
+        l0, h0 = math.log(lo), math.log(hi)
+        w = h0 - l0
+        return (math.exp(max(l0 - f * w, math.log(HARD_LIMITS[name][0]))),
+                math.exp(min(h0 + f * w, math.log(HARD_LIMITS[name][1]))))
+    w = hi - lo
+    return max(lo - f * w, HARD_LIMITS[name][0]), min(hi + f * w, HARD_LIMITS[name][1])
+
+
+def draw_ext(name, n, rng):
+    lo, hi, dist = PARAMS_EXT[name][:3]
+    if dist == "lu":
+        return np.exp(rng.uniform(math.log(lo), math.log(hi), n))
+    return rng.uniform(lo, hi, n)
+
+
+def surface_scatter_fraction(sigma_nm, n_film, f_surf=1.0, n_out=1.0, lam=LAMBDA0):
+    """Fraction of light scattered beyond 2.5 deg by ONE rough interface (scalar theory,
+    small slopes). Transmission through a rough interface imposes a random phase with
+    RMS value Phi = 2 pi (n_film - n_out) sigma / lam, so the scattered fraction is
+    1 - exp(-Phi^2); f_surf is the share of that light that leaves the 2.5 deg cone."""
+    phi = 2.0 * math.pi * (np.asarray(n_film, float) - n_out) * np.asarray(sigma_nm, float) * 1e-9 / lam
+    return np.asarray(f_surf, float) * (1.0 - np.exp(-phi ** 2))
+
+
+def haze_composite(tau, f_haze, t_um, s_in, s_out=None, tau_c=0.0, f_haze_c=0.5):
+    """Direct and diffuse light through: entrance surface -> bulk -> coarse population -> exit surface.
+    State (D, F) = (direct, diffuse) fractions. A surface moves a fraction s of the direct
+    light to the diffuse channel; a bulk layer moves f_haze*(1-exp(-tau t)) of the direct
+    light to the diffuse channel and attenuates the rest. Light already diffuse is not
+    scattered again (a single-scattering bookkeeping, optimistic at large tau t).
+    Reduces exactly to haze_from_tau when both surface terms and tau_c are zero. Returns haze."""
+    s_out = s_in if s_out is None else s_out
+    x = np.asarray(tau, float) * np.asarray(t_um, float) * 1e-6
+    xc = np.asarray(tau_c, float) * np.asarray(t_um, float) * 1e-6
+    D = np.ones_like(x, dtype=float)
+    F = np.zeros_like(D)
+    F = F + D * s_in
+    D = D * (1 - s_in)
+    d = np.exp(-x)
+    F = F + D * f_haze * (1 - d)
+    D = D * d
+    dc = np.exp(-xc)
+    F = F + D * f_haze_c * (1 - dc)
+    D = D * dc
+    F = F + D * s_out
+    D = D * (1 - s_out)
+    return F / (D + F)
+
+
+def sigma_for_haze(h_target, n_film, f_surf=1.0, surfaces=2, lam=LAMBDA0):
+    """RMS roughness (nm) that, on its own, produces haze h_target with `surfaces` rough
+    interfaces: 1 - (1 - s)^surfaces = h  ->  s = 1 - (1-h)^(1/surfaces)."""
+    s = 1.0 - (1.0 - h_target) ** (1.0 / surfaces)
+    phi = math.sqrt(-math.log(1.0 - s / f_surf))
+    return phi * lam / (2.0 * math.pi * (n_film - 1.0)) * 1e9
+
+
+def thickness_for_rigidity(E_gpa, E_anchor=1.0, t_anchor_um=100.0):
+    """Thinnest wall with the same flexural rigidity (proportional to E t^3, thin-plate theory)
+    as a wall of stiffness E_anchor and thickness t_anchor."""
+    return t_anchor_um * (E_anchor / np.asarray(E_gpa, float)) ** (1.0 / 3.0)

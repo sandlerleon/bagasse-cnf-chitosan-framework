@@ -1,0 +1,31 @@
+output,input,spearman_rho
+optical_bagasse_haze,film density,-0.368175
+optical_bagasse_haze,wall density,0.167845
+optical_bagasse_haze,refractive index,0.0570199
+optical_bagasse_haze,correlation length a,0.803156
+optical_bagasse_haze,morphology factor,0.256467
+optical_reference_haze,film density,-0.435153
+optical_reference_haze,wall density,0.185501
+optical_reference_haze,refractive index,0.0762525
+optical_reference_haze,correlation length a,0.735112
+optical_reference_haze,morphology factor,0.337721
+mechanical_neutral_Ewet,E_cnf,0.514706
+mechanical_neutral_Ewet,E_chi,0.0272627
+mechanical_neutral_Ewet,psi,0.316154
+mechanical_neutral_Ewet,kappa_cnf,0.328386
+mechanical_neutral_Ewet,kappa_chi,0.0745336
+mechanical_neutral_Ewet,xi_max,0.640001
+mechanical_neutral_Ewet,w_star,-0.128001
+mechanical_acid_Ewet,E_cnf,0.414278
+mechanical_acid_Ewet,E_chi,0.011548
+mechanical_acid_Ewet,psi,0.25742
+mechanical_acid_Ewet,kappa_cnf,0.6961
+mechanical_acid_Ewet,kappa_chi,0.00429292
+mechanical_acid_Ewet,xi_max,0.287528
+mechanical_acid_Ewet,w_star,-0.0624593
+mechanical_acid_Ewet,kappa_chi_acid,0.0283797
+mechanical_acid_Ewet,xi_acid,0.289496
+forming_bowl_margin,eps_f_dry,0.136573
+forming_bowl_margin,d_eps_wet,0.266443
+forming_bowl_margin,r_void,0.387525
+forming_bowl_margin,eps_wrinkle,0.854909

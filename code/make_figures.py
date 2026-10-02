@@ -2,13 +2,14 @@
 """Figures for the manuscript. Every plotted quantity comes from tncc_model.py or
 results.json; nothing is drawn by hand except the process-chain schematic (Fig. 1).
 
-    python make_figures.py      ->  ../figures/Figure1..5 (.png and .tif, 600 dpi)
+    python make_figures.py      ->  ../figures/Figure1..7 (.png and .tif, 600 dpi)
 """
 import json
 import math
 import os
 
 import matplotlib
+import matplotlib.ticker
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
@@ -329,4 +330,81 @@ ax.set_xlabel("Spearman rank correlation with the output")
 ax.set_title("Which unknown to measure first", loc="left", pad=9)
 panel(ax, "b")
 save(fig, "Figure5")
+# ===================================================== Fig 6: optical validation and the coupled window
+HV = R["H_optical_validation"]
+JT = R["J_thickness_coupling"]
+fig = plt.figure(figsize=(W, 3.15))
+gs = fig.add_gridspec(1, 2, width_ratios=[1, 1.05], wspace=0.30)
+ax = fig.add_subplot(gs[0])
+pc = np.arange(1, 100)
+cdf_cols = {"bulk_only": ("bulk only (core screen)", GREY, "-"), "plus_surface": ("+ rough surfaces", BLUE, "-"),
+            "plus_coarse": ("+ coarse population", ORANGE, "-"), "plus_both": ("+ both", RED, "--")}
+for k, (lab, c, ls) in cdf_cols.items():
+    ax.plot(np.maximum(HV["cdf_t40_percentiles_1_to_99"][k], 1e-3), pc, color=c, ls=ls, label=lab)
+ax.axvspan(4.9, 11.7, color=GREEN, alpha=0.20, lw=0)
+ax.text(7.5, 4, "observed\n4.9–11.7%", fontsize=6.3, color="#1d6b45", ha="center", va="bottom")
+ax.set_xscale("log")
+ax.set_xlim(0.01, 100)
+ax.set_ylim(0, 100)
+ax.set_xlabel("Haze of a 40 µm wood-pulp-scale sheet  (%)")
+ax.set_ylabel("Share of samples with lower haze  (%)")
+ax.set_title("Can added scattering close the gap?", loc="left", pad=9)
+ax.legend(frameon=False, loc="upper left", fontsize=6.3)
+panel(ax, "a")
+
+ax = fig.add_subplot(gs[1])
+tg = np.array(JT["a_max_curve_phi05_haze10"]["t_um"])
+a10 = np.array(JT["a_max_curve_phi05_haze10"]["a_max_nm"])
+a5 = np.array(JT["a_max_curve_phi05_haze5"]["a_max_nm"])
+ax.fill_betweenx(tg, 1.5, a10, color=GREEN, alpha=0.10, lw=0)
+ax.plot(a10, tg, color="black", lw=1.4, label="haze 10%")
+ax.plot(a5, tg, color="black", lw=1.0, ls="--", label="haze 5%")
+for liquid, c, lab in (("neutral", BLUE, "neutral"), ("acid", ORANGE, "acidic")):
+    q5, q25, q50, q75, q95 = JT["E_" + liquid]["t_min_um_q5_25_50_75_95"]
+    ax.axhspan(q5, q95, color=c, alpha=0.12, lw=0)
+    ax.axhline(q50, color=c, lw=1.5)
+    ax.text(78, q50 + 2.5, "%s liquid: %.0f µm" % (lab, q50), fontsize=6.2, color=c, ha="right", va="bottom", fontweight="bold")
+ax.axvspan(3, 15, ymin=0.0, ymax=0.05, color=BLUE, alpha=0.9)
+ax.axvspan(5, 80, ymin=0.055, ymax=0.105, color=ORANGE, alpha=0.9)
+ax.text(3.2, 5.5, "wood-pulp scale", fontsize=5.8, color="white", va="center")
+ax.text(76, 17.5, "bagasse range", fontsize=5.8, color="white", va="center", ha="right")
+ax.set_xscale("log")
+ax.set_xlim(2, 80)
+ax.set_ylim(0, 220)
+ax.set_xticks([2, 3, 5, 10, 20, 50])
+ax.set_xticklabels(["2", "3", "5", "10", "20", "50"])
+ax.xaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
+ax.set_xlabel("Correlation length  a  (nm), 5% voids")
+ax.set_ylabel("Wall thickness  t  (µm)")
+ax.set_title("Stiffness sets a minimum thickness, haze a maximum a", loc="left", pad=9)
+ax.legend(frameon=False, loc="upper right", fontsize=6.3, bbox_to_anchor=(1.0, 0.82))
+panel(ax, "b")
+save(fig, "Figure6")
+
+
+# ================================================================== Fig 7: robustness to the priors
+PR = R["I_prior_robustness"]
+metrics = [("Optical pass, wood-pulp scale (100 µm)", "P_haze10_ref_t100"), ("Optical pass, bagasse range (100 µm)", "P_haze10_bag_t100"),
+           ("Chitosan helps, neutral", "P_helps_neutral"), ("Chitosan helps, acidic", "P_helps_acid"),
+           ("Forming window, tray", "P_window_tray"), ("Forming window, bowl", "P_window_bowl"), ("Forming window, cup", "P_window_cup"),
+           ("All three pass, tray (wood-pulp)", "P_all_ref_tray"), ("All three pass, bowl (wood-pulp)", "P_all_ref_bowl")]
+fig, ax = plt.subplots(figsize=(W, 3.2))
+mk = {"base": ("o", "black", 5.5), "uniform": ("s", BLUE, 4), "centred": ("D", "#7fb0da", 4), "widened": ("^", GREEN, 5),
+      "narrowed": ("v", "#8e6bbf", 5), "optimistic": ("P", ORANGE, 5), "pessimistic": ("X", RED, 5)}
+for i, (lab, key) in enumerate(metrics):
+    y = len(metrics) - 1 - i
+    vals = [100 * PR["panels"][s][key] for s in PR["schemes"]]
+    ax.plot([min(vals), max(vals)], [y, y], color="#c8cdd3", lw=4, solid_capstyle="round", zorder=1)
+    for s, v in zip(PR["schemes"], vals):
+        mkr, c, ms = mk[s]
+        ax.plot([v], [y], marker=mkr, color=c, ms=ms, ls="none", zorder=3 if s == "base" else 2,
+                label=s if i == 0 else None, mec="white", mew=0.4)
+ax.set_yticks(range(len(metrics)))
+ax.set_yticklabels([lab for lab, _ in metrics][::-1], fontsize=6.8)
+ax.set_xlim(-3, 100)
+ax.set_xlabel("Share of samples meeting the criterion  (%)")
+ax.set_title("Pass shares move with the prior; the ordering does not", loc="left", pad=9)
+ax.legend(frameon=False, ncol=4, loc="upper center", bbox_to_anchor=(0.45, -0.17), fontsize=6.4, title="prior scheme", title_fontsize=6.4)
+save(fig, "Figure7")
+
 print("done")

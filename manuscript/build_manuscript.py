@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Build TNCC_Cellulose_Manuscript_v2.docx.
+"""Build TNCC_Cellulose_Manuscript_v3.docx.
 
 Every number quoted from the analysis is read from code/results.json at build time, and the
 verification-test count comes from an actual run of code/verify_model.py, so the text cannot
@@ -27,14 +27,14 @@ from docx_helpers import (DELIM, EQ, FRAC, GE, LE, MINUS, PLUS, TIMES, SQRT, SUB
                           PI, PHI, TAU, LAM, EPS, DELTA, KAPPA, XI, PSI, bullet, caption, equation,
                           figure, heading, new_document, page_numbers_and_line_numbers, para, table)
 
-OUT = os.path.join(HERE, "TNCC_Cellulose_Manuscript_v2.docx")
+OUT = os.path.join(HERE, "TNCC_Cellulose_Manuscript_v3.docx")
 R = json.load(io.open(os.path.join(ROOT, "code", "results.json"), encoding="utf-8"))
 C, G, E, S, B = R["C_monte_carlo"], R["G_additions"], R["E_envelope"], R["D_spearman"], R["B_haze_budget"]
 DB = rf.load()
-STATE = json.load(io.open(r"C:\YouTube\_tncc_zenodo_state.json", encoding="utf-8"))
-CODE_DOI = STATE["software"]["concept_doi"]
-PAPER_DOI = STATE["publication"]["concept_doi"]
-REPO_URL = "https://github.com/sandlerleon/bagasse-cnf-chitosan-framework"
+IDS = json.load(io.open(os.path.join(HERE, "identifiers.json"), encoding="utf-8"))
+CODE_DOI = IDS["code_concept_doi"]
+PAPER_DOI = IDS["paper_concept_doi"]
+REPO_URL = IDS["repository"]
 FIG = os.path.join(ROOT, "figures")
 
 USED_KEYS = set()
@@ -83,6 +83,8 @@ tol_best = {h: E["forming_tolerance_h%02d" % h]["max"] for h in (0, 5, 10)}
 FORM = {(g, h): C["forming_%s_h%02d" % (g, h)] for g in ("tray", "bowl", "cup") for h in (0, 5, 10)}
 INV = R["F_inverse"]
 OPT = {(sc, t): C["optical_%s_t%d" % (sc, t)] for sc in ("ref", "bag") for t in (40, 100, 200)}
+HV, PR, JT, KX, LC = (R["H_optical_validation"], R["I_prior_robustness"], R["J_thickness_coupling"], R["K_wax_bounded"],
+                      R["L_cup_requirement"])
 
 doc = new_document(size=11, line=1.5)
 page_numbers_and_line_numbers(doc)
@@ -104,17 +106,20 @@ ABSTRACT = (
     "Transparent rigid packaging is dominated by fossil-derived polymers, whereas fibre-based packaging is opaque. "
     "Dense cellulose nanofibril (CNF) and nanocrystal sheets are transparent as flat films, but whether transparency, "
     "wet stiffness and a three-dimensional shape can coexist in one sugarcane-bagasse-derived package has not been "
-    "established, and the one reported attempt to mould transparent CNF objects failed through drying shrinkage. "
+    "established, and one reported attempt to mould transparent CNF objects failed through drying shrinkage. "
     "This paper reports no experiments. It applies three consistency screens to a proposed bagasse CNF\u2013chitosan\u2013wax "
-    "architecture: an optical screen derived from Debye\u2013Bueche scattering theory, a wet-stiffness screen, and a geometric "
-    "forming screen, each propagated through a seeded Monte Carlo analysis over ranges taken from verified literature or "
-    "stated as assumptions. Haze rises with wall thickness and with the cube of the void-structure correlation length: a "
-    "100 \u00b5m wall at 10%% haze and 5%% voids requires a correlation length of %.0f nm or less. Chitosan raises modelled wet "
-    "stiffness mainly through cross-linking (median gain %+.1f GPa with it, %+.1f GPa without) and the benefit disappears in an acidic liquid. Geometry sets the forming burden: "
-    "tray, bowl and cup shapes need total strain tolerances of %.2f, %.2f and %.2f, and no combination of the assumed ranges "
-    "forms the cup (best case %.2f). The framework yields measurable thresholds and a staged validation matrix."
+    "architecture: an optical screen derived from Debye\u2013Bueche scattering theory, a wet-stiffness screen and a geometric "
+    "forming screen, each propagated through a seeded Monte Carlo analysis over ranges traced to cited literature or "
+    "explicitly stated assumptions. Under the stated optical-screen assumptions, a 100 \u00b5m wall at 10%% haze and 5%% voids "
+    "requires a correlation length of about %.0f nm or less, and because stiffness fixes a minimum wall thickness, the liquid "
+    "the package must resist feeds back into the optical budget. Chitosan raises modelled wet stiffness mainly through "
+    "cross-linking (median gain %+.1f GPa with it, %+.1f GPa without), but its gain in an acidic liquid is small and of "
+    "uncertain sign. A tray, bowl and cup need total strain tolerances of %.2f, %.2f and %.2f; no combination of the assumed "
+    "ranges forms the cup (best case %.2f), which would need a flange wrinkling strain above %.2f. Pass shares depend on "
+    "the priors, whereas the thresholds, the cup bound and the rank ordering do not. Barrier performance is untested, so "
+    "every feasibility result is provisional."
 ) % (AM["t100_haze10_phi05"], XL["median_gain_with_crosslinking_GPa"], XL["median_gain_without_crosslinking_GPa"],
-       bud["tray (lid-like)"], bud["bowl"], bud["cup"], tol_best[10])
+       bud["tray (lid-like)"], bud["bowl"], bud["cup"], tol_best[10], LC["eps_wrinkle_needed_cup_at_best_tensile"])
 n_words = len(ABSTRACT.split())
 assert 150 <= n_words <= 250, "abstract is %d words; Cellulose requires 150-250" % n_words
 para(doc, ABSTRACT, align="justify")
@@ -161,6 +166,13 @@ para(doc, "This paper asks that question as a consistency test. Each requirement
      "the unknowns that most influence each outcome, so that the first measurements are the informative ones; and (v) "
      "falsifiable predictions and a validation matrix with numerical thresholds. No experiments were performed. Every parameter "
      "is either taken from a cited source or stated as an assumption, and the assumptions are listed (Table 3).", align="justify")
+para(doc, "**What the combination adds.** Each screen alone restates a familiar trend. Three results need the screens together. "
+     "First, stiffness fixes a minimum wall thickness and thickness fixes the haze, so the liquid the package must resist "
+     "changes the optical budget (Section 6.6). Second, a wax layer applied before forming must survive the strain the sheet "
+     "survives, which narrows the forming window of the shallowest geometry (Section 6.8). Third, the joint outcome is set by "
+     "whichever screen binds, and for deep shapes that is forming, not the optics or the chemistry on which most of the "
+     "literature concentrates (Section 6.4). The paper also separates what survives a change of prior from what does not "
+     "(Section 6.7).", align="justify")
 
 # ================================================================== 2 hypotheses
 heading(doc, "2 Hypotheses, research questions and status of evidence", 1)
@@ -302,7 +314,7 @@ equation(doc, V(TAU) + T(EQ) + FRAC(
 para(doc, "where \u0394\u03b5 = n_{c}^{2} \u2212 1 is the permittivity contrast, \u03bb the vacuum wavelength (550 nm throughout), "
      "f_{m} a morphology factor carrying the uncertainty about the real structure, and K = 64\u03c0^{4}/3 \u2248 2.08\u00d710^{3}. "
      "**K is derived, not fitted**: it is the small-angle limit of the angular integral of the Debye\u2013Bueche expression "
-     "multiplied by the polarisation factor of unpolarised light. The factor g(a) is the exact angular integral relative to that "
+     "multiplied by the polarisation factor of unpolarised light. The factor g(a) is the numerically evaluated angular integral relative to that "
      "limit and equals 1 when a is much smaller than the wavelength. It matters here. Table S1 of the Supplementary Information "
      "gives g(a); in brief g = %.2f at 5 nm, %.2f at 10 nm, %.2f at 20 nm, %.2f at 40 nm and %.2f at 80 nm, so the closed cubic law is "
      "accurate to about 12%% up to 10 nm but overestimates scattering %.1f times at 80 nm, the top of the reported bagasse "
@@ -315,8 +327,8 @@ equation(doc, V("H") + T(EQ) + FRAC(
 para(doc, "where f_{h} is the fraction of scattered light going forward beyond 2.5\u00b0, computed from the same angular integral "
      "(0.5 for small features). Surface reflection multiplies direct and diffuse light alike and cancels in the ratio. "
      "Eqs. (1)\u2013(3) are valid for \u03c4t up to about 1; beyond that, repeated scattering raises the real haze, so values "
-     "there are optimistic. Three limits should be stated plainly. The screen represents bulk scattering only: surface roughness "
-     "and residual fibre fragments, which dominate haze in some nanopapers %s, are not represented, and absorption by residual "
+     "there are optimistic. Three limits should be stated plainly. The core screen represents bulk scattering only: surface roughness "
+     "and residual fibre fragments, which dominate haze in some nanopapers %s, are treated only as bounded additions (Section 6.5), and absorption by residual "
      "lignin is omitted. The void fraction is derived from film density as \u03c6 = 1 \u2212 \u03c1_{f}/\u03c1_{w}, which "
      "makes it sensitive to the assumed wall density at the percent level. And Eq. (2) is a screening relation: it has not been "
      "validated against small-angle scattering from nanocellulose sheets, which is the measurement that would validate it."
@@ -362,7 +374,7 @@ para(doc, "with \u03b5_{f0} the ambient failure strain, \u0394\u03b5_{w} its gai
      % cite("lyu2019"), align="justify")
 equation(doc, SUB(V(EPS), T("crit")) + T(PLUS) + SUB(V(EPS), T("wr")) + T(GE) + SUB(V(EPS), T("b")), "10")
 para(doc, "Three reference geometries are used (Table 3 caption): a lid-like tray (base 100 mm, top 120 mm, depth 12 mm), a bowl "
-     "(100, 150, 50 mm) and a drinking cup (55, 80, 90 mm). Eq. (10) is exact for the stated geometry; whether a sheet can "
+     "(100, 150, 50 mm) and a drinking cup (55, 80, 90 mm). Eq. (10) follows exactly from the stated geometry and strain limits; whether a sheet can "
      "actually be formed also depends on friction, drying shrinkage %s and temperature, none of which are represented." % cite("rol2020"),
      align="justify")
 
@@ -371,7 +383,7 @@ para(doc, "The 19 parameters of the screens are listed with their ranges and bas
      "source and 11 are assumptions. Each was sampled independently and uniformly, or log-uniformly where the range spans an "
      "order of magnitude, for N = 200,000 samples with a fixed seed (20261002). Outputs were summarised by quantiles, by the "
      "share of samples meeting a requirement, and by Spearman rank correlation with the output, which identifies which unknown "
-     "to measure first. The assumed requirements (haze of 5%% or 10%%, wet stiffness of 0.5, 1 or 2 GPa) are exactly that, assumptions: "
+     "to measure first. The assumed requirements (haze of 5%% or 10%%, wet stiffness of 0.5, 1 or 2 GPa) are assumptions: "
      "transparency in packaging is reported by several non-equivalent measures %s, and the package-specific requirement belongs to "
      "a design brief, not to this paper." % cite("guzman2022"), align="justify")
 caption(doc, "**Table 3** Parameter registry. Status \u2018lit\u2019 means the range is informed by the cited source; \u2018assumed\u2019 means it is the "
@@ -399,24 +411,53 @@ for k, (lo, hi, dist, unit, status, basis) in m.PARAMS.items():
 table(doc, rows, widths=[1.5, 0.8, 0.6, 0.45, 0.6, 2.55], size=7.5)
 
 heading(doc, "5.5 Verification and computational methods", 2)
-para(doc, "A screening model cannot be validated against data it was not built from, so the code is verified against limits "
-     "known independently of it. The verification suite (%d checks, all passing) confirms that the angular integral reduces to "
+para(doc, "A screening model cannot be validated against data it was not built from, so the code is checked against limits "
+     "known independently of it. The %d automated verification checks passed; they confirm that the angular integral reduces to "
      "its closed form for small features; that Debye\u2013Bueche scattering reduces to the Rayleigh result for dilute small spheres; "
      "that the scattered-light fractions conserve energy; that Eq. (2) scales as a^{3} and as \u03c6(1\u2212\u03c6) in the small-feature "
      "limit and more slowly beyond it; that the haze inversion round-trips; that the single-scattering relation maps the "
      "direct transmittance and haze pairs reported by %s to within 12 percentage points (%.1f%% against 10%% and %.1f%% against 62%%); "
      "that the wet-stiffness screen recovers plain CNF at w = 0, neat chitosan at w = 1 and the rule of mixtures when "
-     "cross-linking and disruption are switched off; and that the forming window opens exactly at the strain budget. All results "
+     "cross-linking and disruption are switched off; that the forming window opens at the strain budget; that the composite surface-and-bulk slab reduces to Eq. (3) when the additions are zero, that rough-surface scattering reaches its small-roughness limit and that the thickness coupling conserves rigidity; and that every prior scheme stays inside its stated support. These checks show that the code implements the stated relations; they are not experimental validation. All results "
      "were produced by one seeded run (Python 3, NumPy); the code is deposited (Data and code availability)." %
      (N_PASS, nar("xu2016"), 100 * XU[0]["haze_model"], 100 * XU[1]["haze_model"]), align="justify")
-para(doc, "**Use of generative AI and handling of evidence.** Generative AI (Claude, Anthropic) was used as a drafting and analysis "
-     "aid: it helped to write and review the model code, the verification suite, the figure scripts and the manuscript text. The "
-     "author specified the physical model and its assumptions, directed the literature work, ran the code, inspected every "
-     "output and figure and takes full responsibility for the content. No AI tool is an author, and none generated data; the "
-     "study reports none. Every reference was resolved against its Crossref record by script, and each statement was checked against "
-     "the cited source\u2019s abstract where one was accessible. For references whose abstract could not be retrieved, the claim "
-     "attached is limited to what the title states. Statements of absence rest on the documented searches in Supplementary "
-     "Information S4.", align="justify")
+para(doc, "**Use of generative AI and handling of evidence.** Generative AI (Claude, Anthropic) was used as an assistive tool "
+     "during manuscript preparation and software development, including code drafting, code review, figure-script drafting, "
+     "scripts that retrieve literature records, and language editing. The author defined the research question, the "
+     "requirements and the assumptions, directed the computational workflow and the verification criteria, reviewed the "
+     "interpretation of the literature and approved every scientific conclusion. All computational results were generated by the "
+     "deposited code and checked against the %d automated verification checks described above; the author reviewed the outputs. "
+     "No AI-generated data, references, experimental results or scientific conclusions were accepted without author "
+     "verification, and the study reports no experimental data. No AI tool is an author. Every reference was resolved against "
+     "its Crossref record by script, a final audit re-resolved every record and located each quoted number in the cited abstract "
+     "where one was accessible (Supplementary Information S4), and, for references whose abstract could not be retrieved, the "
+     "claim attached is limited to what the title states. Statements of absence rest on the documented searches in "
+     "Supplementary Information S4. The author takes full responsibility for the accuracy, integrity and interpretation of the "
+     "work." % N_PASS, align="justify")
+
+# ================================================================== 5.6 bounded extensions
+heading(doc, "5.6 Bounded extensions", 2)
+para(doc, "Four bounded extensions test how much the conclusions depend on what the core screens leave out. Every range they use "
+     "is an assumption (Supplementary Information S7–S10) and none of them enters the 19-parameter registry or the numbers of "
+     "Sections 6.1–6.4. **Surface and coarse scattering.** Each film face is treated as a rough interface of RMS height σ. For small "
+     "slopes, scalar theory gives the fraction of light that one face scatters beyond 2.5° as", align="justify")
+equation(doc, Vs("s", "face") + T(EQ) + Vs("f", "s") + DELIM(T("1") + T(MINUS) + T("exp") + DELIM(T("−") + SUP(V("Φ"), T("2")))) + T(",") + T(" ") + V("Φ")
+         + T(EQ) + FRAC(T("2") + V(PI) + DELIM(Vs("n", "f") + T(MINUS) + T("1")) + V("σ"), V(LAM)), "11")
+para(doc, "where n_{f} is the film index and f_{s} the share of that light leaving the cone. This is the Born-type description that "
+     "relates the texture of a surface to the light it scatters %s. A coarse residual population (fibre fragments, aggregates) "
+     "is added as a second Debye–Bueche term with its own volume fraction and correlation length, bounded so that it is "
+     "detectable only through its haze. The two faces, the nanofibril network and the coarse term are combined by following the "
+     "direct and diffuse light through each in turn (Supplementary Information S7); the result reduces to Eq. (3) when the "
+     "additions are zero. **Prior sets.** The Monte Carlo analysis is repeated under seven prior schemes (base, uniform, centred, "
+     "widened, narrowed, optimistic, pessimistic; Supplementary Information S8) to separate results that survive a change of "
+     "prior from shares that move with it. **Thickness coupling.** A rigid wall is judged by its flexural rigidity, proportional to "
+     "E t^{3} in thin-plate theory. Anchoring the reference requirement (1 GPa at 100 µm), the thinnest wall of equal rigidity is"
+     % cite("jager2009"), align="justify")
+equation(doc, Vs("t", "min") + T(EQ) + Vs("t", "ref") + SUP(DELIM(FRAC(Vs("E", "ref"), V("E"))), FRAC(T("1"), T("3"))), "12")
+para(doc, "with t_{ref} = 100 µm and E_{ref} = 1 GPa, and the haze is evaluated at t_{min}. Only the t^{−3} scaling is physics; the "
+     "anchor is an assumption. **Wax layer.** A layer of 0.2–1 µm with its own surface roughness and crystallite scattering is "
+     "added on one face, and, for coating applied before forming, a cracking strain ε_{wax} caps the tolerated tensile strain "
+     "(Supplementary Information S10). Liquid containment itself is not modelled.", align="justify")
 
 # ================================================================== 6 results
 heading(doc, "6 Results", 1)
@@ -447,7 +488,7 @@ para(doc, "**How well does the screen reproduce published haze?** It is not a ca
      "by itself explain the haze of published clear nanopaper; surface roughness and residual fibre fragments probably contribute, "
      "as the original authors attribute. The most direct consequence is the bracket of Fig. 2b: if the observed haze is mostly "
      "bulk it scales with thickness and a 100\u2013200 \u00b5m wall is far hazier than 40 \u00b5m nanopaper, and if it is mostly surface it does not. "
-     "Which limit applies is unmeasured and is the first optical measurement." %
+     "Which limit applies is unmeasured and is the first optical measurement; Section 6.5 tests what could close the gap." %
      (cal["haze40_quantiles_5_25_50_75_95"][2], P(cal["fraction_inside_observed_band"]), P(cal["fraction_below_band"]),
       P(cal["fraction_above_band"]), cite("hsieh2017")), align="justify")
 para(doc, "Over the sampled ranges (Table 5), a wood-pulp-scale structure meets a 10%% haze target at 100 \u00b5m in %s of samples and at "
@@ -511,7 +552,7 @@ heading(doc, "6.3 Forming: geometry sets the burden", 2)
 para(doc, "The strain budget of Eq. (8) is %.3f for the tray, %.3f for the bowl and %.3f for the cup, corresponding to surface areas "
      "%.1f, %.1f and %.1f times the base footprint (Fig. 4a). With no stretching, forming them would need blank-to-punch "
      "ratios of %.2f, %.2f and %.2f. Over the sampled strain tolerances a forming window exists, for saturated forming, in %s of "
-     "tray samples, %s of bowl samples and none of the cup samples (Table 7). The cup result does not depend on the sampling: "
+     "tray samples, %s of bowl samples and none of the cup samples (Table 7). Within the assumed ranges the cup result does not depend on the sampling: "
      "the largest total tolerance \u03b5_{crit} + \u03b5_{wr} reachable anywhere in the assumed ranges is %.2f for saturated forming, "
      "%.2f at half hydration and %.2f ambient, all below the cup\u2019s %.2f (the dashed box of Fig. 4a does not reach the cup line). "
      "The bowl is out of reach in the ambient state, where the best case of %.3f falls just short of the 0.667 needed, and is reached "
@@ -545,14 +586,165 @@ para(doc, "For a reference design (100 \u00b5m wall, 20%% chitosan, haze \u2264 
      "sampled designs passing all three tests is %s for a tray with a wood-pulp-scale structure and a neutral liquid, %s with "
      "a bagasse-range structure, and %s and %s in an acidic liquid; for a bowl it is %s and %s, and for the cup it is zero in every "
      "case (Fig. 5a). These shares depend on the assumed ranges and are reported to rank the cases. The conclusions that do not "
-     "depend on them are the thresholds of Table 4, the bound on the cup, and the order of the unknowns in Fig. 5b." %
+     "depend on them are the thresholds of Table 4, the bound on the cup, and the order of the unknowns in Fig. 5b; Section 6.7 tests them under alternative priors." %
      (P(J["ref|neutral|tray"]["P_all"]), P(J["bag|neutral|tray"]["P_all"]), P(J["ref|acid|tray"]["P_all"]), P(J["bag|acid|tray"]["P_all"]),
       P(J["ref|neutral|bowl"]["P_all"]), P(J["bag|neutral|bowl"]["P_all"])), align="justify")
 figure(doc, os.path.join(FIG, "Figure5.png"), 6.5,
        "**Fig. 5** Integration. **a** Share of sampled designs passing all three tests at the reference design (100 \u00b5m wall, 20% "
        "chitosan, haze \u2264 10%, wet stiffness \u2265 1 GPa, forming at saturation), by geometry, feedstock range and liquid. Shares "
-       "depend on the assumed ranges; the zero for the cup does not (best case 0.96 < 1.10). **b** Spearman rank correlation of the "
+       "depend on the assumed ranges; the zero for the cup holds within the assumed ranges (best case 0.96 < 1.10). **b** Spearman rank correlation of the "
        "leading unknowns with the optical, wet-mechanical and forming outputs: the quantities to measure first.")
+
+# ================================================================== 6.5-6.8 results from the extensions
+heading(doc, "6.5 Optical-model validation: what could close the gap", 2)
+_cv = HV["calibration_variants_wood_pulp_scale"]
+_med = lambda v, t: _cv["t%d" % t][v]["haze_q5_25_50_75_95_pct"][2]
+_inb = lambda v, t: _cv["t%d" % t][v]["fraction_inside_observed_band"]
+_blw = lambda v, t: _cv["t%d" % t][v]["fraction_below_band"]
+SN = HV["sigma_needed_nm"]
+AMB = HV["a_max_with_baseline_t100_haze10_phi05"]
+CI = HV["coarse_population_inverse"]
+para(doc, "Section 6.1 reported that bulk scattering by the nanofibril network reproduces the observed haze of clear nanopaper in "
+     "only %s of samples. Two additions were tested (Section 5.6). Surface scattering on its own would need an RMS height of "
+     "%.0f–%.0f nm on each of two faces to give the observed 4.9–11.7%% haze (%.0f nm if only 30%% of the scattered light leaves "
+     "the 2.5° cone), several times the 3–15 nm fibril width, so the faces would be rougher than the fibrils that form them; "
+     "atomic-force or optical profilometry of the faces is the measurement that decides. Over the assumed roughness range "
+     "(1–30 nm) the median haze of a 40 µm wood-pulp-scale sheet rises from %.1f%% to %.1f%%, and the share inside the observed "
+     "band from %s to %s. A coarse population of volume fraction 0.001–0.03%% and size 50–300 nm acts more strongly: the "
+     "median rises to %.1f%% and the share inside the band to %s. With both, the median is %.1f%% and %s of samples lie inside the "
+     "band, but %s still lie below it (Table 8, Fig. 6a). The additions narrow the gap and do not close it, so the bulk screen "
+     "remains a lower bound on haze, and the observed 4.9–11.7%% is most simply explained by a small population of "
+     "coarse scatterers that no density measurement would reveal." %
+     (P(cal["fraction_inside_observed_band"]), SN["band_low_4.9pct"], SN["band_high_11.7pct"], SN["band_mid_if_only_30pct_leaves_cone"],
+      _med("bulk_only", 40), _med("plus_surface", 40), P(_inb("bulk_only", 40)), P(_inb("plus_surface", 40)),
+      _med("plus_coarse", 40), P(_inb("plus_coarse", 40)), _med("plus_both", 40), P(_inb("plus_both", 40)), P(_blw("plus_both", 40))),
+     align="justify")
+caption(doc, "**Table 8** Haze of a wood-pulp-scale sheet with the bulk screen alone and with the bounded additions: median haze, "
+        "and the share of samples inside and below the observed 4.9–11.7% band at 40 µm.", keep_next=True)
+orows = [["Scattering included", "Median haze 40 µm", "Inside band", "Below band", "Median haze 100 µm", "Median haze 200 µm"]]
+for v, lab in (("bulk_only", "Nanofibril bulk only (core screen)"), ("plus_surface", "+ rough surfaces"),
+               ("plus_coarse", "+ coarse population"), ("plus_both", "+ both")):
+    orows.append([lab, "%.1f%%" % _med(v, 40), P(_inb(v, 40)), P(_blw(v, 40)), "%.1f%%" % _med(v, 100), "%.1f%%" % _med(v, 200)])
+table(doc, orows, widths=[2.2, 0.9, 0.8, 0.8, 0.95, 0.95], size=8.5)
+para(doc, "**Consequences for the optical budget.** The coarse-population explanation has a design consequence that no single-"
+     "thickness measurement reveals. A population that alone gives 8%% haze at 40 µm (volume fraction %.3f%% at 100 nm, %.3f%% at "
+     "300 nm) would give %.0f%% haze at 100 µm and %.0f%% at 200 µm whatever the nanofibril scale, because haze then rises "
+     "with thickness. The correlation-length threshold of Table 4 is therefore a necessary condition under the bulk model, "
+     "not a sufficient one: it holds only if the coarse population is controlled. The threshold itself is little changed by "
+     "surface roughness (for 100 µm, 10%% haze and 5%% voids, a ≤ %.1f nm with none, %.1f nm at 10 nm RMS and %.1f nm at 20 nm RMS) "
+     "or by a small coarse population (%.1f nm at 0.005%%). The thickness series of P1 (Section 8) separates these cases, since "
+     "surface haze is independent of thickness and coarse-population haze is not." %
+     (100 * CI["a100"]["phi_coarse_for_8pct_at_40um"], 100 * CI["a300"]["phi_coarse_for_8pct_at_40um"],
+      CI["a100"]["haze_pct_at_100um"], CI["a100"]["haze_pct_at_200um"], AMB["none"], AMB["surface_sigma_10nm"],
+      AMB["surface_sigma_20nm"], AMB["coarse_0.005pct_a100nm"]), align="justify")
+figure(doc, os.path.join(FIG, "Figure6.png"), 6.5,
+       "**Fig. 6** Optical-model validation and the coupled window. **a** Cumulative distribution of the haze of a 40 µm "
+       "wood-pulp-scale sheet for the bulk screen alone and with rough surfaces and a coarse population added (assumed ranges, "
+       "Supplementary Table S10); the green band is the observed 4.9–11.7%. **b** Haze budget (maximum correlation length at 5% "
+       "voids) against thickness for 10% (solid) and 5% (dashed) haze, with the minimum thickness that stiffness requires at the "
+       "median wet modulus for a neutral and an acidic liquid (lines; bands are the 5–95% range). A design must lie to the left "
+       "of the budget curve and above the line.")
+
+heading(doc, "6.6 Thickness couples the optical and stiffness screens", 2)
+_jn, _ja = JT["E_neutral"], JT["E_acid"]
+para(doc, "Equation (12) makes thickness the variable that joins the screens: stiffness sets the thinnest wall that is rigid enough, "
+     "and the haze budget sets the finest structure that wall may carry. At the median wet modulus the minimum thickness is "
+     "%.0f µm for a neutral liquid (5–95%% range %.0f–%.0f µm) and %.0f µm for an acidic one (%.0f–%.0f µm), so the liquid "
+     "the package must resist changes the optical budget: the allowed correlation length at 5%% voids and 10%% haze is %.1f nm "
+     "for the neutral and %.1f nm for the acidic case (Fig. 6b). With each sample’s own modulus setting its own thickness, a "
+     "wood-pulp-scale structure meets the 10%% haze target in %s of samples for a neutral liquid and %s for an acidic one, and a "
+     "bagasse-range structure in %s and %s; evaluated at the fixed 100 µm of Section 6.4 and also required to reach 1 GPa, the "
+     "shares are %s and %s for the wood-pulp scale and %s and %s for the bagasse range. The coupling does not rescue "
+     "the bagasse range, but it shows that the stiffness result and the optical result cannot be quoted at a common thickness "
+     "without choosing one." %
+     (JT["t_min_at_median_E_um"]["neutral"], _jn["t_min_um_q5_25_50_75_95"][0], _jn["t_min_um_q5_25_50_75_95"][4],
+      JT["t_min_at_median_E_um"]["acid"], _ja["t_min_um_q5_25_50_75_95"][0], _ja["t_min_um_q5_25_50_75_95"][4],
+      JT["a_max_at_t_min_phi05_haze10_nm"]["neutral"], JT["a_max_at_t_min_phi05_haze10_nm"]["acid"],
+      P(_jn["P_coupled_window_ref"]), P(_ja["P_coupled_window_ref"]), P(_jn["P_coupled_window_bag"]), P(_ja["P_coupled_window_bag"]),
+      P(_jn["P_fixed100_joint_ref"]), P(_ja["P_fixed100_joint_ref"]), P(_jn["P_fixed100_joint_bag"]), P(_ja["P_fixed100_joint_bag"])),
+     align="justify")
+
+heading(doc, "6.7 Robustness to the prior distributions", 2)
+_pb, _sch = PR["panels"], PR["schemes"]
+_rng = lambda k: (min(_pb[s][k] for s in _sch), max(_pb[s][k] for s in _sch),
+                  min(_sch, key=lambda s: _pb[s][k]), max(_sch, key=lambda s: _pb[s][k]))
+CL = PR["claims"]
+para(doc, "Eleven of the nineteen ranges are assumptions, so the Monte Carlo shares were recomputed under seven prior schemes "
+     "(Section 5.6). The shares move by tens of percentage points (Table 9, Fig. 7): the share of wood-pulp-scale structures meeting "
+     "the haze target at 100 µm ranges from %s to %s and that of the bagasse range from %s to %s, the tray’s forming window from "
+     "%s to %s, the bowl’s from %s to %s, and the joint pass share of the tray from %s to %s. They are not results about the "
+     "material. Four statements survive every scheme: the tray has a larger window than the bowl and the bowl a larger one than "
+     "the cup (%s); the wood-pulp scale beats the bagasse range optically (%s); chitosan helps in more samples at neutral pH than "
+     "in acid (%s); and the median chitosan gain is smaller in acid than at neutral pH (%s). Two statements are conditional. "
+     "The sign of the median chitosan gain in acid is not fixed: it runs from %+.2f to %+.2f GPa across the schemes, against "
+     "%+.2f to %+.2f GPa at neutral pH, so the defensible statement is that the gain is small and of uncertain sign in acid. And the cup "
+     "is closed in every scheme except the widened one, where the upper bound of the wrinkling tolerance rises from 0.50 to %.2f and "
+     "the best-case total tolerance to %.2f, above the cup’s %.2f; there %s of samples form it." %
+     (P(_rng("P_haze10_ref_t100")[0]), P(_rng("P_haze10_ref_t100")[1]), P(_rng("P_haze10_bag_t100")[0]), P(_rng("P_haze10_bag_t100")[1]),
+      P(_rng("P_window_tray")[0]), P(_rng("P_window_tray")[1]), P(_rng("P_window_bowl")[0], 1), P(_rng("P_window_bowl")[1], 1),
+      P(_rng("P_all_ref_tray")[0]), P(_rng("P_all_ref_tray")[1]),
+      "yes" if CL["tray_gt_bowl_gt_cup_everywhere"] else "NO", "yes" if CL["wood_pulp_beats_bagasse_optically_everywhere"] else "NO",
+      "yes" if CL["chitosan_helps_more_in_neutral_than_acid_everywhere"] else "NO", "yes" if CL["acid_median_gain_below_neutral_everywhere"] else "NO",
+      _rng("median_gain_acid_GPa")[0], _rng("median_gain_acid_GPa")[1], _rng("median_gain_neutral_GPa")[0], _rng("median_gain_neutral_GPa")[1],
+      PR["widened_ranges"]["eps_wrinkle"][1], _pb["widened"]["best_case_total_tolerance_saturated"], bud["cup"],
+      P(_pb["widened"]["P_window_cup"], 3)), align="justify")
+caption(doc, "**Table 9** Headline shares under seven prior schemes (base, uniform, centred, widened, narrowed, optimistic, "
+        "pessimistic): the base value, the range across schemes and the schemes that give its extremes.", keep_next=True)
+_mrows = [["Output", "Base", "Lowest", "Highest", "Lowest in", "Highest in"]]
+for lab, key, nd in (("Optical pass, wood-pulp scale, 100 µm", "P_haze10_ref_t100", 0), ("Optical pass, bagasse range, 100 µm", "P_haze10_bag_t100", 0),
+                     ("Chitosan helps, neutral", "P_helps_neutral", 0), ("Chitosan helps, acidic", "P_helps_acid", 0),
+                     ("Forming window, tray", "P_window_tray", 0), ("Forming window, bowl", "P_window_bowl", 1),
+                     ("Forming window, cup", "P_window_cup", 2), ("All three pass, tray (wood-pulp)", "P_all_ref_tray", 0),
+                     ("All three pass, bowl (wood-pulp)", "P_all_ref_bowl", 1)):
+    lo_, hi_, slo, shi = _rng(key)
+    _mrows.append([lab, P(_pb["base"][key], nd), P(lo_, nd), P(hi_, nd), "all other schemes" if key == "P_window_cup" else slo, shi])
+_mrows.append(["Median acid gain (GPa)", "%+.2f" % _pb["base"]["median_gain_acid_GPa"], "%+.2f" % _rng("median_gain_acid_GPa")[0],
+               "%+.2f" % _rng("median_gain_acid_GPa")[1], _rng("median_gain_acid_GPa")[2], _rng("median_gain_acid_GPa")[3]])
+table(doc, _mrows, widths=[2.4, 0.6, 0.7, 0.7, 1.0, 1.0], size=8.5)
+figure(doc, os.path.join(FIG, "Figure7.png"), 6.5,
+       "**Fig. 7** Robustness to the prior distributions. Each row is a headline share; the bar spans the seven prior schemes "
+       "and each marker is one scheme. The ordering of the rows within a pair (tray, bowl and cup; wood-pulp scale and bagasse "
+       "range; neutral and acidic) is the same in every scheme.")
+para(doc, "**What the cup needs.** The closed cup is the result most worth stating as a requirement. Even with every tensile "
+     "tolerance at its best case (%.2f for a saturated sheet), the flange would have to tolerate a wrinkling strain of %.2f, "
+     "that is a limiting draw ratio of %.2f, against an assumed upper bound of %.2f (%.2f). At the median tensile tolerance "
+     "(%.2f) the requirement is %.2f, a draw ratio of %.2f. The conclusion is thus not that a cup cannot be drawn, but that "
+     "it needs a flange wrinkling tolerance well beyond anything assumed here, for which no measurement on nanocellulose sheets exists." %
+     (LC["best_case_tensile_saturated"], LC["eps_wrinkle_needed_cup_at_best_tensile"], LC["LDR_max_needed_cup_at_best_tensile"],
+      LC["eps_wrinkle_assumed_upper"], LC["LDR_max_assumed_upper"], LC["median_tensile_saturated"],
+      LC["eps_wrinkle_needed_cup_at_median_tensile"], LC["LDR_max_needed_cup_at_median_tensile"]), align="justify")
+
+heading(doc, "6.8 Barrier layer: a bounded test of H3", 2)
+_ko = KX["optical_t100"]
+_kf = {g: KX["forming_" + g] for g in ("tray", "bowl", "cup")}
+para(doc, "The wax layer of H3 is not part of the integrated screens, and liquid containment is untested. Its effect on the other two "
+     "requirements can nevertheless be bounded (Section 5.6). Optically, the assumption that a sub-micron layer adds no haze is "
+     "not safe: over the assumed ranges a layer on one face of a 100 µm wall adds a median of %.1f haze points (5–95%% range "
+     "%.1f–%.1f), more than one point in %s of samples, more than two in %s and more than five in %s. Surface roughness of the "
+     "wax (Spearman ρ = %+.2f), the index contrast of its crystallites (%+.2f) and their size (%+.2f) drive it. Mechanically, a "
+     "coating applied before forming must survive the same strain as the sheet. With a cracking strain of 1–10%% the share of "
+     "tray samples with a forming window at saturation falls from %s to %s, and the bowl’s from %s to %s; coating after forming "
+     "avoids this and moves the burden to conformal coating of a formed wall. These are sensitivities to assumed ranges. They "
+     "classify every feasibility result in this paper as provisional, because the liquid-holding function that the coating exists "
+     "to provide has not been tested, and they turn H3 from an inference of ‘no added haze’ into a measurable threshold: "
+     "an added haze of at most one point." %
+     (_ko["added_haze_points_q5_25_50_75_95"][2], _ko["added_haze_points_q5_25_50_75_95"][0], _ko["added_haze_points_q5_25_50_75_95"][4],
+      P(_ko["P_added_gt_1pt"]), P(_ko["P_added_gt_2pt"]), P(_ko["P_added_gt_5pt"]),
+      KX["optical_spearman_added_haze_t100"]["wax roughness sigma_wax"], KX["optical_spearman_added_haze_t100"]["index contrast dn_wax"],
+      KX["optical_spearman_added_haze_t100"]["crystallite size a_wax"],
+      P(_kf["tray"]["P_window_uncoated"]), P(_kf["tray"]["P_window_coated_before_forming"]),
+      P(_kf["bowl"]["P_window_uncoated"], 1), P(_kf["bowl"]["P_window_coated_before_forming"], 1)), align="justify")
+caption(doc, "**Table 10** Bounded sensitivity of the wax layer (assumed ranges): added haze at 100 µm and the share of samples with "
+        "a forming window at saturation, uncoated and coated before forming.", keep_next=True)
+table(doc, [
+    ["Quantity", "Result"],
+    ["Added haze, median (5–95%)", "%.1f points (%.1f–%.1f)" % (_ko["added_haze_points_q5_25_50_75_95"][2], _ko["added_haze_points_q5_25_50_75_95"][0], _ko["added_haze_points_q5_25_50_75_95"][4])],
+    ["Share adding > 1, > 2, > 5 points", "%s, %s, %s" % (P(_ko["P_added_gt_1pt"]), P(_ko["P_added_gt_2pt"]), P(_ko["P_added_gt_5pt"]))],
+    ["Median added haze: surface only, crystallites only", "%.2f, %.2f points" % (_ko["median_added_points_surface_only"], _ko["median_added_points_crystallites_only"])],
+    ["Tray window: uncoated, coated before forming", "%s, %s" % (P(_kf["tray"]["P_window_uncoated"], 1), P(_kf["tray"]["P_window_coated_before_forming"], 1))],
+    ["Bowl window: uncoated, coated before forming", "%s, %s" % (P(_kf["bowl"]["P_window_uncoated"], 1), P(_kf["bowl"]["P_window_coated_before_forming"], 1))],
+    ["Cup window: uncoated, coated before forming", "%s, %s" % (P(_kf["cup"]["P_window_uncoated"], 1), P(_kf["cup"]["P_window_coated_before_forming"], 1))],
+], widths=[3.6, 2.4], size=8.5)
 
 # ================================================================== 7 discussion
 heading(doc, "7 Discussion", 1)
@@ -562,6 +754,36 @@ para(doc, "**What the three screens return.** The optical screen shows that thic
      "whose benefit is conditional on the liquid, not a reinforcement in the ordinary sense. The forming screen shows that, for "
      "deep geometries, the sheet would need to supply many times its footprint area, which no tolerance within the assumed ranges "
      "provides.", align="justify")
+para(doc, "**What only the combination returns.** Each screen alone restates a familiar trend: smaller features scatter less, chitosan "
+     "can cross-link nanofibrils, deeper shapes need more strain. Table 11 lists the results that need the screens taken together, "
+     "and what would be missed if one screen were used alone.", align="justify")
+caption(doc, "**Table 11** Results that require two or more screens, and what a single screen would miss.", keep_next=True)
+table(doc, [
+    ["Result", "Screens combined", "What a single screen misses"],
+    ["The liquid changes the optical budget: median minimum thickness %.0f µm (neutral) against %.0f µm (acidic), allowed correlation "
+     "length %.1f against %.1f nm (Section 6.6)" % (JT["t_min_at_median_E_um"]["neutral"], JT["t_min_at_median_E_um"]["acid"],
+                                                   JT["a_max_at_t_min_phi05_haze10_nm"]["neutral"], JT["a_max_at_t_min_phi05_haze10_nm"]["acid"]),
+     "Wet stiffness and optical", "Each fixes the thickness at 100 µm and cannot see the coupling"],
+    ["A wax layer applied before forming narrows the tray window from %s to %s and closes the bowl (Section 6.8)" %
+     (P(KX["forming_tray"]["P_window_uncoated"]), P(KX["forming_tray"]["P_window_coated_before_forming"])),
+     "Barrier and forming", "The forming screen assumes a bare sheet"],
+    ["The correlation-length threshold is necessary, not sufficient: coarse scatterers that explain the observed 40 µm haze give about "
+     "%.0f%% at 100 µm (Section 6.5)" % CI["a100"]["haze_pct_at_100um"],
+     "Optical and published haze data", "The bulk model alone, or haze at a single thickness"],
+    ["Flange wrinkling tolerance, not fracture strain, decides the bowl (Spearman ρ = %+.2f), and the cup needs a wrinkling strain above %.2f" %
+     (S["forming_bowl_margin"]["eps_wrinkle"], LC["eps_wrinkle_needed_cup_at_best_tensile"]),
+     "Forming and void-onset limit", "Tensile-strain data alone"],
+    ["Thresholds, orderings and the cup bound survive seven prior schemes; pass shares do not (Section 6.7)",
+     "All three and the prior sets", "A single Monte Carlo run"],
+], widths=[3.6, 1.3, 1.6], size=8.5)
+para(doc, "**Scope of the forming result.** The cup result applies to forming a flat, dense sheet by drawing, with the strain limits "
+     "assumed here; it is not a universal impossibility. Routes that change the burden include multi-stage drawing with "
+     "intermediate drying, hydration beyond the saturated state assumed, redistribution of thickness towards the wall, which "
+     "the uniform-strain budget (a lower bound, Eq. 8) does not capture, storing area in folds, pleats or a seam instead of "
+     "strain, and direct moulding from a suspension, the route of %s, which avoids sheet strain at the price of the drying "
+     "shrinkage that defeated it. None of these is modelled. Each is a candidate whose own limit would need its own "
+     "measurement, and the framework states the corresponding requirement for the drawing route: a flange wrinkling "
+     "tolerance above %.2f for the cup." % (nar("rol2020"), LC["eps_wrinkle_needed_cup_at_best_tensile"]), align="justify")
 para(doc, "**Consistency with prior art.** The forming result agrees with the one reported attempt at three-dimensional CNF objects, "
      "which produced objects by wet moulding but not transparent or dimensionally stable ones because of drying shrinkage %s. "
      "The two findings are complementary: that study identifies a route-specific failure, shrinkage on drying, which this screen "
@@ -576,7 +798,7 @@ para(doc, "**Design implications.** The results do not say that a transparent ba
      "relaxes the optical budget in proportion but lowers stiffness and increases the sensitivity to surface defects.",
      align="justify")
 para(doc, "**What to measure first.** The rankings give an order. For optics, the correlation length and void fraction of a dense "
-     "bagasse sheet by small-angle X-ray scattering, since the Debye\u2013Bueche form is exactly what such data are analysed with "
+     "bagasse sheet by small-angle X-ray scattering, since the Debye\u2013Bueche form is the one with which such data are analysed "
      "%s, followed by haze against thickness. For wet stiffness, the cross-linking gain and the plain-CNF wet retention, including "
      "in acidic liquids. For forming, the flange wrinkling tolerance and the strain at which haze first rises." % cite("debye1957"),
      align="justify")
@@ -601,15 +823,18 @@ bullet(doc, "**P4 (acid reversal).** The wet-stiffness gain from 20% chitosan me
        "loss of cross-linking.")
 bullet(doc, "**P5 (forming limit).** Haze rises before fracture during forming if r_{v} < 1, and a flat dense sheet cannot be formed "
        "into the cup geometry by drawing alone; a transparent formed cup falsifies the bound of Eq. (10).")
-caption(doc, "**Table 8** Validation matrix: the measurement, the threshold derived here and what would falsify it.", keep_next=True)
+bullet(doc, "**P6 (what scatters).** If a small coarse population explains the haze of clear nanopaper, haze rises with thickness (about %.0f%% at 100 \u00b5m for a population that gives 8%% at 40 \u00b5m) and the population is visible by microscopy or wide-angle scattering; if instead the faces scatter, haze is independent of thickness and the RMS height of the faces is tens of nanometres (%.1f%% haze at 20 nm, %.1f%% at 30 nm from two faces)." % (CI["a100"]["haze_pct_at_100um"], HV["surface_haze_pct_for_sigma"]["20nm"], HV["surface_haze_pct_for_sigma"]["30nm"]))
+bullet(doc, "**P7 (wax haze).** A sub-micron wax layer adds measurable haze: in the bounded analysis it adds more than one point at 100 \u00b5m in %s of sampled structures, and a coating that adds at most one point needs smooth, fine-crystalline wax." % P(KX["optical_t100"]["P_added_gt_1pt"]))
+caption(doc, "**Table 12** Validation matrix: the measurement, the threshold derived here and what would falsify it.", keep_next=True)
 table(doc, [
     ["Requirement", "Measurement", "Threshold derived here", "Falsified if"],
     ["Bulk scattering", "Small-angle X-ray scattering, Debye\u2013Bueche analysis of dense bagasse sheets", "\u03c6(1\u2212\u03c6)a^{3} \u2264 %.0f nm^{3} at 100 \u00b5m, 5%% haze" % B["t100_haze5"]["phi_1mphi_a3_budget_nm3"], "Measured value exceeds it with haze still low"],
     ["Thickness scaling", "Haze (ASTM D1003) at 40, 100, 200 \u00b5m", "Haze \u221d t (bulk) or constant (surface)", "Outside the bracket of Fig. 2b"],
+    ["Surface or coarse scatterers", "Profilometry of both faces; microscopy or wide-angle scattering of the bulk", "Two-face haze %.1f%% at 10 nm RMS, %.1f%% at 30 nm; coarse volume fraction \u2264 %.3f%% at 100 nm" % (HV["surface_haze_pct_for_sigma"]["10nm"], HV["surface_haze_pct_for_sigma"]["30nm"], 100 * CI["a100"]["phi_coarse_for_8pct_at_40um"]), "Observed haze unexplained by either"],
     ["Feedstock (H1)", "Correlation length, bagasse versus wood-pulp CNF at equal density", "a \u2264 %.0f nm at 5%% voids (100 \u00b5m, 10%% haze)" % AM["t100_haze10_phi05"], "Larger a with haze still within target"],
     ["Wet stiffness (H2)", "Wet tensile modulus at 0, 10, 20, 30 wt% chitosan in neutral water", "\u2265 1 GPa; model median %.1f GPa at 20%%" % W20n["E_wet_q5_25_50_75_95_GPa"][2], "Below 1 GPa, or no gain over plain CNF"],
     ["Acid exposure (H2)", "Wet modulus after soaking in acidic liquids", "Gain over plain CNF near zero (model median %+.2f GPa)" % W20a["median_gain_over_plain_GPa"], "Gain retained in acid"],
-    ["Barrier (H3)", "Liquid-hold test, haze after coating, abrasion-induced haze", "24 h hold (proposed); no added haze", "Leak, or coating raises haze"],
+    ["Barrier (H3)", "Liquid-hold test, haze after coating, abrasion-induced haze", "24 h hold (proposed); added haze \u2264 1 point (exceeded in %s of the bounded samples)" % P(KX["optical_t100"]["P_added_gt_1pt"]), "Leak, or coating adds more than one point"],
     ["Strain tolerance (H4)", "Wet and ambient strain to failure; in situ haze against strain", "Total tolerance \u2265 %.2f (tray), %.2f (bowl)" % (bud["tray (lid-like)"], bud["bowl"]), "Below the budget of the target geometry"],
     ["Flange wrinkling (H4)", "Draw test with blank holder, LDR at wrinkle onset", "LDR_{max} = exp(\u03b5_{wr}); needed %.2f (tray)" % INV["tray (lid-like)"]["required_LDR_if_no_stretching"], "LDR_{max} below the requirement"],
     ["Package", "Filled-container drop, lid attachment, thermal cycling", "1 m drop (proposed)", "Failure"],
@@ -637,8 +862,8 @@ para(doc, "The constituents (cellulose, chitosan and natural wax) were chosen fo
 heading(doc, "10 Limitations", 1)
 for t in [
     "No sheet or package was made or tested. Eleven of the nineteen parameter ranges are assumptions, and every share quoted in "
-    "Section 6 is conditional on them; the thresholds and the cup bound are the results that depend least on them.",
-    "The optical screen represents bulk scattering only. Surface scattering, absorption by residual lignin, multiple scattering "
+    "Section 6 is conditional on them; the thresholds and the cup bound are the results that depend least on them, and Section 6.7 tests the dependence under six alternative prior sets.",
+    "The core optical screen represents bulk scattering; surface and coarse scattering enter only as bounded additions with assumed ranges (Section 6.5). Absorption by residual lignin, multiple scattering "
     "beyond \u03c4t of about 1 and the anisotropy of cellulose are not represented, and Eq. (2) has not been validated against "
     "small-angle scattering from nanocellulose sheets. It does not by itself reproduce the haze of published clear nanopaper. "
     "The Born approximation is comfortable at the wood-pulp fibril scale but marginal for correlation lengths of tens of "
@@ -648,7 +873,8 @@ for t in [
     "The forming screen bounds mean area strain and tolerance. Friction, nonuniform thinning, temperature, drying shrinkage "
     "(the failure route reported by %s) and the strain state of the wall are not represented; the wrinkling tolerance has no reported "
     "value for nanocellulose sheets." % ay("rol2020"),
-    "The barrier hypothesis (H3) is not modelled, and a contact angle is not a liquid-holding test.",
+    "The thickness coupling rests on an assumed equal-rigidity anchor (1 GPa at 100 \u00b5m), and the forming screen treats the drawing of a flat sheet; other routes (multi-stage or wet forming, folds and seams, direct moulding from suspension) are neither modelled nor excluded.",
+    "Liquid containment (H3) is not modelled: only the optical and forming effects of a wax layer are bounded (Section 6.8), with assumed ranges, so every feasibility result is provisional until a liquid-holding test exists. A contact angle is not a liquid-holding test.",
     "Food-contact regulatory status of chitosan, waxes and any additives, compostability and life-cycle impact are not assessed. "
     "Some references were available to the verification process only by title, and the claims attached to them are limited accordingly.",
 ]:
@@ -661,11 +887,11 @@ para(doc, "The literature supports each ingredient of a transparent, bagasse-der
      "ingredients to coexist. A dense wall is clear only if its void fraction and correlation length lie inside a budget set by its "
      "thickness: for 100 \u00b5m, 10%% haze and 5%% voids, a correlation length of about %.0f nm or less, a threshold the reported "
      "bagasse nanofibril range straddles. Chitosan raises wet stiffness mainly through cross-linking, and in the screen that benefit "
-     "is lost in an acidic liquid. And geometry sets a strain budget of %.2f, %.2f and %.2f for a tray, a bowl and a cup, of which "
-     "only the tray lies within the assumed tolerances, while the cup lies outside every combination of them. These are conditional "
+     "is small and of uncertain sign in an acidic liquid. And geometry sets a strain budget of %.2f, %.2f and %.2f for a tray, a bowl and a cup, of which "
+     "only the tray lies within the assumed tolerances, while the cup lies outside every combination of them unless the flange tolerates a wrinkling strain above %.2f. Stiffness, through wall thickness, couples the liquid to the optical budget, and a wax layer applied before forming narrows the forming window. These are conditional "
      "results from stated assumptions. They define the measurements, ranked by influence, that would confirm or falsify the "
      "concept, and they locate the binding constraint, forming, in geometry and not only in the material." %
-     (AM["t100_haze10_phi05"], bud["tray (lid-like)"], bud["bowl"], bud["cup"]), align="justify")
+     (AM["t100_haze10_phi05"], bud["tray (lid-like)"], bud["bowl"], bud["cup"], LC["eps_wrinkle_needed_cup_at_best_tensile"]), align="justify")
 
 # ================================================================== declarations
 heading(doc, "Declarations", 1)
@@ -674,14 +900,23 @@ para(doc, "**Competing interests** The author declares that there are no competi
 para(doc, "**Ethics approval and consent to participate** Not applicable. This is a theoretical and computational study with no "
      "human participants, human data, animals or experiments.")
 para(doc, "**Consent for publication** Not applicable.")
-para(doc, "**Data and code availability** No experimental data were generated. The model, the verification suite, every figure "
-     "script, the reference-verification tooling and the log of literature searches are openly available at %s (MIT licence) and "
-     "archived with a permanent concept DOI on Zenodo, https://doi.org/%s, which always resolves to the latest version. This manuscript "
-     "and its Supplementary Information are archived as a preprint on Zenodo, https://doi.org/%s. All numerical results are produced by one "
-     "seeded run (seed 20261002) of code/run_analysis.py." % (REPO_URL, CODE_DOI, PAPER_DOI), align="justify")
+para(doc, "**Data availability** No experimental data were generated in this study. The computational code, the parameter "
+     "registry (Table 3 and Supplementary Table S10), the fixed random seed (20261002), the Monte Carlo outputs "
+     "(code/results.json), the verification tests, the figure-generation scripts, the numerical tables underlying Figures 2\u20137 "
+     "(code/figure_data), the reference-audit tooling and the log of literature searches are available in a public repository at "
+     "%s (MIT licence for code, CC BY 4.0 for the manuscript files) and are archived on Zenodo, https://doi.org/%s, which "
+     "always resolves to the latest version. The repository contains the software versions (requirements.txt) and the commands "
+     "that reproduce every reported number; all results are produced by one seeded run of code/run_analysis.py. "
+     "Literature-derived parameters are identified individually in Table 3 and the corresponding references. This manuscript "
+     "and its Supplementary Information are archived as a preprint on Zenodo, https://doi.org/%s." %
+     (REPO_URL, CODE_DOI, PAPER_DOI), align="justify")
 para(doc, "**Author contributions** Leon Sandler conceived the study, specified the physical model and its assumptions, directed the "
      "literature work and the computation, analysed the results and wrote the manuscript.")
-para(doc, "**Use of generative AI** See Section 5.5.")
+para(doc, "**Use of generative AI** Generative AI (Claude, Anthropic) was used as an assistive tool for code drafting, code review, "
+     "figure-script drafting, literature-record retrieval scripts and language editing. The author defined the research question, "
+     "requirements and assumptions, directed the workflow and verification, reviewed the literature interpretation and approved all "
+     "conclusions, and takes full responsibility for the work. No AI-generated data, references or conclusions were accepted "
+     "without author verification (Section 5.5).", align="justify")
 
 # ================================================================== appendix: nomenclature
 heading(doc, "Appendix: nomenclature", 1)

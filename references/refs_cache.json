@@ -2038,5 +2038,29 @@
   "notice": false,
   "has_abstract": true,
   "short": "Cellulose"
+ },
+ "jager2009": {
+  "doi": "10.1063/1.3254239",
+  "title": "A scattering model for surface-textured thin films",
+  "authors": [
+   {
+    "family": "Jäger",
+    "given": "Klaus"
+   },
+   {
+    "family": "Zeman",
+    "given": "Miro"
+   }
+  ],
+  "container": "Applied Physics Letters",
+  "year": 2009,
+  "volume": "95",
+  "issue": "17",
+  "page": "171108",
+  "type": "journal-article",
+  "cited_by": 51,
+  "notice": false,
+  "has_abstract": true,
+  "short": ""
  }
 }

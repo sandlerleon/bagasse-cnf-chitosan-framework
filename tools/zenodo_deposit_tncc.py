@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Zenodo deposits for the TNCC / Cellulose paper: one software record (the tagged GitHub
+"""HISTORICAL: used for v1.0.0 (it uploads manuscript v2, which was replaced by v3 in v1.1.0). Later versions
+were published with zenodo_newversion_tncc.py.
+
+Zenodo deposits for the TNCC / Cellulose paper: one software record (the tagged GitHub
 release) and one preprint record (manuscript + Supplementary Information).
 
 Two phases, so the DOIs can be written into the manuscript and cover letter before anything

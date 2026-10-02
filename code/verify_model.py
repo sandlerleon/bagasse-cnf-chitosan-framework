@@ -153,6 +153,56 @@ x = r.normal(size=5000)
 check("Spearman of a monotone transform is 1", abs(m.spearman(x, np.exp(x)) - 1.0) < 1e-9)
 check("Spearman of independent samples is near 0", abs(m.spearman(x, r.normal(size=5000))) < 0.05)
 
+print("\nExtensions (surface scattering, prior schemes, thickness coupling)")
+# (c) the composite slab with every extra term switched off is the core single-scattering slab
+tau_t, fh_t, _ = m.turbidity(0.05, np.array([5.0, 20.0, 60.0]), 1.55, 1.0)
+h_core = m.haze_from_tau(tau_t, 100.0, fh_t)[1]
+check("composite slab reduces to the core slab when surface and coarse terms are zero",
+      bool(np.allclose(m.haze_composite(tau_t, fh_t, 100.0, 0.0), h_core, atol=1e-12)))
+# (b) scalar-theory small-roughness limit: s -> (2 pi (n-1) sigma / lambda)^2
+s_small = float(m.surface_scatter_fraction(1.0, 1.5, 1.0))
+phi_small = 2.0 * math.pi * 0.5 * 1e-9 / m.LAMBDA0
+check("rough-surface scattering -> (2 pi (n-1) sigma/lambda)^2 at small sigma",
+      abs(s_small / phi_small ** 2 - 1.0) < 1e-3, "ratio %.5f" % (s_small / phi_small ** 2))
+check("a smooth surface scatters nothing", float(m.surface_scatter_fraction(0.0, 1.5, 1.0)) == 0.0)
+sg = np.array([1.0, 5.0, 20.0, 80.0])
+check("surface scattering rises with roughness and never exceeds f_surf",
+      bool(np.all(np.diff(m.surface_scatter_fraction(sg, 1.5, 0.7)) > 0) and np.all(m.surface_scatter_fraction(sg, 1.5, 0.7) <= 0.7)))
+# (a) round trip of the roughness needed for a given haze
+for h_ in (0.05, 0.117):
+    sig_ = m.sigma_for_haze(h_, 1.5)
+    s1_ = float(m.surface_scatter_fraction(sig_, 1.5, 1.0))
+    check("roughness inversion round-trips at haze %.3f" % h_, abs(1.0 - (1.0 - s1_) ** 2 - h_) < 1e-9)
+hz_c = m.haze_composite(tau_t, fh_t, 100.0, 0.03, tau_c=np.array([2e3, 1e4, 5e4]), f_haze_c=0.8)
+check("composite haze stays in [0, 1] and rises with every added scattering term",
+      bool(np.all((hz_c >= 0) & (hz_c <= 1)) and np.all(hz_c > h_core)))
+# (a) equal-rigidity thickness: E t^3 is conserved
+E_t = np.array([0.5, 1.0, 2.36, 8.0])
+t_t = m.thickness_for_rigidity(E_t)
+check("equal-rigidity thickness conserves E t^3", bool(np.allclose(E_t * t_t ** 3, 1.0 * 100.0 ** 3)))
+check("a stiffer wall may be thinner (E = 8 GPa -> half the thickness)", abs(float(m.thickness_for_rigidity(8.0)) - 50.0) < 1e-9)
+# (c) prior schemes
+rs = np.random.default_rng(11)
+ok_support, ok_lit = True, True
+for nm, (lo_, hi_, dist_, _, st_, _) in m.PARAMS.items():
+    for sch in m.PRIOR_SCHEMES:
+        x_ = m.draw_scheme(nm, 4000, rs, sch)
+        a_, b_ = m.scheme_range(nm, sch)
+        ok_support &= bool(x_.min() >= a_ - 1e-9 and x_.max() <= b_ + 1e-9)
+        if st_ == "lit" and sch in ("widened", "narrowed", "optimistic", "pessimistic"):
+            ok_lit &= (m.scheme_range(nm, sch) == (lo_, hi_))
+check("every draw lies inside its scheme's stated support", ok_support)
+check("literature-informed ranges are untouched by the widened, narrowed, optimistic and pessimistic schemes", ok_lit)
+wide_ok = all(m.scheme_range(k_, "widened")[0] <= v_[0] and m.scheme_range(k_, "widened")[1] >= v_[1] and
+              m.scheme_range(k_, "narrowed")[0] >= v_[0] and m.scheme_range(k_, "narrowed")[1] <= v_[1] for k_, v_ in m.PARAMS.items())
+check("widened ranges contain, and narrowed ranges sit inside, the base ranges", wide_ok)
+x_opt = m.draw_scheme("xi_max", 20000, np.random.default_rng(5), "optimistic").mean()
+x_pes = m.draw_scheme("xi_max", 20000, np.random.default_rng(5), "pessimistic").mean()
+check("optimistic prior favours a helpful cross-linking gain, pessimistic the opposite", x_opt > x_pes, "%.3f vs %.3f" % (x_opt, x_pes))
+check("every core parameter has a recorded favourable direction and hard limits",
+      set(m.FAVOURABLE) == set(m.PARAMS) and set(m.HARD_LIMITS) == set(m.PARAMS))
+check("extension ranges are all declared assumptions", all(v[4] == "assumed" and v[0] < v[1] for v in m.PARAMS_EXT.values()))
+
 print("\nParameter registry")
 for k, (lo, hi, dist, unit, status, basis) in m.PARAMS.items():
     if not (lo < hi and dist in ("u", "lu") and status in ("lit", "assumed")):
