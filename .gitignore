@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+manuscript/_pdf/
+references/_harvest.json
+*.log

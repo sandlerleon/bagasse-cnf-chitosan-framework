@@ -1,0 +1,2042 @@
+{
+ "nogi2009": {
+  "doi": "10.1002/adma.200803174",
+  "title": "Optically Transparent Nanofiber Paper",
+  "authors": [
+   {
+    "family": "Nogi",
+    "given": "Masaya"
+   },
+   {
+    "family": "Iwamoto",
+    "given": "Shinichiro"
+   },
+   {
+    "family": "Nakagaito",
+    "given": "Antonio Norio"
+   },
+   {
+    "family": "Yano",
+    "given": "Hiroyuki"
+   }
+  ],
+  "container": "Advanced Materials",
+  "year": 2009,
+  "volume": "21",
+  "issue": "16",
+  "page": "1595-1598",
+  "type": "journal-article",
+  "cited_by": 996,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Advanced Materials"
+ },
+ "fukuzumi2009": {
+  "doi": "10.1021/bm801065u",
+  "title": "Transparent and High Gas Barrier Films of Cellulose Nanofibers Prepared by TEMPO-Mediated Oxidation",
+  "authors": [
+   {
+    "family": "Fukuzumi",
+    "given": "Hayaka"
+   },
+   {
+    "family": "Saito",
+    "given": "Tsuguyuki"
+   },
+   {
+    "family": "Iwata",
+    "given": "Tadahisa"
+   },
+   {
+    "family": "Kumamoto",
+    "given": "Yoshiaki"
+   },
+   {
+    "family": "Isogai",
+    "given": "Akira"
+   }
+  ],
+  "container": "Biomacromolecules",
+  "year": 2009,
+  "volume": "10",
+  "issue": "1",
+  "page": "162-165",
+  "type": "journal-article",
+  "cited_by": 1202,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Biomacromolecules"
+ },
+ "saito2007": {
+  "doi": "10.1021/bm0703970",
+  "title": "Cellulose Nanofibers Prepared by TEMPO-Mediated Oxidation of Native Cellulose",
+  "authors": [
+   {
+    "family": "Saito",
+    "given": "Tsuguyuki"
+   },
+   {
+    "family": "Kimura",
+    "given": "Satoshi"
+   },
+   {
+    "family": "Nishiyama",
+    "given": "Yoshiharu"
+   },
+   {
+    "family": "Isogai",
+    "given": "Akira"
+   }
+  ],
+  "container": "Biomacromolecules",
+  "year": 2007,
+  "volume": "8",
+  "issue": "8",
+  "page": "2485-2491",
+  "type": "journal-article",
+  "cited_by": 2359,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Biomacromolecules"
+ },
+ "isogai2011": {
+  "doi": "10.1039/c0nr00583e",
+  "title": "TEMPO-oxidized cellulose nanofibers",
+  "authors": [
+   {
+    "family": "Isogai",
+    "given": "Akira"
+   },
+   {
+    "family": "Saito",
+    "given": "Tsuguyuki"
+   },
+   {
+    "family": "Fukuzumi",
+    "given": "Hayaka"
+   }
+  ],
+  "container": "Nanoscale",
+  "year": 2011,
+  "volume": "3",
+  "issue": "1",
+  "page": "71-85",
+  "type": "journal-article",
+  "cited_by": 3037,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Nanoscale"
+ },
+ "hsieh2017": {
+  "doi": "10.1038/srep41590",
+  "title": "Hazy Transparent Cellulose Nanopaper",
+  "authors": [
+   {
+    "family": "Hsieh",
+    "given": "Ming-Chun"
+   },
+   {
+    "family": "Koga",
+    "given": "Hirotaka"
+   },
+   {
+    "family": "Suganuma",
+    "given": "Katsuaki"
+   },
+   {
+    "family": "Nogi",
+    "given": "Masaya"
+   }
+  ],
+  "container": "Scientific Reports",
+  "year": 2017,
+  "volume": "7",
+  "issue": "1",
+  "page": "41590",
+  "type": "journal-article",
+  "cited_by": 97,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Sci Rep"
+ },
+ "fang2014": {
+  "doi": "10.1039/c4ee02236j",
+  "title": "Highly transparent paper with tunable haze for green electronics",
+  "authors": [
+   {
+    "family": "Fang",
+    "given": "Zhiqiang"
+   },
+   {
+    "family": "Zhu",
+    "given": "Hongli"
+   },
+   {
+    "family": "Bao",
+    "given": "Wenzhong"
+   },
+   {
+    "family": "Preston",
+    "given": "Colin"
+   },
+   {
+    "family": "Liu",
+    "given": "Zhen"
+   },
+   {
+    "family": "Dai",
+    "given": "Jiaqi"
+   },
+   {
+    "family": "Li",
+    "given": "Yuanyuan"
+   },
+   {
+    "family": "Hu",
+    "given": "Liangbing"
+   }
+  ],
+  "container": "Energy Environ. Sci.",
+  "year": 2014,
+  "volume": "7",
+  "issue": "10",
+  "page": "3313-3319",
+  "type": "journal-article",
+  "cited_by": 149,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Energy Environ. Sci."
+ },
+ "zhu2014": {
+  "doi": "10.1039/c3ee43024c",
+  "title": "Transparent paper: fabrications, properties, and device applications",
+  "authors": [
+   {
+    "family": "Zhu",
+    "given": "Hongli"
+   },
+   {
+    "family": "Fang",
+    "given": "Zhiqiang"
+   },
+   {
+    "family": "Preston",
+    "given": "Colin"
+   },
+   {
+    "family": "Li",
+    "given": "Yuanyuan"
+   },
+   {
+    "family": "Hu",
+    "given": "Liangbing"
+   }
+  ],
+  "container": "Energy Environ. Sci.",
+  "year": 2014,
+  "volume": "7",
+  "issue": "1",
+  "page": "269-287",
+  "type": "journal-article",
+  "cited_by": 528,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Energy Environ. Sci."
+ },
+ "nogi2013": {
+  "doi": "10.1063/1.4804361",
+  "title": "High thermal stability of optical transparency in cellulose nanofiber paper",
+  "authors": [
+   {
+    "family": "Nogi",
+    "given": "Masaya"
+   },
+   {
+    "family": "Kim",
+    "given": "Changjae"
+   },
+   {
+    "family": "Sugahara",
+    "given": "Tohru"
+   },
+   {
+    "family": "Inui",
+    "given": "Tetsuji"
+   },
+   {
+    "family": "Takahashi",
+    "given": "Tsukasa"
+   },
+   {
+    "family": "Suganuma",
+    "given": "Katsuaki"
+   }
+  ],
+  "container": "Applied Physics Letters",
+  "year": 2013,
+  "volume": "102",
+  "issue": "18",
+  "page": "181911",
+  "type": "journal-article",
+  "cited_by": 134,
+  "notice": false,
+  "has_abstract": true,
+  "short": ""
+ },
+ "xu2016": {
+  "doi": "10.1039/c6nr02245f",
+  "title": "Highly transparent, low-haze, hybrid cellulose nanopaper as electrodes for flexible electronics",
+  "authors": [
+   {
+    "family": "Xu",
+    "given": "Xuezhu"
+   },
+   {
+    "family": "Zhou",
+    "given": "Jian"
+   },
+   {
+    "family": "Jiang",
+    "given": "Long"
+   },
+   {
+    "family": "Lubineau",
+    "given": "Gilles"
+   },
+   {
+    "family": "Ng",
+    "given": "Tienkhee"
+   },
+   {
+    "family": "Ooi",
+    "given": "Boon S."
+   },
+   {
+    "family": "Liao",
+    "given": "Hsien-Yu"
+   },
+   {
+    "family": "Shen",
+    "given": "Chao"
+   },
+   {
+    "family": "Chen",
+    "given": "Long"
+   },
+   {
+    "family": "Zhu",
+    "given": "J. Y."
+   }
+  ],
+  "container": "Nanoscale",
+  "year": 2016,
+  "volume": "8",
+  "issue": "24",
+  "page": "12294-12306",
+  "type": "journal-article",
+  "cited_by": 153,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Nanoscale"
+ },
+ "fukuzumi2013": {
+  "doi": "10.1016/j.carbpol.2012.04.069",
+  "title": "Influence of TEMPO-oxidized cellulose nanofibril length on film properties",
+  "authors": [
+   {
+    "family": "Fukuzumi",
+    "given": "Hayaka"
+   },
+   {
+    "family": "Saito",
+    "given": "Tsuguyuki"
+   },
+   {
+    "family": "Isogai",
+    "given": "Akira"
+   }
+  ],
+  "container": "Carbohydrate Polymers",
+  "year": 2013,
+  "volume": "93",
+  "issue": "1",
+  "page": "172-177",
+  "type": "journal-article",
+  "cited_by": 245,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Carbohydrate Polymers"
+ },
+ "henriksson2008": {
+  "doi": "10.1021/bm800038n",
+  "title": "Cellulose Nanopaper Structures of High Toughness",
+  "authors": [
+   {
+    "family": "Henriksson",
+    "given": "Marielle"
+   },
+   {
+    "family": "Berglund",
+    "given": "Lars A."
+   },
+   {
+    "family": "Isaksson",
+    "given": "Per"
+   },
+   {
+    "family": "Lindström",
+    "given": "Tom"
+   },
+   {
+    "family": "Nishino",
+    "given": "Takashi"
+   }
+  ],
+  "container": "Biomacromolecules",
+  "year": 2008,
+  "volume": "9",
+  "issue": "6",
+  "page": "1579-1585",
+  "type": "journal-article",
+  "cited_by": 1191,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Biomacromolecules"
+ },
+ "sehaqui2011": {
+  "doi": "10.1021/bm2008907",
+  "title": "Strong and Tough Cellulose Nanopaper with High Specific Surface Area and Porosity",
+  "authors": [
+   {
+    "family": "Sehaqui",
+    "given": "Houssine"
+   },
+   {
+    "family": "Zhou",
+    "given": "Qi"
+   },
+   {
+    "family": "Ikkala",
+    "given": "Olli"
+   },
+   {
+    "family": "Berglund",
+    "given": "Lars A."
+   }
+  ],
+  "container": "Biomacromolecules",
+  "year": 2011,
+  "volume": "12",
+  "issue": "10",
+  "page": "3638-3644",
+  "type": "journal-article",
+  "cited_by": 485,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Biomacromolecules"
+ },
+ "klemm2011": {
+  "doi": "10.1002/anie.201001273",
+  "title": "Nanocelluloses: A New Family of Nature‐Based Materials",
+  "authors": [
+   {
+    "family": "Klemm",
+    "given": "Dieter"
+   },
+   {
+    "family": "Kramer",
+    "given": "Friederike"
+   },
+   {
+    "family": "Moritz",
+    "given": "Sebastian"
+   },
+   {
+    "family": "Lindström",
+    "given": "Tom"
+   },
+   {
+    "family": "Ankerfors",
+    "given": "Mikael"
+   },
+   {
+    "family": "Gray",
+    "given": "Derek"
+   },
+   {
+    "family": "Dorris",
+    "given": "Annie"
+   }
+  ],
+  "container": "Angewandte Chemie International Edition",
+  "year": 2011,
+  "volume": "50",
+  "issue": "24",
+  "page": "5438-5466",
+  "type": "journal-article",
+  "cited_by": 4183,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Angew Chem Int Ed"
+ },
+ "moon2011": {
+  "doi": "10.1039/c0cs00108b",
+  "title": "Cellulose nanomaterials review: structure, properties and nanocomposites",
+  "authors": [
+   {
+    "family": "Moon",
+    "given": "Robert J."
+   },
+   {
+    "family": "Martini",
+    "given": "Ashlie"
+   },
+   {
+    "family": "Nairn",
+    "given": "John"
+   },
+   {
+    "family": "Simonsen",
+    "given": "John"
+   },
+   {
+    "family": "Youngblood",
+    "given": "Jeff"
+   }
+  ],
+  "container": "Chemical Society Reviews",
+  "year": 2011,
+  "volume": "40",
+  "issue": "7",
+  "page": "3941",
+  "type": "journal-article",
+  "cited_by": 6260,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Chem. Soc. Rev."
+ },
+ "benitez2017": {
+  "doi": "10.1039/c7ta02006f",
+  "title": "Cellulose nanofibril nanopapers and bioinspired nanocomposites: a review to understand the mechanical property space",
+  "authors": [
+   {
+    "family": "Benítez",
+    "given": "A. J."
+   },
+   {
+    "family": "Walther",
+    "given": "A."
+   }
+  ],
+  "container": "Journal of Materials Chemistry A",
+  "year": 2017,
+  "volume": "5",
+  "issue": "31",
+  "page": "16003-16024",
+  "type": "journal-article",
+  "cited_by": 308,
+  "notice": false,
+  "has_abstract": true,
+  "short": "J. Mater. Chem. A"
+ },
+ "qing2012": {
+  "doi": "10.15376/biores.7.3.3064-3075",
+  "title": "High-performance cellulose nanofibril composite films",
+  "authors": [
+   {
+    "family": "Qing",
+    "given": "Yan"
+   },
+   {
+    "family": "Sabo",
+    "given": "Ronald"
+   },
+   {
+    "family": "Wu",
+    "given": "Yiqiang"
+   },
+   {
+    "family": "Cai",
+    "given": "Zhiyong"
+   }
+  ],
+  "container": "BioResources",
+  "year": 2012,
+  "volume": "7",
+  "issue": "3",
+  "page": "3064-3075",
+  "type": "journal-article",
+  "cited_by": 37,
+  "notice": false,
+  "has_abstract": true,
+  "short": "BioRes"
+ },
+ "jiang2016": {
+  "doi": "10.1021/acssuschemeng.5b01653",
+  "title": "Rice Straw Cellulose Nanofibrils via Aqueous Counter Collision and Differential Centrifugation and Their Self-Assembled Structures",
+  "authors": [
+   {
+    "family": "Jiang",
+    "given": "Feng"
+   },
+   {
+    "family": "Kondo",
+    "given": "Tetsuo"
+   },
+   {
+    "family": "Hsieh",
+    "given": "You-Lo"
+   }
+  ],
+  "container": "ACS Sustainable Chemistry & Engineering",
+  "year": 2016,
+  "volume": "4",
+  "issue": "3",
+  "page": "1697-1706",
+  "type": "journal-article",
+  "cited_by": 67,
+  "notice": false,
+  "has_abstract": false,
+  "short": "ACS Sustainable Chem. Eng."
+ },
+ "toivonen2015": {
+  "doi": "10.1021/acs.biomac.5b00145",
+  "title": "Water-Resistant, Transparent Hybrid Nanopaper by Physical Cross-Linking with Chitosan",
+  "authors": [
+   {
+    "family": "Toivonen",
+    "given": "Matti S."
+   },
+   {
+    "family": "Kurki-Suonio",
+    "given": "Sauli"
+   },
+   {
+    "family": "Schacher",
+    "given": "Felix H."
+   },
+   {
+    "family": "Hietala",
+    "given": "Sami"
+   },
+   {
+    "family": "Rojas",
+    "given": "Orlando J."
+   },
+   {
+    "family": "Ikkala",
+    "given": "Olli"
+   }
+  ],
+  "container": "Biomacromolecules",
+  "year": 2015,
+  "volume": "16",
+  "issue": "3",
+  "page": "1062-1071",
+  "type": "journal-article",
+  "cited_by": 147,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Biomacromolecules"
+ },
+ "sellman2024": {
+  "doi": "10.1007/s10570-024-06084-4",
+  "title": "Influence of fibril aspect ratio, chemical functionality, and volume fraction on the mechanical properties of cellulose nanofibril materials",
+  "authors": [
+   {
+    "family": "Sellman",
+    "given": "Farhiya Alex"
+   },
+   {
+    "family": "Rostami",
+    "given": "Jowan"
+   },
+   {
+    "family": "Östmans",
+    "given": "Rebecca"
+   },
+   {
+    "family": "Cortes Ruiz",
+    "given": "Maria F."
+   },
+   {
+    "family": "Lindström",
+    "given": "Stefan B."
+   },
+   {
+    "family": "Wågberg",
+    "given": "Lars"
+   },
+   {
+    "family": "Benselfelt",
+    "given": "Tobias"
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2024,
+  "volume": "31",
+  "issue": "13",
+  "page": "8007-8025",
+  "type": "journal-article",
+  "cited_by": 27,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Cellulose"
+ },
+ "niskanen2022": {
+  "doi": "10.1007/s10965-022-03019-0",
+  "title": "Optical Properties of Cellulose Nanofibre Films at High Temperatures",
+  "authors": [
+   {
+    "family": "Niskanen",
+    "given": "Ilpo"
+   },
+   {
+    "family": "Zhang",
+    "given": "Kaitao"
+   },
+   {
+    "family": "Karzarjeddi",
+    "given": "Mohammad"
+   },
+   {
+    "family": "Liimatainen",
+    "given": "Henrikki"
+   },
+   {
+    "family": "Shibata",
+    "given": "Shuhei"
+   },
+   {
+    "family": "Hagen",
+    "given": "Nathan"
+   },
+   {
+    "family": "Heikkilä",
+    "given": "Rauno"
+   },
+   {
+    "family": "Yoda",
+    "given": "Hidehiko"
+   },
+   {
+    "family": "Otani",
+    "given": "Yukitoshi"
+   }
+  ],
+  "container": "Journal of Polymer Research",
+  "year": 2022,
+  "volume": "29",
+  "issue": "5",
+  "page": "187",
+  "type": "journal-article",
+  "cited_by": 34,
+  "notice": false,
+  "has_abstract": true,
+  "short": "J Polym Res"
+ },
+ "yang2019": {
+  "doi": "10.3390/nano9010107",
+  "title": "Manufacture of Highly Transparent and Hazy Cellulose Nanofibril Films via Coating TEMPO-Oxidized Wood Fibers",
+  "authors": [
+   {
+    "family": "Yang",
+    "given": "Weisheng"
+   },
+   {
+    "family": "Jiao",
+    "given": "Liang"
+   },
+   {
+    "family": "Liu",
+    "given": "Wei"
+   },
+   {
+    "family": "Dai",
+    "given": "Hongqi"
+   }
+  ],
+  "container": "Nanomaterials",
+  "year": 2019,
+  "volume": "9",
+  "issue": "1",
+  "page": "107",
+  "type": "journal-article",
+  "cited_by": 43,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Nanomaterials"
+ },
+ "mandal2011": {
+  "doi": "10.1016/j.carbpol.2011.06.030",
+  "title": "Isolation of nanocellulose from waste sugarcane bagasse (SCB) and its characterization",
+  "authors": [
+   {
+    "family": "Mandal",
+    "given": "Arup"
+   },
+   {
+    "family": "Chakrabarty",
+    "given": "Debabrata"
+   }
+  ],
+  "container": "Carbohydrate Polymers",
+  "year": 2011,
+  "volume": "86",
+  "issue": "3",
+  "page": "1291-1299",
+  "type": "journal-article",
+  "cited_by": 945,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Carbohydrate Polymers"
+ },
+ "bhattacharya2008": {
+  "doi": "10.1016/j.carbpol.2007.12.005",
+  "title": "Isolation, preparation and characterization of cellulose microfibers obtained from bagasse",
+  "authors": [
+   {
+    "family": "Bhattacharya",
+    "given": "Deepanjan"
+   },
+   {
+    "family": "Germinario",
+    "given": "Louis T."
+   },
+   {
+    "family": "Winter",
+    "given": "William T."
+   }
+  ],
+  "container": "Carbohydrate Polymers",
+  "year": 2008,
+  "volume": "73",
+  "issue": "3",
+  "page": "371-377",
+  "type": "journal-article",
+  "cited_by": 203,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Carbohydrate Polymers"
+ },
+ "carneiro2023": {
+  "doi": "10.1016/j.carbpol.2022.120505",
+  "title": "Oxidized cellulose nanofibers from sugarcane bagasse obtained by microfluidization: Morphology and rheological behavior",
+  "authors": [
+   {
+    "family": "Carneiro Pessan",
+    "given": "Cibele"
+   },
+   {
+    "family": "Silva Bernardes",
+    "given": "Juliana"
+   },
+   {
+    "family": "Bettini",
+    "given": "Sílvia H.P."
+   },
+   {
+    "family": "Leite",
+    "given": "Edson R."
+   }
+  ],
+  "container": "Carbohydrate Polymers",
+  "year": 2023,
+  "volume": "304",
+  "issue": null,
+  "page": "120505",
+  "type": "journal-article",
+  "cited_by": 25,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Carbohydrate Polymers"
+ },
+ "otenda2022": {
+  "doi": "10.1080/15440478.2020.1848712",
+  "title": "Cellulose Nanofibrils from Sugarcane Bagasse as a Reinforcing Element in Polyvinyl Alcohol Composite Films for Food Packaging",
+  "authors": [
+   {
+    "family": "Otenda",
+    "given": "Brian Victor"
+   },
+   {
+    "family": "Kareru",
+    "given": "Patrick Gachoki"
+   },
+   {
+    "family": "Madivoli",
+    "given": "Edwin Shigwenya"
+   },
+   {
+    "family": "Maina",
+    "given": "Ernest Gachui"
+   },
+   {
+    "family": "Wanakai",
+    "given": "Sammy Indire"
+   },
+   {
+    "family": "Wanyonyi",
+    "given": "Wycliffe Chisutia"
+   }
+  ],
+  "container": "Journal of Natural Fibers",
+  "year": 2022,
+  "volume": "19",
+  "issue": "10",
+  "page": "3585-3597",
+  "type": "journal-article",
+  "cited_by": 20,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Journal of Natural Fibers"
+ },
+ "kim2011": {
+  "doi": "10.1007/s10295-010-0812-8",
+  "title": "Composition of sugar cane, energy cane, and sweet sorghum suitable for ethanol production at Louisiana sugar mills",
+  "authors": [
+   {
+    "family": "Kim",
+    "given": "Misook"
+   },
+   {
+    "family": "Day",
+    "given": "Donal F."
+   }
+  ],
+  "container": "Journal of Industrial Microbiology & Biotechnology",
+  "year": 2011,
+  "volume": "38",
+  "issue": "7",
+  "page": "803-807",
+  "type": "journal-article",
+  "cited_by": 393,
+  "notice": false,
+  "has_abstract": false,
+  "short": "J Ind Microbiol Biotechnol"
+ },
+ "kabeyi2023": {
+  "doi": "10.1155/2023/5749122",
+  "title": "Bagasse Electricity Potential of Conventional Sugarcane Factories",
+  "authors": [
+   {
+    "family": "Kabeyi",
+    "given": "Moses Jeremiah Barasa"
+   },
+   {
+    "family": "Olanrewaju",
+    "given": "Oludolapo Akanni"
+   }
+  ],
+  "container": "Journal of Energy",
+  "year": 2023,
+  "volume": "2023",
+  "issue": null,
+  "page": "1-25",
+  "type": "journal-article",
+  "cited_by": 54,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Journal of Energy"
+ },
+ "ndikumana2025": {
+  "doi": "10.3390/pr13123796",
+  "title": "Innovative Applications of Sugarcane Bagasse in the Global Sugarcane Industry",
+  "authors": [
+   {
+    "family": "Ndikumana",
+    "given": "Sylvere"
+   },
+   {
+    "family": "Tanane",
+    "given": "Omar"
+   },
+   {
+    "family": "Aichi",
+    "given": "Youness"
+   },
+   {
+    "family": "Latifa",
+    "given": "El Farissi"
+   },
+   {
+    "family": "Goudali",
+    "given": "Lina"
+   }
+  ],
+  "container": "Processes",
+  "year": 2025,
+  "volume": "13",
+  "issue": "12",
+  "page": "3796",
+  "type": "journal-article",
+  "cited_by": 20,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Processes"
+ },
+ "hiranobe2024": {
+  "doi": "10.3390/cleantechnol6020035",
+  "title": "Sugarcane Bagasse: Challenges and Opportunities for Waste Recycling",
+  "authors": [
+   {
+    "family": "Hiranobe",
+    "given": "Carlos T."
+   },
+   {
+    "family": "Gomes",
+    "given": "Andressa S."
+   },
+   {
+    "family": "Paiva",
+    "given": "Fábio F. G."
+   },
+   {
+    "family": "Tolosa",
+    "given": "Gabrieli R."
+   },
+   {
+    "family": "Paim",
+    "given": "Leonardo L."
+   },
+   {
+    "family": "Dognani",
+    "given": "Guilherme"
+   },
+   {
+    "family": "Cardim",
+    "given": "Guilherme P."
+   },
+   {
+    "family": "Cardim",
+    "given": "Henrique P."
+   },
+   {
+    "family": "dos Santos",
+    "given": "Renivaldo J."
+   },
+   {
+    "family": "Cabrera",
+    "given": "Flávio C."
+   }
+  ],
+  "container": "Clean Technologies",
+  "year": 2024,
+  "volume": "6",
+  "issue": "2",
+  "page": "662-699",
+  "type": "journal-article",
+  "cited_by": 101,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Clean Technol."
+ },
+ "scopel2025": {
+  "doi": "10.1007/s10570-025-06785-4",
+  "title": "Residual lignin affects production and properties of TEMPO-oxidized cellulose nanofibrils from partially delignified sugarcane bagasse",
+  "authors": [
+   {
+    "family": "Scopel",
+    "given": "Eupidio"
+   },
+   {
+    "family": "Pinto",
+    "given": "Lidiane O."
+   },
+   {
+    "family": "Rezende",
+    "given": "Camila A."
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2025,
+  "volume": "32",
+  "issue": "16",
+  "page": "9315-9331",
+  "type": "journal-article",
+  "cited_by": 3,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Cellulose"
+ },
+ "rinaudo2006": {
+  "doi": "10.1016/j.progpolymsci.2006.06.001",
+  "title": "Chitin and chitosan: Properties and applications",
+  "authors": [
+   {
+    "family": "Rinaudo",
+    "given": "Marguerite"
+   }
+  ],
+  "container": "Progress in Polymer Science",
+  "year": 2006,
+  "volume": "31",
+  "issue": "7",
+  "page": "603-632",
+  "type": "journal-article",
+  "cited_by": 7344,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Progress in Polymer Science"
+ },
+ "pillai2009": {
+  "doi": "10.1016/j.progpolymsci.2009.04.001",
+  "title": "Chitin and chitosan polymers: Chemistry, solubility and fiber formation",
+  "authors": [
+   {
+    "family": "Pillai",
+    "given": "C.K.S."
+   },
+   {
+    "family": "Paul",
+    "given": "Willi"
+   },
+   {
+    "family": "Sharma",
+    "given": "Chandra P."
+   }
+  ],
+  "container": "Progress in Polymer Science",
+  "year": 2009,
+  "volume": "34",
+  "issue": "7",
+  "page": "641-678",
+  "type": "journal-article",
+  "cited_by": 2477,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Progress in Polymer Science"
+ },
+ "melro2021": {
+  "doi": "10.3390/polym13010001",
+  "title": "Chitosan Films in Food Applications. Tuning Film Properties by Changing Acidic Dissolution Conditions",
+  "authors": [
+   {
+    "family": "Melro",
+    "given": "Elodie"
+   },
+   {
+    "family": "Antunes",
+    "given": "Filipe E."
+   },
+   {
+    "family": "da Silva",
+    "given": "Gabriela J."
+   },
+   {
+    "family": "Cruz",
+    "given": "Inês"
+   },
+   {
+    "family": "Ramos",
+    "given": "Philippe E."
+   },
+   {
+    "family": "Carvalho",
+    "given": "Fátima"
+   },
+   {
+    "family": "Alves",
+    "given": "Luís"
+   }
+  ],
+  "container": "Polymers",
+  "year": 2020,
+  "volume": "13",
+  "issue": "1",
+  "page": "1",
+  "type": "journal-article",
+  "cited_by": 107,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Polymers"
+ },
+ "azeredo2010": {
+  "doi": "10.1111/j.1750-3841.2009.01386.x",
+  "title": "Nanocellulose Reinforced Chitosan Composite Films as Affected by Nanofiller Loading and Plasticizer Content",
+  "authors": [
+   {
+    "family": "Azeredo",
+    "given": "Henriette M.C."
+   },
+   {
+    "family": "Mattoso",
+    "given": "Luiz Henrique C."
+   },
+   {
+    "family": "Avena‐Bustillos",
+    "given": "Roberto J."
+   },
+   {
+    "family": "Filho",
+    "given": "Gino Ceotto"
+   },
+   {
+    "family": "Munford",
+    "given": "Maximiliano L."
+   },
+   {
+    "family": "Wood",
+    "given": "Delilah"
+   },
+   {
+    "family": "McHugh",
+    "given": "Tara H."
+   }
+  ],
+  "container": "Journal of Food Science",
+  "year": 2010,
+  "volume": "75",
+  "issue": "1",
+  "page": null,
+  "type": "journal-article",
+  "cited_by": 313,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Journal of Food Science"
+ },
+ "fernandez2024": {
+  "doi": "10.1021/acssuschemeng.4c01205",
+  "title": "Chitosan–Chitin Nanocrystal Films from Lobster and Spider Crab: Properties and Environmental Sustainability",
+  "authors": [
+   {
+    "family": "Fernández-Marín",
+    "given": "Rut"
+   },
+   {
+    "family": "Morales",
+    "given": "Amaia"
+   },
+   {
+    "family": "Erdocia",
+    "given": "Xabier"
+   },
+   {
+    "family": "Iturrondobeitia",
+    "given": "Maider"
+   },
+   {
+    "family": "Labidi",
+    "given": "Jalel"
+   },
+   {
+    "family": "Lizundia",
+    "given": "Erlantz"
+   }
+  ],
+  "container": "ACS Sustainable Chemistry & Engineering",
+  "year": 2024,
+  "volume": "12",
+  "issue": "28",
+  "page": "10363-10375",
+  "type": "journal-article",
+  "cited_by": 46,
+  "notice": false,
+  "has_abstract": false,
+  "short": "ACS Sustainable Chem. Eng."
+ },
+ "szymanska2019": {
+  "doi": "10.1007/s10570-019-02755-9",
+  "title": "Influence of chitosan addition on the mechanical and antibacterial properties of carrot cellulose nanofibre film",
+  "authors": [
+   {
+    "family": "Szymańska-Chargot",
+    "given": "Monika"
+   },
+   {
+    "family": "Chylińska",
+    "given": "Monika"
+   },
+   {
+    "family": "Pertile",
+    "given": "Giorgia"
+   },
+   {
+    "family": "Pieczywek",
+    "given": "Piotr M."
+   },
+   {
+    "family": "Cieślak",
+    "given": "Krystian J."
+   },
+   {
+    "family": "Zdunek",
+    "given": "Artur"
+   },
+   {
+    "family": "Frąc",
+    "given": "Magdalena"
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2019,
+  "volume": "26",
+  "issue": "18",
+  "page": "9613-9629",
+  "type": "journal-article",
+  "cited_by": 58,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Cellulose"
+ },
+ "ghormade2017": {
+  "doi": "10.1016/j.ijbiomac.2017.01.112",
+  "title": "Can fungi compete with marine sources for chitosan production?",
+  "authors": [
+   {
+    "family": "Ghormade",
+    "given": "V."
+   },
+   {
+    "family": "Pathan",
+    "given": "E.K."
+   },
+   {
+    "family": "Deshpande",
+    "given": "M.V."
+   }
+  ],
+  "container": "International Journal of Biological Macromolecules",
+  "year": 2017,
+  "volume": "104",
+  "issue": null,
+  "page": "1415-1421",
+  "type": "journal-article",
+  "cited_by": 265,
+  "notice": false,
+  "has_abstract": false,
+  "short": "International Journal of Biological Macromolecules"
+ },
+ "sirvio2021": {
+  "doi": "10.1021/acs.biomac.1c00216",
+  "title": "Aqueous Modification of Chitosan with Itaconic Acid to Produce Strong Oxygen Barrier Film",
+  "authors": [
+   {
+    "family": "Sirviö",
+    "given": "Juho Antti"
+   },
+   {
+    "family": "Kantola",
+    "given": "Anu M."
+   },
+   {
+    "family": "Komulainen",
+    "given": "Sanna"
+   },
+   {
+    "family": "Filonenko",
+    "given": "Svitlana"
+   }
+  ],
+  "container": "Biomacromolecules",
+  "year": 2021,
+  "volume": "22",
+  "issue": "5",
+  "page": "2119-2128",
+  "type": "journal-article",
+  "cited_by": 67,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Biomacromolecules"
+ },
+ "aulin2010": {
+  "doi": "10.1007/s10570-009-9393-y",
+  "title": "Oxygen and oil barrier properties of microfibrillated cellulose films and coatings",
+  "authors": [
+   {
+    "family": "Aulin",
+    "given": "Christian"
+   },
+   {
+    "family": "Gällstedt",
+    "given": "Mikael"
+   },
+   {
+    "family": "Lindström",
+    "given": "Tom"
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2010,
+  "volume": "17",
+  "issue": "3",
+  "page": "559-574",
+  "type": "journal-article",
+  "cited_by": 681,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Cellulose"
+ },
+ "lavoine2012": {
+  "doi": "10.1016/j.carbpol.2012.05.026",
+  "title": "Microfibrillated cellulose – Its barrier properties and applications in cellulosic materials: A review",
+  "authors": [
+   {
+    "family": "Lavoine",
+    "given": "Nathalie"
+   },
+   {
+    "family": "Desloges",
+    "given": "Isabelle"
+   },
+   {
+    "family": "Dufresne",
+    "given": "Alain"
+   },
+   {
+    "family": "Bras",
+    "given": "Julien"
+   }
+  ],
+  "container": "Carbohydrate Polymers",
+  "year": 2012,
+  "volume": "90",
+  "issue": "2",
+  "page": "735-764",
+  "type": "journal-article",
+  "cited_by": 1589,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Carbohydrate Polymers"
+ },
+ "hubbe2017": {
+  "doi": "10.15376/biores.12.1.hubbe",
+  "title": "Nanocellulose in Thin Films, Coatings, and Plies for Packaging Applications: A Review",
+  "authors": [
+   {
+    "family": "Hubbe",
+    "given": "Martin A."
+   },
+   {
+    "family": "Ferrer",
+    "given": "Ana"
+   },
+   {
+    "family": "Tyagi",
+    "given": "Preeti"
+   },
+   {
+    "family": "Yin",
+    "given": "Yuanyuan"
+   },
+   {
+    "family": "Salas",
+    "given": "Carlos"
+   },
+   {
+    "family": "Pal",
+    "given": "Lokendra"
+   },
+   {
+    "family": "Rojas",
+    "given": "Orlando J."
+   }
+  ],
+  "container": "BioResources",
+  "year": 2017,
+  "volume": "12",
+  "issue": "1",
+  "page": "2143-2233",
+  "type": "journal-article",
+  "cited_by": 328,
+  "notice": false,
+  "has_abstract": true,
+  "short": "BioRes"
+ },
+ "azeredo2017": {
+  "doi": "10.1016/j.indcrop.2016.03.013",
+  "title": "Nanocellulose in bio-based food packaging applications",
+  "authors": [
+   {
+    "family": "Azeredo",
+    "given": "Henriette M.C."
+   },
+   {
+    "family": "Rosa",
+    "given": "Morsyleide F."
+   },
+   {
+    "family": "Mattoso",
+    "given": "Luiz Henrique C."
+   }
+  ],
+  "container": "Industrial Crops and Products",
+  "year": 2017,
+  "volume": "97",
+  "issue": null,
+  "page": "664-671",
+  "type": "journal-article",
+  "cited_by": 497,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Industrial Crops and Products"
+ },
+ "shimizu2016": {
+  "doi": "10.1016/j.memsci.2015.11.002",
+  "title": "Water-resistant and high oxygen-barrier nanocellulose films with interfibrillar cross-linkages formed through multivalent metal ions",
+  "authors": [
+   {
+    "family": "Shimizu",
+    "given": "Michiko"
+   },
+   {
+    "family": "Saito",
+    "given": "Tsuguyuki"
+   },
+   {
+    "family": "Isogai",
+    "given": "Akira"
+   }
+  ],
+  "container": "Journal of Membrane Science",
+  "year": 2016,
+  "volume": "500",
+  "issue": null,
+  "page": "1-7",
+  "type": "journal-article",
+  "cited_by": 225,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Journal of Membrane Science"
+ },
+ "li2019": {
+  "doi": "10.1007/s10570-019-02270-x",
+  "title": "Facile preparation of reactive hydrophobic cellulose nanofibril film for reducing water vapor permeability (WVP) in packaging applications",
+  "authors": [
+   {
+    "family": "Li",
+    "given": "Wei"
+   },
+   {
+    "family": "Wang",
+    "given": "Shuangfei"
+   },
+   {
+    "family": "Wang",
+    "given": "Wei"
+   },
+   {
+    "family": "Qin",
+    "given": "Chengrong"
+   },
+   {
+    "family": "Wu",
+    "given": "Min"
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2019,
+  "volume": "26",
+  "issue": "5",
+  "page": "3271-3284",
+  "type": "journal-article",
+  "cited_by": 119,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Cellulose"
+ },
+ "wang2017": {
+  "doi": "10.15376/biores.12.4.7774-7783",
+  "title": "Fabrication of hydrophobic coating on filter paper from self-emulsifying carnauba wax-alcohol emulsions with nano-TiO2 particles for water/diesel separation",
+  "authors": [
+   {
+    "family": "Wang",
+    "given": "Yating"
+   },
+   {
+    "family": "He",
+    "given": "Beihai"
+   },
+   {
+    "family": "Zhao",
+    "given": "Lihong"
+   }
+  ],
+  "container": "BioResources",
+  "year": 2017,
+  "volume": "12",
+  "issue": "4",
+  "page": "7774-7783",
+  "type": "journal-article",
+  "cited_by": 17,
+  "notice": false,
+  "has_abstract": true,
+  "short": "BioRes"
+ },
+ "vishtal2012": {
+  "doi": "10.15376/biores.7.3.4424-4450",
+  "title": "Deep-drawing of paper and paperboard: The role of material properties",
+  "authors": [
+   {
+    "family": "Vishtal",
+    "given": "Alexey"
+   },
+   {
+    "family": "Retulainen",
+    "given": "Elias"
+   }
+  ],
+  "container": "BioResources",
+  "year": 2012,
+  "volume": "7",
+  "issue": "3",
+  "page": "4424-4450",
+  "type": "journal-article",
+  "cited_by": 58,
+  "notice": false,
+  "has_abstract": true,
+  "short": "BioRes"
+ },
+ "hauptmann2011": {
+  "doi": "10.1002/pts.941",
+  "title": "New Quality Level of Packaging Components from Paperboard through Technology Improvement in 3D Forming",
+  "authors": [
+   {
+    "family": "Hauptmann",
+    "given": "Marek"
+   },
+   {
+    "family": "Majschak",
+    "given": "Jens‐Peter"
+   }
+  ],
+  "container": "Packaging Technology and Science",
+  "year": 2011,
+  "volume": "24",
+  "issue": "7",
+  "page": "419-432",
+  "type": "journal-article",
+  "cited_by": 35,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Packag Technol Sci"
+ },
+ "lyu2019": {
+  "doi": "10.1016/j.polymer.2019.01.081",
+  "title": "Large strain cavitation induced stress whitening in propylene-butene-1 copolymer during stretching",
+  "authors": [
+   {
+    "family": "Lyu",
+    "given": "Dong"
+   },
+   {
+    "family": "Tang",
+    "given": "Yujing"
+   },
+   {
+    "family": "Qian",
+    "given": "Li"
+   },
+   {
+    "family": "Chen",
+    "given": "Ran"
+   },
+   {
+    "family": "Lu",
+    "given": "Ying"
+   },
+   {
+    "family": "Men",
+    "given": "Yongfeng"
+   }
+  ],
+  "container": "Polymer",
+  "year": 2019,
+  "volume": "167",
+  "issue": null,
+  "page": "146-153",
+  "type": "journal-article",
+  "cited_by": 20,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Polymer"
+ },
+ "arvidsson2015": {
+  "doi": "10.1021/acs.est.5b00888",
+  "title": "Life Cycle Assessment of Cellulose Nanofibrils Production by Mechanical Treatment and Two Different Pretreatment Processes",
+  "authors": [
+   {
+    "family": "Arvidsson",
+    "given": "Rickard"
+   },
+   {
+    "family": "Nguyen",
+    "given": "Duong"
+   },
+   {
+    "family": "Svanström",
+    "given": "Magdalena"
+   }
+  ],
+  "container": "Environmental Science & Technology",
+  "year": 2015,
+  "volume": "49",
+  "issue": "11",
+  "page": "6881-6890",
+  "type": "journal-article",
+  "cited_by": 234,
+  "notice": false,
+  "has_abstract": true,
+  "short": ""
+ },
+ "spence2011": {
+  "doi": "10.1007/s10570-011-9533-z",
+  "title": "A comparative study of energy consumption and physical properties of microfibrillated cellulose produced by different processing methods",
+  "authors": [
+   {
+    "family": "Spence",
+    "given": "Kelley L."
+   },
+   {
+    "family": "Venditti",
+    "given": "Richard A."
+   },
+   {
+    "family": "Rojas",
+    "given": "Orlando J."
+   },
+   {
+    "family": "Habibi",
+    "given": "Youssef"
+   },
+   {
+    "family": "Pawlak",
+    "given": "Joel J."
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2011,
+  "volume": "18",
+  "issue": "4",
+  "page": "1097-1111",
+  "type": "journal-article",
+  "cited_by": 504,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Cellulose"
+ },
+ "nechyporchuk2016": {
+  "doi": "10.1016/j.indcrop.2016.02.016",
+  "title": "Production of cellulose nanofibrils: A review of recent advances",
+  "authors": [
+   {
+    "family": "Nechyporchuk",
+    "given": "Oleksandr"
+   },
+   {
+    "family": "Belgacem",
+    "given": "Mohamed Naceur"
+   },
+   {
+    "family": "Bras",
+    "given": "Julien"
+   }
+  ],
+  "container": "Industrial Crops and Products",
+  "year": 2016,
+  "volume": "93",
+  "issue": null,
+  "page": "2-25",
+  "type": "journal-article",
+  "cited_by": 1600,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Industrial Crops and Products"
+ },
+ "debye1949": {
+  "doi": "10.1063/1.1698419",
+  "title": "Scattering by an Inhomogeneous Solid",
+  "authors": [
+   {
+    "family": "Debye",
+    "given": "P."
+   },
+   {
+    "family": "Bueche",
+    "given": "A. M."
+   }
+  ],
+  "container": "Journal of Applied Physics",
+  "year": 1949,
+  "volume": "20",
+  "issue": "6",
+  "page": "518-525",
+  "type": "journal-article",
+  "cited_by": 1464,
+  "notice": false,
+  "has_abstract": true,
+  "short": ""
+ },
+ "debye1957": {
+  "doi": "10.1063/1.1722830",
+  "title": "Scattering by an Inhomogeneous Solid. II. The Correlation Function and Its Application",
+  "authors": [
+   {
+    "family": "Debye",
+    "given": "P."
+   },
+   {
+    "family": "Anderson",
+    "given": "H. R."
+   },
+   {
+    "family": "Brumberger",
+    "given": "H."
+   }
+  ],
+  "container": "Journal of Applied Physics",
+  "year": 1957,
+  "volume": "28",
+  "issue": "6",
+  "page": "679-683",
+  "type": "journal-article",
+  "cited_by": 1356,
+  "notice": false,
+  "has_abstract": true,
+  "short": ""
+ },
+ "tao2017": {
+  "doi": "10.1002/aelm.201600539",
+  "title": "Super‐Clear Nanopaper from Agro‐Industrial Waste for Green Electronics",
+  "authors": [
+   {
+    "family": "Tao",
+    "given": "Jinsong"
+   },
+   {
+    "family": "Fang",
+    "given": "Zhiqiang"
+   },
+   {
+    "family": "Zhang",
+    "given": "Qing"
+   },
+   {
+    "family": "Bao",
+    "given": "Wenzhong"
+   },
+   {
+    "family": "Zhu",
+    "given": "Mingwei"
+   },
+   {
+    "family": "Yao",
+    "given": "Yonggang"
+   },
+   {
+    "family": "Wang",
+    "given": "Yanbin"
+   },
+   {
+    "family": "Dai",
+    "given": "Jiaqi"
+   },
+   {
+    "family": "Zhang",
+    "given": "Ariel"
+   },
+   {
+    "family": "Leng",
+    "given": "Caroline"
+   },
+   {
+    "family": "Henderson",
+    "given": "Doug"
+   },
+   {
+    "family": "Wang",
+    "given": "Zhengyang"
+   },
+   {
+    "family": "Hu",
+    "given": "Liangbing"
+   }
+  ],
+  "container": "Advanced Electronic Materials",
+  "year": 2017,
+  "volume": "3",
+  "issue": "5",
+  "page": "1600539",
+  "type": "journal-article",
+  "cited_by": 34,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Adv Elect Materials"
+ },
+ "rol2020": {
+  "doi": "10.1021/acs.iecr.9b06127",
+  "title": "Production of 100% Cellulose Nanofibril Objects Using the Molded Cellulose Process: A Feasibility Study",
+  "authors": [
+   {
+    "family": "Rol",
+    "given": "Fleur"
+   },
+   {
+    "family": "Billot",
+    "given": "Marie"
+   },
+   {
+    "family": "Bolloli",
+    "given": "Marco"
+   },
+   {
+    "family": "Beneventi",
+    "given": "Davide"
+   },
+   {
+    "family": "Bras",
+    "given": "Julien"
+   }
+  ],
+  "container": "Industrial & Engineering Chemistry Research",
+  "year": 2020,
+  "volume": "59",
+  "issue": "16",
+  "page": "7670-7679",
+  "type": "journal-article",
+  "cited_by": 13,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Ind. Eng. Chem. Res."
+ },
+ "makela2016": {
+  "doi": "10.1016/j.mee.2016.05.023",
+  "title": "Fabrication of micropillars on nanocellulose films using a roll-to-roll nanoimprinting method",
+  "authors": [
+   {
+    "family": "Mäkelä",
+    "given": "Tapio"
+   },
+   {
+    "family": "Kainlauri",
+    "given": "Markku"
+   },
+   {
+    "family": "Willberg-Keyriläinen",
+    "given": "Pia"
+   },
+   {
+    "family": "Tammelin",
+    "given": "Tekla"
+   },
+   {
+    "family": "Forsström",
+    "given": "Ulla"
+   }
+  ],
+  "container": "Microelectronic Engineering",
+  "year": 2016,
+  "volume": "163",
+  "issue": null,
+  "page": "1-6",
+  "type": "journal-article",
+  "cited_by": 44,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Microelectronic Engineering"
+ },
+ "semple2022": {
+  "doi": "10.1016/j.fpsl.2022.100908",
+  "title": "Moulded pulp fibers for disposable food packaging: A state-of-the-art review",
+  "authors": [
+   {
+    "family": "Semple",
+    "given": "Katherine E."
+   },
+   {
+    "family": "Zhou",
+    "given": "Chenli"
+   },
+   {
+    "family": "Rojas",
+    "given": "Orlando J."
+   },
+   {
+    "family": "Nkeuwa",
+    "given": "William Nguegang"
+   },
+   {
+    "family": "Dai",
+    "given": "Chunping"
+   }
+  ],
+  "container": "Food Packaging and Shelf Life",
+  "year": 2022,
+  "volume": "33",
+  "issue": null,
+  "page": "100908",
+  "type": "journal-article",
+  "cited_by": 124,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Food Packaging and Shelf Life"
+ },
+ "guzman2022": {
+  "doi": "10.1016/j.foodres.2022.111792",
+  "title": "Transparency of polymeric food packaging materials",
+  "authors": [
+   {
+    "family": "Guzman-Puyol",
+    "given": "Susana"
+   },
+   {
+    "family": "Benítez",
+    "given": "José J."
+   },
+   {
+    "family": "Heredia-Guerrero",
+    "given": "José A."
+   }
+  ],
+  "container": "Food Research International",
+  "year": 2022,
+  "volume": "161",
+  "issue": null,
+  "page": "111792",
+  "type": "journal-article",
+  "cited_by": 256,
+  "notice": false,
+  "has_abstract": false,
+  "short": "Food Research International"
+ },
+ "kargupta2022": {
+  "doi": "10.1007/s10570-022-04563-0",
+  "title": "Preparation and benchmarking of novel cellulose nanopaper",
+  "authors": [
+   {
+    "family": "Kargupta",
+    "given": "Wriju"
+   },
+   {
+    "family": "Seifert",
+    "given": "Reanna"
+   },
+   {
+    "family": "Martinez",
+    "given": "Mark"
+   },
+   {
+    "family": "Olson",
+    "given": "James"
+   },
+   {
+    "family": "Tanner",
+    "given": "Joanne"
+   },
+   {
+    "family": "Batchelor",
+    "given": "Warren"
+   }
+  ],
+  "container": "Cellulose",
+  "year": 2022,
+  "volume": "29",
+  "issue": "8",
+  "page": "4393-4411",
+  "type": "journal-article",
+  "cited_by": 20,
+  "notice": false,
+  "has_abstract": true,
+  "short": "Cellulose"
+ }
+}

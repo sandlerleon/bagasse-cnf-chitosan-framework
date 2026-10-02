@@ -1,0 +1,727 @@
+{
+ "seed": 20261002,
+ "n": 200000,
+ "A_calibration_hsieh2017": {
+  "ref": {
+   "haze40_quantiles_5_25_50_75_95": [
+    0.00525582028426291,
+    0.38531580095158974,
+    1.4804510595328444,
+    5.506727872989856,
+    23.43923387953557
+   ],
+   "fraction_inside_observed_band": 0.14341,
+   "fraction_below_band": 0.72856,
+   "fraction_above_band": 0.12803
+  },
+  "bag": {
+   "haze40_quantiles_5_25_50_75_95": [
+    0.03998806167401423,
+    3.793041802219565,
+    27.57795265100208,
+    89.07725936551145,
+    99.99899857574191
+   ],
+   "fraction_inside_observed_band": 0.105985,
+   "fraction_below_band": 0.28003,
+   "fraction_above_band": 0.613985
+  }
+ },
+ "A_xu2016_cross_check": [
+  {
+   "direct_observed": 0.751,
+   "haze_observed": 0.1,
+   "haze_model": 0.14220445459737294
+  },
+  {
+   "direct_observed": 0.311,
+   "haze_observed": 0.62,
+   "haze_model": 0.5255530129672007
+  }
+ ],
+ "B_haze_budget": {
+  "t40_haze5": {
+   "tau_max_per_m": 2502.0864639245665,
+   "phi_1mphi_a3_budget_nm3": 56.0130371222353,
+   "max_void_fraction_a5": null,
+   "max_void_fraction_a10": 0.06704917540282551,
+   "max_void_fraction_a15": 0.02138237671987453
+  },
+  "t40_haze10": {
+   "tau_max_per_m": 5016.767386553782,
+   "phi_1mphi_a3_budget_nm3": 112.30802048938632,
+   "max_void_fraction_a5": null,
+   "max_void_fraction_a10": 0.1470439624911234,
+   "max_void_fraction_a15": 0.04388123251163595
+  },
+  "t100_haze5": {
+   "tau_max_per_m": 1000.8345855698267,
+   "phi_1mphi_a3_budget_nm3": 22.40521484889412,
+   "max_void_fraction_a5": 0.2440649817328212,
+   "max_void_fraction_a10": 0.02568094429197837,
+   "max_void_fraction_a15": 0.008441324229012892
+  },
+  "t100_haze10": {
+   "tau_max_per_m": 2006.7069546215125,
+   "phi_1mphi_a3_budget_nm3": 44.92320819575452,
+   "max_void_fraction_a5": null,
+   "max_void_fraction_a10": 0.05297518439622728,
+   "max_void_fraction_a15": 0.017073782010086247
+  },
+  "t200_haze5": {
+   "tau_max_per_m": 500.41729278491334,
+   "phi_1mphi_a3_budget_nm3": 11.20260742444706,
+   "max_void_fraction_a5": 0.10282073721339557,
+   "max_void_fraction_a10": 0.01267127798181783,
+   "max_void_fraction_a15": 0.004202696797508565
+  },
+  "t200_haze10": {
+   "tau_max_per_m": 1003.3534773107563,
+   "phi_1mphi_a3_budget_nm3": 22.46160409787726,
+   "max_void_fraction_a5": 0.24497374161238117,
+   "max_void_fraction_a10": 0.025747332234394793,
+   "max_void_fraction_a15": 0.00846275216315412
+  }
+ },
+ "C_monte_carlo": {
+  "optical_ref_t40": {
+   "haze_q5_25_50_75_95_pct": [
+    0.005832094790419572,
+    0.3846549580228981,
+    1.4756113736491825,
+    5.513355515424383,
+    23.33922253074627
+   ],
+   "direct_q5_50_95_pct": [
+    64.19405510328642,
+    97.17519848586619,
+    99.98842296999446
+   ],
+   "fraction_tau_t_gt_1": 0.00732,
+   "P_haze_le_5": 0.731855,
+   "P_haze_le_10": 0.84961
+  },
+  "optical_ref_t100": {
+   "haze_q5_25_50_75_95_pct": [
+    0.01458021176831704,
+    0.9615203518311866,
+    3.685674598364005,
+    13.652815871154473,
+    52.51521301785785
+   ],
+   "direct_q5_50_95_pct": [
+    33.01695568149282,
+    93.08690500746741,
+    99.97105993795844
+   ],
+   "fraction_tau_t_gt_1": 0.05883,
+   "P_haze_le_5": 0.558765,
+   "P_haze_le_10": 0.692435
+  },
+  "optical_ref_t200": {
+   "haze_q5_25_50_75_95_pct": [
+    0.02916033919353869,
+    1.9226010579169452,
+    7.35534850098576,
+    26.657919512922888,
+    81.66228383510835
+   ],
+   "direct_q5_50_95_pct": [
+    10.901193628251885,
+    86.65171883870009,
+    99.94212825119833
+   ],
+   "fraction_tau_t_gt_1": 0.1412,
+   "P_haze_le_5": 0.42449,
+   "P_haze_le_10": 0.559475
+  },
+  "optical_bag_t40": {
+   "haze_q5_25_50_75_95_pct": [
+    0.04164065203259586,
+    3.79582027864498,
+    27.372427590904955,
+    89.0707990928533,
+    99.99895538946731
+   ],
+   "direct_q5_50_95_pct": [
+    0.0008674000061058428,
+    61.974817224858654,
+    99.919102236158
+   ],
+   "fraction_tau_t_gt_1": 0.3925,
+   "P_haze_le_5": 0.282495,
+   "P_haze_le_10": 0.366895
+  },
+  "optical_bag_t100": {
+   "haze_q5_25_50_75_95_pct": [
+    0.10410033365587727,
+    9.434715852163334,
+    58.648817135365704,
+    99.72563917135342,
+    99.99999999997307
+   ],
+   "direct_q5_50_95_pct": [
+    2.2158923597817264e-11,
+    30.23696077758204,
+    99.79787828274314
+   ],
+   "fraction_tau_t_gt_1": 0.525545,
+   "P_haze_le_5": 0.180595,
+   "P_haze_le_10": 0.256825
+  },
+  "optical_bag_t200": {
+   "haze_q5_25_50_75_95_pct": [
+    0.20819623034626236,
+    18.61085960171115,
+    85.90536164911356,
+    99.9994401639336,
+    100.0
+   ],
+   "direct_q5_50_95_pct": [
+    4.910183008546139e-24,
+    9.142737970708259,
+    99.59616509900513
+   ],
+   "fraction_tau_t_gt_1": 0.61943,
+   "P_haze_le_5": 0.120255,
+   "P_haze_le_10": 0.181115
+  },
+  "mech_neutral_w000": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.17311372963863325,
+    0.37720983225796934,
+    0.8476948309149822,
+    1.8993943616985431,
+    4.148252403020049
+   ],
+   "P_chitosan_helps": null,
+   "median_gain_over_plain_GPa": 0.0,
+   "P_E_ge_0.5": 0.662525,
+   "P_E_ge_1.0": 0.44887,
+   "P_E_ge_2.0": 0.23384
+  },
+  "mech_neutral_w005": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.4914366846320625,
+    1.0926898200617932,
+    1.7907982579958979,
+    2.7696091020883156,
+    4.660030170665349
+   ],
+   "P_chitosan_helps": 0.85795,
+   "median_gain_over_plain_GPa": 0.5871032130843952,
+   "P_E_ge_0.5": 0.94799,
+   "P_E_ge_1.0": 0.784315,
+   "P_E_ge_2.0": 0.43437
+  },
+  "mech_neutral_w010": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.5898412870933963,
+    1.3230231153087235,
+    2.130189509188062,
+    3.2195397501118346,
+    5.208110801169191
+   ],
+   "P_chitosan_helps": 0.860475,
+   "median_gain_over_plain_GPa": 0.8717068734428031,
+   "P_E_ge_0.5": 0.96681,
+   "P_E_ge_1.0": 0.848205,
+   "P_E_ge_2.0": 0.538275
+  },
+  "mech_neutral_w020": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.6924189780519804,
+    1.4950504158362077,
+    2.3608835085174635,
+    3.5060172704180768,
+    5.556379582245396
+   ],
+   "P_chitosan_helps": 0.85898,
+   "median_gain_over_plain_GPa": 1.084335679938086,
+   "P_E_ge_0.5": 0.9801,
+   "P_E_ge_1.0": 0.884715,
+   "P_E_ge_2.0": 0.600525
+  },
+  "mech_neutral_w030": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.7449793932508856,
+    1.5165789836363979,
+    2.3369573494598033,
+    3.415936399122121,
+    5.327012383207762
+   ],
+   "P_chitosan_helps": 0.84392,
+   "median_gain_over_plain_GPa": 1.0745223932184158,
+   "P_E_ge_0.5": 0.98519,
+   "P_E_ge_1.0": 0.895045,
+   "P_E_ge_2.0": 0.59924
+  },
+  "mech_acid_w000": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.17311372963863325,
+    0.37720983225796934,
+    0.8476948309149822,
+    1.8993943616985431,
+    4.148252403020049
+   ],
+   "P_chitosan_helps": null,
+   "median_gain_over_plain_GPa": 0.0,
+   "P_E_ge_0.5": 0.662525,
+   "P_E_ge_1.0": 0.44887,
+   "P_E_ge_2.0": 0.23384
+  },
+  "mech_acid_w005": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.236068189885091,
+    0.529019207796511,
+    0.9923520260080748,
+    1.8315777420549078,
+    3.7024131701603746
+   ],
+   "P_chitosan_helps": 0.543855,
+   "median_gain_over_plain_GPa": 0.01948867408289706,
+   "P_E_ge_0.5": 0.769465,
+   "P_E_ge_1.0": 0.49669,
+   "P_E_ge_2.0": 0.218265
+  },
+  "mech_acid_w010": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.24187735212457206,
+    0.5623726545945403,
+    1.0370903931212099,
+    1.8145186951653582,
+    3.5107518922060112
+   ],
+   "P_chitosan_helps": 0.52718,
+   "median_gain_over_plain_GPa": 0.017486289142376266,
+   "P_E_ge_0.5": 0.789435,
+   "P_E_ge_1.0": 0.516245,
+   "P_E_ge_2.0": 0.21178
+  },
+  "mech_acid_w020": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.24310162487353,
+    0.5678571068399944,
+    1.0262807842916755,
+    1.7410719854268775,
+    3.2445478715855067
+   ],
+   "P_chitosan_helps": 0.49015,
+   "median_gain_over_plain_GPa": -0.008267228303537488,
+   "P_E_ge_0.5": 0.792105,
+   "P_E_ge_1.0": 0.51257,
+   "P_E_ge_2.0": 0.192595
+  },
+  "mech_acid_w030": {
+   "E_wet_q5_25_50_75_95_GPa": [
+    0.236906904496653,
+    0.5382749108127475,
+    0.9564420096591634,
+    1.5950228881965907,
+    2.9232049433490706
+   ],
+   "P_chitosan_helps": 0.44254,
+   "median_gain_over_plain_GPa": -0.054727763988342226,
+   "P_E_ge_0.5": 0.775345,
+   "P_E_ge_1.0": 0.478165,
+   "P_E_ge_2.0": 0.157715
+  },
+  "forming_tray_h00": {
+   "strain_budget": 0.2615653933221346,
+   "P_window": 0.65851,
+   "tolerance_total_q5_50_95": [
+    0.12194664094034544,
+    0.3325706655311901,
+    0.5401850138943571
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 1.6873019714797854
+  },
+  "forming_tray_h05": {
+   "strain_budget": 0.2615653933221346,
+   "P_window": 0.772975,
+   "tolerance_total_q5_50_95": [
+    0.16060490090316631,
+    0.384845097620241,
+    0.6089303015317362
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 1.6873019714797854
+  },
+  "forming_tray_h10": {
+   "strain_budget": 0.2615653933221346,
+   "P_window": 0.855245,
+   "tolerance_total_q5_50_95": [
+    0.19124118391884581,
+    0.4371728195593643,
+    0.6902071382831015
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 1.6873019714797854
+  },
+  "forming_bowl_h00": {
+   "strain_budget": 0.6668534005388783,
+   "P_window": 0.0,
+   "tolerance_total_q5_50_95": [
+    0.12194664094034544,
+    0.3325706655311901,
+    0.5401850138943571
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 3.7950849718747364
+  },
+  "forming_bowl_h05": {
+   "strain_budget": 0.6668534005388783,
+   "P_window": 0.012145,
+   "tolerance_total_q5_50_95": [
+    0.16060490090316631,
+    0.384845097620241,
+    0.6089303015317362
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 3.7950849718747364
+  },
+  "forming_bowl_h10": {
+   "strain_budget": 0.6668534005388783,
+   "P_window": 0.069325,
+   "tolerance_total_q5_50_95": [
+    0.19124118391884581,
+    0.4371728195593643,
+    0.6902071382831015
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 3.7950849718747364
+  },
+  "forming_cup_h00": {
+   "strain_budget": 1.1046955270420784,
+   "P_window": 0.0,
+   "tolerance_total_q5_50_95": [
+    0.12194664094034544,
+    0.3325706655311901,
+    0.5401850138943571
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 9.11016710455254
+  },
+  "forming_cup_h05": {
+   "strain_budget": 1.1046955270420784,
+   "P_window": 0.0,
+   "tolerance_total_q5_50_95": [
+    0.16060490090316631,
+    0.384845097620241,
+    0.6089303015317362
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 9.11016710455254
+  },
+  "forming_cup_h10": {
+   "strain_budget": 1.1046955270420784,
+   "P_window": 0.0,
+   "tolerance_total_q5_50_95": [
+    0.19124118391884581,
+    0.4371728195593643,
+    0.6902071382831015
+   ],
+   "P_transparency_limited": 1.0,
+   "area_ratio_A_cup_over_footprint": 9.11016710455254
+  },
+  "joint_reference_design": {
+   "ref|neutral|tray": {
+    "P_optical": 0.692635,
+    "P_mechanical": 0.884715,
+    "P_forming": 0.855245,
+    "P_all": 0.524725
+   },
+   "ref|neutral|bowl": {
+    "P_optical": 0.692635,
+    "P_mechanical": 0.884715,
+    "P_forming": 0.069325,
+    "P_all": 0.04293
+   },
+   "ref|neutral|cup": {
+    "P_optical": 0.692635,
+    "P_mechanical": 0.884715,
+    "P_forming": 0.0,
+    "P_all": 0.0
+   },
+   "ref|acid|tray": {
+    "P_optical": 0.692635,
+    "P_mechanical": 0.51257,
+    "P_forming": 0.855245,
+    "P_all": 0.30414
+   },
+   "ref|acid|bowl": {
+    "P_optical": 0.692635,
+    "P_mechanical": 0.51257,
+    "P_forming": 0.069325,
+    "P_all": 0.025175
+   },
+   "ref|acid|cup": {
+    "P_optical": 0.692635,
+    "P_mechanical": 0.51257,
+    "P_forming": 0.0,
+    "P_all": 0.0
+   },
+   "bag|neutral|tray": {
+    "P_optical": 0.255475,
+    "P_mechanical": 0.884715,
+    "P_forming": 0.855245,
+    "P_all": 0.19252
+   },
+   "bag|neutral|bowl": {
+    "P_optical": 0.255475,
+    "P_mechanical": 0.884715,
+    "P_forming": 0.069325,
+    "P_all": 0.015365
+   },
+   "bag|neutral|cup": {
+    "P_optical": 0.255475,
+    "P_mechanical": 0.884715,
+    "P_forming": 0.0,
+    "P_all": 0.0
+   },
+   "bag|acid|tray": {
+    "P_optical": 0.255475,
+    "P_mechanical": 0.51257,
+    "P_forming": 0.855245,
+    "P_all": 0.1117
+   },
+   "bag|acid|bowl": {
+    "P_optical": 0.255475,
+    "P_mechanical": 0.51257,
+    "P_forming": 0.069325,
+    "P_all": 0.009015
+   },
+   "bag|acid|cup": {
+    "P_optical": 0.255475,
+    "P_mechanical": 0.51257,
+    "P_forming": 0.0,
+    "P_all": 0.0
+   }
+  },
+  "reference_design": {
+   "t": 100.0,
+   "w": 0.2,
+   "haze": 0.1,
+   "e_req": 1.0,
+   "hydration": 1.0
+  }
+ },
+ "D_spearman": {
+  "optical_bagasse_haze": {
+   "film density": -0.36817534940068686,
+   "wall density": 0.16784485170697863,
+   "refractive index": 0.057019923958594995,
+   "correlation length a": 0.8031557910604964,
+   "morphology factor": 0.2564673033650017
+  },
+  "optical_reference_haze": {
+   "film density": -0.4351531848514763,
+   "wall density": 0.18550149531242205,
+   "refractive index": 0.07625253627783582,
+   "correlation length a": 0.7351121367906523,
+   "morphology factor": 0.3377205194323975
+  },
+  "mechanical_neutral_Ewet": {
+   "E_cnf": 0.5147062470844807,
+   "E_chi": 0.027262711778210068,
+   "psi": 0.31615379412262684,
+   "kappa_cnf": 0.32838629897748917,
+   "kappa_chi": 0.07453359317443234,
+   "xi_max": 0.64000100997691,
+   "w_star": -0.12800130314896405
+  },
+  "mechanical_acid_Ewet": {
+   "E_cnf": 0.4142778936663625,
+   "E_chi": 0.0115480082304922,
+   "psi": 0.257420234718773,
+   "kappa_cnf": 0.696100138763614,
+   "kappa_chi": 0.004292920572978823,
+   "xi_max": 0.28752807507415823,
+   "w_star": -0.062459298001594485,
+   "kappa_chi_acid": 0.028379716601042992,
+   "xi_acid": 0.2894955193041689
+  },
+  "forming_bowl_margin": {
+   "eps_f_dry": 0.13657340040033483,
+   "d_eps_wet": 0.2664432320065361,
+   "r_void": 0.38752506463915165,
+   "eps_wrinkle": 0.8549093942369063
+  }
+ },
+ "E_envelope": {
+  "optical_ref_t40": {
+   "best_case_haze_pct": 0.0,
+   "worst_case_haze_pct": 91.45300269630256
+  },
+  "optical_ref_t100": {
+   "best_case_haze_pct": 0.0,
+   "worst_case_haze_pct": 99.90004206634991
+  },
+  "optical_ref_t200": {
+   "best_case_haze_pct": 0.0,
+   "worst_case_haze_pct": 99.99994337892943
+  },
+  "optical_bag_t40": {
+   "best_case_haze_pct": 0.0,
+   "worst_case_haze_pct": 100.0
+  },
+  "optical_bag_t100": {
+   "best_case_haze_pct": 0.0,
+   "worst_case_haze_pct": 100.0
+  },
+  "optical_bag_t200": {
+   "best_case_haze_pct": 0.0,
+   "worst_case_haze_pct": 100.0
+  },
+  "forming_tolerance_h00": {
+   "min": 0.056,
+   "max": 0.66
+  },
+  "forming_tolerance_h05": {
+   "min": 0.061000000000000006,
+   "max": 0.81
+  },
+  "forming_tolerance_h10": {
+   "min": 0.066,
+   "max": 0.96
+  },
+  "strain_budgets": {
+   "tray (lid-like)": 0.2615653933221346,
+   "bowl": 0.6668534005388783,
+   "cup": 1.1046955270420784
+  },
+  "geometries_mm": {
+   "tray (lid-like)": {
+    "base": 100.0,
+    "top": 120.0,
+    "depth": 12.0
+   },
+   "bowl": {
+    "base": 100.0,
+    "top": 150.0,
+    "depth": 50.0
+   },
+   "cup": {
+    "base": 55.0,
+    "top": 80.0,
+    "depth": 90.0
+   }
+  },
+  "mechanical_neutral_w20_GPa": {
+   "min": 0.0525861004444395,
+   "max": 11.459428654813774
+  },
+  "mechanical_acid_w20_GPa": {
+   "min": 0.0325861004444395,
+   "max": 8.64458594851804
+  },
+  "optical_bag_monotone_check": true
+ },
+ "F_inverse": {
+  "tray (lid-like)": {
+   "strain_budget": 0.2615653933221346,
+   "area_ratio": 1.6873019714797854,
+   "required_total_tolerance": 0.2615653933221346,
+   "required_eps_wrinkle_if_eps_crit_is_wet_median": 0.112573243764379,
+   "required_LDR_if_no_stretching": 1.2989618822274138,
+   "max_straight_cup_aspect_at_median_dry": 0.22937922640801767,
+   "max_straight_cup_aspect_at_median_wet": 0.33431327028791047
+  },
+  "bowl": {
+   "strain_budget": 0.6668534005388783,
+   "area_ratio": 3.7950849718747364,
+   "required_total_tolerance": 0.6668534005388783,
+   "required_eps_wrinkle_if_eps_crit_is_wet_median": 0.5178612509811227,
+   "required_LDR_if_no_stretching": 1.9480977829346082,
+   "max_straight_cup_aspect_at_median_dry": 0.22937922640801767,
+   "max_straight_cup_aspect_at_median_wet": 0.33431327028791047
+  },
+  "cup": {
+   "strain_budget": 1.1046955270420784,
+   "area_ratio": 9.11016710455254,
+   "required_total_tolerance": 1.1046955270420784,
+   "required_eps_wrinkle_if_eps_crit_is_wet_median": 0.9557033774843229,
+   "required_LDR_if_no_stretching": 3.018305336534483,
+   "max_straight_cup_aspect_at_median_dry": 0.22937922640801767,
+   "max_straight_cup_aspect_at_median_wet": 0.33431327028791047
+  },
+  "w_needed_for_0.5GPa_neutral_median": 0.0,
+  "w_needed_for_1.0GPa_neutral_median": 0.005,
+  "w_needed_for_2.0GPa_neutral_median": 0.0855
+ },
+ "G_additions": {
+  "a_max_nm": {
+   "t40_haze5_phi01": 18.963819559080306,
+   "t40_haze5_phi02": 14.760337741788241,
+   "t40_haze5_phi05": 10.795471206211689,
+   "t40_haze5_phi10": 8.656783104975315,
+   "t40_haze10_phi01": 24.919810982635504,
+   "t40_haze10_phi02": 19.10356630823486,
+   "t40_haze10_phi05": 13.807572725380174,
+   "t40_haze10_phi10": 11.01472190162781,
+   "t100_haze5_phi01": 13.58215367007668,
+   "t100_haze5_phi02": 10.683526261020491,
+   "t100_haze5_phi05": 7.877611974646738,
+   "t100_haze5_phi10": 6.3394559145446685,
+   "t100_haze10_phi01": 17.515373690200665,
+   "t100_haze10_phi02": 13.66384258059547,
+   "t100_haze10_phi05": 10.010428573789282,
+   "t100_haze10_phi10": 8.033050134113962,
+   "t200_haze5_phi01": 10.647235453955442,
+   "t200_haze5_phi02": 8.413568121164962,
+   "t200_haze5_phi05": 6.225978180443676,
+   "t200_haze5_phi10": 5.018124884948208,
+   "t200_haze10_phi01": 13.617258856599246,
+   "t200_haze10_phi02": 10.704457371322372,
+   "t200_haze10_phi05": 7.8890440858027135,
+   "t200_haze10_phi10": 6.347204051001255
+  },
+  "toivonen_consistency": {
+   "reported_wet_modulus_GPa": 4.0,
+   "chitosan_fraction": 0.2,
+   "model_E_wet_w20_q5_25_50_75_95": [
+    0.6924189780519804,
+    1.4950504158362077,
+    2.3608835085174635,
+    3.5060172704180768,
+    5.556379582245396
+   ],
+   "fraction_of_model_at_or_above_reported": 0.17711,
+   "fraction_of_model_below_reported": 0.82289
+  },
+  "szymanska_consistency": {
+   "reported_ratio": 0.5955132562882393,
+   "psi_range": [
+    0.5,
+    1.1
+   ],
+   "reported_ratio_inside_range": true
+  },
+  "hydration_map_neutral": {
+   "E_at_w0.2_h1": 2.438844230804836,
+   "E_at_w0.2_h0": 6.3806673888930785
+  },
+  "hydration_map_acid": {
+   "E_at_w0.2_h1": 1.023157967611536,
+   "E_at_w0.2_h0": 6.3806673888930785
+  },
+  "median_parameters": {
+   "E_cnf": 9.000104075536019,
+   "E_chi": 2.9954109287689645,
+   "psi": 0.7993129475792149,
+   "kappa_cnf": 0.09979253444920526,
+   "kappa_chi": 0.32528518239237547,
+   "xi_max": 0.4009585619699564,
+   "w_star": 0.12472220144017948,
+   "kappa_chi_acid": 0.05018473207665511,
+   "xi_acid": 0.24962867109528475
+  },
+  "crosslinking_attribution": {
+   "median_gain_with_crosslinking_GPa": 1.084335679938086,
+   "median_gain_without_crosslinking_GPa": -0.10213829217817239,
+   "P_helps_with_crosslinking": 0.85898,
+   "P_helps_without_crosslinking": 0.349805
+  }
+ }
+}
