@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Publish v1.1.0 Zenodo versions of the TNCC code and manuscript records.
+"""Publish a new Zenodo version of the TNCC code and manuscript records (used for v1.1.0 and v1.1.1;
+set TAG, VERSION, the file names and the description below first).
 
 Lessons carried over from the earlier deposits:
   * Zenodo's read schema is not its write schema: full metadata is supplied in write form.
@@ -23,7 +24,7 @@ if not TOKEN:
     raise SystemExit("ZENODO_TOKEN is not set in the environment")
 API = "https://zenodo.org/api"
 REPO = r"C:\YouTube\tncc-framework"
-TAG, VERSION = "v1.1.0", "1.1.0"
+TAG, VERSION = "v1.1.1", "1.1.1"
 CODE_CONCEPT, PAPER_CONCEPT = "23111544", "23111546"
 DRY = "--dry" in sys.argv
 
@@ -45,28 +46,25 @@ RELATED = [{"identifier": "https://github.com/sandlerleon/bagasse-cnf-chitosan-f
 DESCRIPTION = """<p><strong>A theoretical and computational study. No experiments were performed;
 every parameter range is traced to a cited source or stated as an assumption, and every output is a
 screening estimate rather than a prediction of material behaviour.</strong> Prepared for submission to
-<em>Cellulose</em> (Springer). Version %(v)s responds to review.</p>
+<em>Cellulose</em> (Springer). Version %(v)s follows a third-party language edit of version 1.1.0.</p>
 
-<p>Three consistency screens (optical, wet stiffness, forming) are applied to a proposed bagasse
-CNF-chitosan-wax architecture and propagated through a seeded Monte Carlo analysis (200,000 samples,
-seed 20261002).</p>
+<p><strong>What changed in %(v)s.</strong> The language edit was merged paragraph by paragraph
+(manuscript/merge_language_edit.py). A paragraph of the edit is accepted only if it keeps the same content
+words, numbers, symbols, equation text and sub/superscripts as the source; otherwise the source is kept with
+American spelling. Of 104 paragraphs the edit changed, 47 were accepted and 57 kept from the source, including
+every reference entry it altered (titles are verified Crossref records). Rejected edits had, for example, removed the
+symbol a from the threshold sentence, changed 'caps the tolerated tensile strain' to 'decreases', turned
+'the hydration' into 'hydrated', deleted the list of verification checks and changed 'ambient' to 'ambient
+temperature'. Supporting Information and the cover letter were given American spelling to match. The manuscript is
+now TNCC_Cellulose_Manuscript_v5. No model, parameter, result or figure changed: results.json, the figure-data
+tables and the 58 verification checks are identical to version 1.1.0.</p>
 
-<p><strong>New in %(v)s.</strong> (1) Optical-model validation: rough-surface and coarse-population
-scattering are added as bounded sensitivities; they narrow but do not close the gap to the haze of
-published clear nanopaper, and they show the correlation-length threshold is necessary, not
-sufficient. (2) Seven prior schemes: pass shares move by tens of percentage points; the thresholds,
-the orderings and the cup bound do not. (3) Thickness coupling: stiffness sets a minimum wall
-thickness (median %(tn).0f um neutral, %(ta).0f um acidic) and thickness sets the haze, so the liquid
-changes the optical budget. (4) A bounded wax-layer sensitivity: added haze and, for coating before
-forming, a narrower forming window; liquid containment remains untested, so all feasibility results
-are provisional. (5) The cup needs a flange wrinkling strain above %(wr).2f (strain budgets: tray
-%(b1).2f, bowl %(b2).2f, cup %(b3).2f). (6) A final reference audit, figure-data tables, a Data
-availability statement and a revised AI-use statement. The verification suite grows from 43 to 58
-checks. Results of version 1.0.0 are unchanged.</p>
-
-<p>Every figure is a bounded model estimate, not a measured or predicted material property.</p>""" % dict(
-    v=VERSION, tn=JT["t_min_at_median_E_um"]["neutral"], ta=JT["t_min_at_median_E_um"]["acid"],
-    wr=LC["eps_wrinkle_needed_cup_at_best_tensile"], b1=bud["tray (lid-like)"], b2=bud["bowl"], b3=bud["cup"])
+<p>The study applies three consistency screens (optical, wet stiffness, forming) to a proposed bagasse
+CNF-chitosan-wax architecture, with a seeded Monte Carlo analysis (200,000 samples, seed 20261002), surface and
+coarse-population sensitivity, seven prior schemes, thickness coupling, a bounded wax-layer test, and a
+requirement for the cup (flange wrinkling strain above %(wr).2f; strain budgets: tray %(b1).2f, bowl %(b2).2f,
+cup %(b3).2f). Liquid containment remains untested, so all feasibility results are provisional.</p>""" % dict(
+    v=VERSION, wr=LC["eps_wrinkle_needed_cup_at_best_tensile"], b1=bud["tray (lid-like)"], b2=bud["bowl"], b3=bud["cup"])
 
 
 def req(method, url, data=None, headers=None, raw=None):
@@ -134,7 +132,7 @@ def main():
     subprocess.check_call(["git", "-C", REPO, "archive", "--format=zip", "--prefix=bagasse-cnf-chitosan-framework-%s/" % VERSION,
                            "-o", tmp, TAG])
     print("code archive: %s (%.1f MB)" % (tmp, os.path.getsize(tmp) / 1e6))
-    ms = [(os.path.join(REPO, "manuscript", "TNCC_Cellulose_Manuscript_v3.docx"), "TNCC_Cellulose_Manuscript_v3_preprint.docx"),
+    ms = [(os.path.join(REPO, "manuscript", "TNCC_Cellulose_Manuscript_v5.docx"), "TNCC_Cellulose_Manuscript_v5_preprint.docx"),
           (os.path.join(REPO, "manuscript", "TNCC_Supplementary_Information.docx"), "TNCC_Supplementary_Information.docx")]
     for p, _ in ms:
         if not os.path.exists(p):

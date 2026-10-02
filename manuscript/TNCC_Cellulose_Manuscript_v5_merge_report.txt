@@ -1,0 +1,231 @@
+identical paragraphs: 698
+accepted from the language edit: 47
+rejected (source kept, American spelling): 57
+
+#7 REJECT (content words differ: sign)
+    kept : Transparent rigid packaging is dominated by fossil-derived polymers, whereas fiber-based packaging is opaque. Dense cellulose nanofibril (CNF) and nanocrystal sheets are transparent as flat films, but whether transparency, wet sti
+    edit : Transparent rigid packaging is dominated by fossil-derived polymers, whereas fiber-based packaging is opaque. Dense cellulose nanofibril (CNF) and nanocrystal sheets are transparent as flat films, but whether transparency, wet sti
+
+#10 REJECT (content words differ: reason)
+    kept : Transparent rigid packaging is dominated by polyethylene terephthalate and, increasingly, polylactic acid, chosen largely because they combine clarity, stiffness and liquid tightness. Fiber-based alternatives address material orig
+    edit : Transparent rigid packaging is dominated by polyethylene terephthalate and, increasingly, polylactic acid, chosen largely because they combine clarity, stiffness and liquid tightness. Fiber-based alternatives address material orig
+
+#12 REJECT (content words differ: +when)
+    kept : Several problems stand between these flat films and a rigid package. Maintaining mechanical properties under hydrated conditions is a recognized and often overlooked challenge for nanocelluloses (Toivonen et al. 2015), and a liqui
+    edit : Several problems stand between these flat films and a rigid package. Maintaining mechanical properties under hydrated conditions is a recognized and often overlooked challenge for nanocelluloses (Toivonen et al. 2015), and a liqui
+
+#15 REJECT (hand review: edit changes tense or meaning)
+    kept : What the combination adds. Each screen alone restates a familiar trend. Three results need the screens together. First, stiffness fixes a minimum wall thickness and thickness fixes the haze, so the liquid the package must resist c
+    edit : What the combination adds. Each screen alone restates a familiar trend. Three results need the screens together. First, stiffness fixes a minimum wall thickness, and the thickness fixes the haze, so the liquid the package must res
+
+#19 REJECT (hand review: edit changes tense or meaning)
+    kept : H2 (chitosan). Chitosan raises wet stiffness without optical loss, in the liquid the package is meant to hold. It fails if the wet gain is zero or negative in an acidic liquid, or if haze rises.
+    edit : H2 (chitosan). Chitosan increases wet stiffness without optical loss; in the liquid, the package is meant to hold. It fails if the wet gain is zero or negative in an acidic liquid or if haze increases.
+
+#20 REJECT (content words differ: give containment +contain)
+    kept : H3 (barrier). A submicron natural wax layer gives liquid containment without added haze. It is not modeled here and is carried into the validation matrix.
+    edit : H3 (barrier). A submicron natural wax layer contains liquid without added haze. It is not modeled here and is carried into the validation matrix.
+
+#22 REJECT (content words differ: reach require give forming +achieve +provide +formation +structure)
+    kept : These map onto five research questions. RQ1 Can densified bagasse-derived nanocellulose plausibly reach the optical properties a transparent wall requires? RQ2 Can chitosan improve wet performance without optical loss? RQ3 Can a t
+    edit : These map onto five research questions. RQ1 Can densified bagasse-derived nanocellulose plausibly achieve the optical properties of a transparent wall? RQ2 Can chitosan improve wet performance without optical loss? RQ3 Can a thin 
+
+#23 REJECT (content words differ: carrie applie +indicate +applied)
+    kept : Every statement below carries one of four labels. Established means taken from a cited source. Computed means produced by the model in this paper under stated assumptions. Predicted means a falsifiable consequence of the computati
+    edit : Every statement below has one of four labels. Established means taken from a cited source. Computed means produced by the model in this paper under the stated assumptions. “Predicted” indicates a falsifiable consequence of the com
+
+#29 REJECT (content words differ: world bear relevant +worldwide +relatively)
+    kept : World sugarcane production was 1,921 Mt in 2022 (FAO 2024). Bagasse is the fibrous residue after juice extraction, produced in very large volumes and traditionally burned for energy (Kabeyi and Olanrewaju 2023; Ndikumana et al. 20
+    edit : The worldwide sugarcane production was 1,921 Mt in 2022 (FAO 2024). After juice extraction, bagasse is a fibrous residue that is produced in very large volumes and traditionally burned for energy (Kabeyi and Olanrewaju 2023; Ndiku
+
+#30 REJECT (hand review: edit changes tense or meaning)
+    kept : The feedstock evidence is mixed in a way that defines H1. Nanopaper from bagasse nanocrystals is reported at 91% transmittance and 1.4% haze (Tao et al. 2017), so bagasse can give a clear sheet. An agricultural-residue analog prep
+    edit : The feedstock evidence is mixed in a way that defines H1. Nanopaper from bagasse nanocrystals is reported at 91% transmittance and 1.4% haze (Tao et al. 2017); thus, bagasse can form a clear sheet. An agricultural residue analog p
+
+#32 REJECT (content words differ: higher +high)
+    kept : Scattering from a fibril and void network falls as the fibril width and the void fraction fall, because refractive-index contrast is then confined to features much smaller than the wavelength (Nogi et al. 2009; Fukuzumi et al. 201
+    edit : Scattering from a fibril and void network decreases as the fibril width and void fraction decrease because the refractive index contrast is then confined to features much smaller than the wavelength (Nogi et al. 2009; Fukuzumi et 
+
+#34 REJECT (content words differ: processed then raising cnf cnf +they +increasing +degree +cnfs +cnfs)
+    kept : Chitosan chemistry and solubility are reviewed in (Rinaudo 2006; Pillai et al. 2009). Chitosan is water-insoluble but dissolves in acidic solutions (Melro et al. 2021). It is made commercially from shellfish waste, and fungal sour
+    edit : Chitosan chemistry and solubility are reviewed in (Rinaudo 2006; Pillai et al. 2009). Chitosan is water insoluble but dissolves in acidic solutions (Melro et al. 2021). It is made commercially from shellfish waste, and fungal sour
+
+#104 REJECT (content words differ: bounded +bound)
+    kept : where fh is the fraction of scattered light going forward beyond 2.5°, computed from the same angular integral (0.5 for small features). Surface reflection multiplies direct and diffuse light alike and cancels in the ratio. Eqs. (
+    edit : where fh is the fraction of scattered light going forward beyond 2.5° computed from the same angular integral (0.5 for small features). Surface reflection multiplies direct and diffuse light alike and cancels in the ratio. Eqs. (1
+
+#105 REJECT (content words differ: )
+    kept : 5.2 Test 2: wet mechanical
+    edit : 5.2 Test 2: wet mechanical tests
+
+#110 REJECT (content words differ: give +represent +occur +degree +yield +shown)
+    kept : EC and EH are the dry moduli of the CNF and chitosan phases; κC0 and κH their water-saturated retention; ψ(w) a dry network-efficiency factor that equals 1 at w = 0 and relaxes to a constant ψ with added chitosan, so that disrupti
+    edit : EC and EH are the dry moduli of the CNF and chitosan phases, respectively; κC0 and κH represent their water-saturated retention; and ψ(w) is a dry network-efficiency factor that equals 1 at w = 0 and relaxes to a constant ψ with a
+
+#118 REJECT (content words differ: hydration +where +hydrated)
+    kept : with εf0 the ambient failure strain, Δεw its gain when water-saturated and h the hydration (0 ambient, 1 saturated). The analogy for εvoid is deformation-induced cavitation and stress whitening in semicrystalline polymers (Lyu et 
+    edit : where εf0 is the ambient failure strain, Δεw is its gain when water is saturated and h is hydrated (0 ambient, 1 saturated). An analogy for εvoid is deformation-induced cavitation and stress whitening in semicrystalline polymers (
+
+#122 REJECT (hand review: edit changes tense or meaning)
+    kept : The 19 parameters of the screens are listed with their ranges and bases in Table 3; 8 are informed by a cited source and 11 are assumptions. Each was sampled independently and uniformly, or log-uniformly where the range spans an o
+    edit : The 19 parameters of the screens are listed with their ranges and bases in Table 3; 8 are informed by a cited source, and 11 are assumptions. Each was sampled independently and uniformly, or log-uniformly, where the range spans an
+
+#246 REJECT (content words differ: debye bueche rayleigh dilute sphere scattered light fraction energy 2)
+    kept : A screening model cannot be validated against data it was not built from, so the code is checked against limits known independently of it. The 58 automated verification checks passed; they confirm that the angular integral reduces
+    edit : A screening model cannot be validated against data it was not built from; thus, the code is checked against limits known independently of it. The 58 automated verification passed; they confirm that the angular integral reduces to 
+
+#247 REJECT (content words differ: re)
+    kept : Use of generative AI and handling of evidence. Generative AI (Claude, Anthropic) was used as an assistive tool during manuscript preparation and software development, including code drafting, code review, figure-script drafting, s
+    edit : Use of generative AI and handling of evidence. Generative AI (Claude, Anthropic) was used as an assistive tool during manuscript preparation and software development, including code drafting, code review, figure-script drafting, s
+
+#249 REJECT (content words differ: scatter +scattered +follow)
+    kept : Four bounded extensions test how much the conclusions depend on what the core screens leave out. Every range they use is an assumption (Supplementary Information S7–S10) and none of them enters the 19-parameter registry or the num
+    edit : Four bounded extensions test how much the conclusions depend on what the core screens leave out. Every range they use is an assumption (Supplementary Information S7–S10), and none of them enter the 19-parameter registry or the num
+
+#251 REJECT (content words differ: reduce +reduced)
+    kept : where nf is the film index and fs the share of that light leaving the cone. This is the Born-type description that relates the texture of a surface to the light it scatters (Jäger and Zeman 2009). A coarse residual population (fib
+    edit : where nf is the film index and fs is the share of that light leaving the cone. This is the Born-type description that relates the texture of a surface to the light it scatters (Jäger and Zeman 2009). A coarse residual population (
+
+#253 REJECT (content words differ: physic caps +physical +decrease)
+    kept : with tref = 100 µm and Eref = 1 GPa, and the haze is evaluated at tmin. Only the t−3 scaling is physics; the anchor is an assumption. Wax layer. A layer of 0.2–1 µm with its own surface roughness and crystallite scattering is adde
+    edit : with tref = 100 µm and Eref = 1 GPa, and the haze is evaluated at tmin. Only the t−3 scaling is physical; the anchor is an assumption. Wax layer. A layer of 0.2–1 µm with its own surface roughness and crystallite scattering is add
+
+#256 REJECT (content words differ: sits +lies)
+    kept : Haze depends on the structure only through φ(1−φ)a3g and on the wall only through its thickness, so a target haze fixes a budget (Fig. 2a). For a 100 µm wall at 5% haze the budget is φ(1−φ)a3 ≤ 22 nm3; at 200 µm it is 11 nm3. Expr
+    edit : Haze depends on the structure only through φ(1−φ)a3g and on the wall only through its thickness, so a target haze fixes a budget (Fig. 2a). For a 100 µm wall at 5% haze, the budget is φ(1−φ)a3 ≤ 22 nm3; at 200 µm, it is 11 nm3. Ex
+
+#290 REJECT (content words differ: decrease +falling)
+    kept : Over the sampled ranges (Table 5), a wood-pulp-scale structure meets a 10% haze target at 100 µm in 69% of samples and at 200 µm in 56%; with the bagasse range the shares fall to 26% and 18%. Those shares are conditional on the as
+    edit : Over the sampled ranges (Table 5), a wood-pulp-scale structure meets a 10% haze target at 100 µm in 69% of samples and at 200 µm in 56%, with the bagasse range of the shares falling to 26% and 18%, respectively. Those shares are c
+
+#335 REJECT (content words differ: +propertie)
+    kept : 6.2 Wet mechanical: the sign of the chitosan effect
+    edit : 6.2 Wet mechanical properties: signs of the effect of chitosan
+
+#336 REJECT (content words differ: adding against help then dominate +addition +respect +compared +present +out)
+    kept : At neutral pH, adding 20% chitosan raises the median modeled wet stiffness from 0.85 to 2.36 GPa (5–95% range 0.69–5.56 GPa), and the share of samples reaching 1 GPa rises from 45% to 88%. In an acidic liquid the gain disappears: 
+    edit : At neutral pH, the addition of 20% chitosan increases the median modeled wet stiffness from 0.85 to 2.36 GPa (5–95% range 0.69–5.56 GPa), and the share of samples reaching 1 GPa increases from 45% to 88%. With respect to an acidic
+
+#385 REJECT (content words differ: them over largest anywhere +they +term +greatest +initial +temperature)
+    kept : The strain budget of Eq. (8) is 0.262 for the tray, 0.667 for the bowl and 1.105 for the cup, corresponding to surface areas 1.7, 3.8 and 9.1 times the base footprint (Fig. 4a). With no stretching, forming them would need blank-to
+    edit : The strain budget of Eq. (8) is 0.262 for the tray, 0.667 for the bowl and 1.105 for the cup, corresponding to surface areas 1.7, 3.8 and 9.1 times the base footprint, respectively (Fig. 4a). With no stretching, they would need bl
+
+#416 REJECT (content words differ: forming sampled passing +respect +sample +passed +percentage +percentage)
+    kept : For a reference design (100 µm wall, 20% chitosan, haze ≤ 10%, wet stiffness ≥ 1 GPa, forming at saturation) the share of sampled designs passing all three tests is 52% for a tray with a wood-pulp-scale structure and a neutral liq
+    edit : With respect to the reference design (100 µm wall, 20% chitosan, ≤ 10% haze, wet stiffness ≥ 1 GPa, and saturation), 52% of the samples passed all three tests for a tray with a wood-pulp-scale structure and a neutral liquid, 19% w
+
+#420 REJECT (content words differ: give determine +yield +used)
+    kept : Section 6.1 reported that bulk scattering by the nanofibril network reproduces the observed haze of clear nanopaper in only 14% of samples. Two additions were tested (Section 5.6). Surface scattering on its own would need an RMS h
+    edit : Section 6.1 reported that bulk scattering by the nanofibril network reproduces the observed haze of clear nanopaper in only 14% of samples. Two additions were tested (Section 5.6). Surface scattering on its own would need an RMS h
+
+#421 REJECT (content words differ: bounded +bound +material)
+    kept : Table 8 Haze of a wood-pulp-scale sheet with the bulk screen alone and with the bounded additions: median haze, and the share of samples inside and below the observed 4.9–11.7% band at 40 µm.
+    edit : Table 8 Haze of a wood-pulp-scale sheet with the bulk screen alone and with the addition of bound material: median haze and the share of samples inside and below the observed 4.9–11.7% band at 40 µm.
+
+#457 REJECT (content words differ: make +used +determine +such +such +when)
+    kept : Equation (12) makes thickness the variable that joins the screens: stiffness sets the thinnest wall that is rigid enough, and the haze budget sets the finest structure that wall may carry. At the median wet modulus the minimum thi
+    edit : Equation (12) is used to determine the thickness of the variable that joins the screens: stiffness is set such that the thinnest wall is rigid enough, and the haze budget is set such that the finest structure that the wall may car
+
+#459 REJECT (content words differ: survive there +survived)
+    kept : Eleven of the nineteen ranges are assumptions, so the Monte Carlo shares were recomputed under seven prior schemes (Section 5.6). The shares move by tens of percentage points (Table 9, Fig. 7): the share of wood-pulp-scale structu
+    edit : Eleven of the nineteen ranges are assumptions, so the Monte Carlo shares were recomputed under seven prior schemes (Section 5.6). The shares move by tens of percentage points (Table 9, Fig. 7): the share of wood-pulp-scale structu
+
+#532 REJECT (content words differ: exist)
+    kept : The wax layer of H3 is not part of the integrated screens, and liquid containment is untested. Its effect on the other two requirements can nevertheless be bounded (Section 5.6). Optically, the assumption that a submicron layer ad
+    edit : The wax layer of H3 is not part of the integrated screens, and liquid containment is untested. Its effect on the other two requirements can nevertheless be bounded (Section 5.6). Optically, the assumption that a submicron layer ad
+
+#550 REJECT (dash or question-mark change)
+    kept : What the three screens return. The optical screen shows that thickness and correlation length, not material identity, decide whether a dense nanofibril wall is clear: the same structure that gives single-digit haze at 40 µm can be
+    edit : What the three screens return? The optical screen shows that the thickness and correlation length, not the material identity, determine whether a dense nanofibril wall is clear: the same structure that gives a single-digit haze at
+
+#551 REJECT (content words differ: restate familiar +similar)
+    kept : What only the combination returns. Each screen alone restates a familiar trend: smaller features scatter less, chitosan can cross-link nanofibrils, deeper shapes need more strain. Table 11 lists the results that need the screens t
+    edit : What only the combination returns? Each screen alone has a similar trend: smaller features scatter less, chitosan can cross-link nanofibrils, and deeper shapes need more strain. Table 11 lists the results that need the screens tak
+
+#567 REJECT (dash or question-mark change)
+    kept : Tensile-strain data alone
+    edit : Tensile‒strain data alone
+
+#573 REJECT (content words differ: forming one attempt)
+    kept : Consistency with prior art. The forming result agrees with the one reported attempt at three-dimensional CNF objects, which produced objects by wet molding but not transparent or dimensionally stable ones because of drying shrinka
+    edit : Consistency with prior art. The results agree with those reported for three-dimensional CNF objects, which produced objects by wet molding but not transparent or dimensionally stable ones because of drying shrinkage (Rol et al. 20
+
+#575 REJECT (content words differ: give including +given +respect +determined +respect +included +occur)
+    kept : What to measure first. The rankings give an order. For optics, the correlation length and void fraction of a dense bagasse sheet by small-angle X-ray scattering, since the Debye–Bueche form is the one with which such data are anal
+    edit : What to measure first. The rankings are given in order. With respect to optics, the correlation length and void fraction of a dense bagasse sheet are determined by small-angle X-ray scattering, since the Debye–Bueche form is the o
+
+#576 REJECT (content words differ: cnf cnc nanocrystal given bear keep +cnfs +cncs +nanocrystalline +provided)
+    kept : Relation to CNF and CNC. Nanocrystal sheets from bagasse have given the clearest reported result (Tao et al. 2017), but their stiffness and expected brittleness bear on forming in a way the present screens treat only through the a
+    edit : Relation to CNFs and CNCs. Nanocrystalline sheets from bagasse have provided the clearest reported results (Tao et al. 2017), but their stiffness and expected brittleness depend on forming in a way that the present screens treat o
+
+#578 REJECT (content words differ: wrong +incorrectly)
+    kept : Each prediction below follows from the computation and can be shown wrong by a stated measurement.
+    edit : Each prediction below follows from the computation and can be shown incorrectly by a stated measurement.
+
+#579 REJECT (content words differ: dominate dominate +dominant +dominant)
+    kept : P1 (thickness scaling). If bulk scattering dominates, haze of a dense nanofibril sheet rises approximately in proportion to thickness between 40 and 200 µm (H ≈ fhτt for τt ≲ 0.3); if surface scattering dominates, haze is nearly i
+    edit : P1 (thickness scaling). If bulk scattering is dominant, the haze of a dense nanofibril sheet increases approximately in proportion to the thickness between 40 and 200 µm (H ≈ fhτt for τt ≲ 0.3); if surface scattering is dominant, 
+
+#582 REJECT (content words differ: +increase)
+    kept : P4 (acid reversal). The wet-stiffness gain from 20% chitosan measured after soaking in an acidic liquid is much smaller than after soaking in neutral water, and may be negative; a gain retained in acid falsifies the assumed loss o
+    edit : P4 (acid reversal). The increase in wet stiffness from 20% chitosan measured after soaking in an acidic liquid is much smaller than that after soaking in neutral water and may be negative; a gain retained in acid falsifies the ass
+
+#584 REJECT (content words differ: give instead +scattered)
+    kept : P6 (what scatters). If a small coarse population explains the haze of clear nanopaper, haze rises with thickness (about 19% at 100 µm for a population that gives 8% at 40 µm) and the population is visible by microscopy or wide-ang
+    edit : P6 (what scatters). If a small coarse population explains the haze of clear nanopaper, haze increases with thickness (approximately 19% at 100 µm for a population that is 8% at 40 µm), and the population is visible by microscopy o
+
+#585 REJECT (content words differ: bounded +bound)
+    kept : P7 (wax haze). A submicron wax layer adds measurable haze: in the bounded analysis it adds more than one point at 100 µm in 51% of sampled structures, and a coating that adds at most one point needs smooth, fine-crystalline wax.
+    edit : P7 (wax haze). A submicron wax layer adds measurable haze: in the bound analysis, it adds more than one point at 100 µm in 51% of the sampled structures, and a coating that adds at most one point needs smooth, fine-crystalline wax
+
+#632 REJECT (content words differ: +used +follow +provided)
+    kept : The staged program that would test these is: Phase I, material (fibril width, density, small-angle scattering, haze against thickness, with and without delignification); Phase II, composite (chitosan at 0, 5, 10, 20 and 30 wt%, tr
+    edit : The staged program used to test these materials is as follows: Phase I, material (fibril width, density, small-angle scattering, haze against thickness, with and without delignification); Phase II, composite (chitosan at 0, 5, 10,
+
+#634 REJECT (hand review: edit changes tense or meaning)
+    kept : The constituents (cellulose, chitosan and natural wax) were chosen for potential compatibility with compostability pathways; compostability of the finished structure is unvalidated, and no life-cycle assessment has been performed.
+    edit : The constituents (cellulose, chitosan and natural wax) were chosen for potential compatibility with the compostability pathways; the compostability of the finished structure was unvalidated, and no life-cycle assessment was perfor
+
+#642 REJECT (hand review: edit changes tense or meaning)
+    kept : Food-contact regulatory status of chitosan, waxes and any additives, compostability and life-cycle impact are not assessed. Some references were available to the verification process only by title, and the claims attached to them 
+    edit : The food-contact regulatory status of chitosan, waxes and any additives, compostability and life-cycle impact were not assessed. Some references were available to the verification process only by title, and the claims attached to 
+
+#644 REJECT (content words differ: sign while +wherea)
+    kept : The literature supports each ingredient of a transparent, bagasse-derived nanocellulose–chitosan package for flat films, and it records one failure at the package scale. Three consistency screens show what would have to be true fo
+    edit : The literature supports each ingredient of a transparent, bagasse-derived nanocellulose–chitosan package for flat films, and it records one failure at the package scale. Three consistency screens show what would have to be true fo
+
+#652 REJECT (content words differ: use +draft)
+    kept : Use of generative AI Generative AI (Claude, Anthropic) was used as an assistive tool for code drafting, code review, figure-script drafting, literature-record retrieval scripts, and drafting and language editing of the manuscript 
+    edit : Generative AI (Claude, Anthropic) was used as an assistive tool for code drafting, code review, figure-script drafting, literature-record retrieval scripts, and draft and language editing of the manuscript text. The author defined
+
+#744 REJECT (reference entry (verified record))
+    kept : Azeredo HM, Rosa MF, Mattoso LHC (2017) Nanocellulose in biobased food packaging applications. Ind Crops Prod 97:664–671. https://doi.org/10.1016/j.indcrop.2016.03.013
+    edit : Azeredo HM, Rosa MF, Mattoso LHC (2017) Nanocellulose in biobased food packaging applications. Ind Crops Prod 97:664–671. https://doi.org/10.1016/j.indcrop.2016.03.013
+
+#751 REJECT (reference entry (verified record))
+    kept : FAO (2024) FAOSTAT: crops and livestock products, sugar cane (item 156), production quantity (element 5510), world total. Food and Agriculture Organization of the United Nations, Rome. https://www.fao.org/faostat/. Accessed via Ou
+    edit : FAO (2024) FAOSTAT: crops and livestock products, sugarcane (item 156), production quantity (element 5510), world total. Food and Agriculture Organization of the United Nations, Rome. https://www.fao.org/faostat/. Accessed via Our
+
+#767 REJECT (reference entry (verified record))
+    kept : Kim M, Day DF (2011) Composition of sugar cane, energy cane, and sweet sorghum suitable for ethanol production at Louisiana sugar mills. J Ind Microbiol Biotechnol 38:803–807. https://doi.org/10.1007/s10295-010-0812-8
+    edit : Kim M, Day DF (2011) Composition of sugarcane, energy cane, and sweet sorghum suitable for ethanol production at Louisiana sugar mills. J Ind Microbiol Biotechnol 38:803–807. https://doi.org/10.1007/s10295-010-0812-8
+
+#773 REJECT (reference entry (verified record))
+    kept : Melro E, Antunes FE, da Silva GJ et al (2021) Chitosan films in food applications. Tuning film properties by changing acidic dissolution conditions. Polymers 13:1. https://doi.org/10.3390/polym13010001
+    edit : Melro E, Antunes FE, da Silva GJ et al (2021) Chitosan films in food applications. Tuning film properties by changing the acidic dissolution conditions. Polymers 13:1. https://doi.org/10.3390/polym13010001
+
+#778 REJECT (reference entry (verified record))
+    kept : Niskanen I, Zhang K, Karzarjeddi M et al (2022) Optical properties of cellulose nanofiber films at high temperatures. J Polym Res 29:187. https://doi.org/10.1007/s10965-022-03019-0
+    edit : Niskanen I, Zhang K, Karzarjeddi M et al (2022) Optical properties of cellulose nanofiber films at high temperatures. J Polym Res 29:187. https://doi.org/10.1007/s10965-022-03019-0
+
+#790 REJECT (reference entry (verified record))
+    kept : Semple KE, Zhou C, Rojas OJ et al (2022) Molded pulp fibers for disposable food packaging: a state-of-the-art review. Food Packag Shelf Life 33:100908. https://doi.org/10.1016/j.fpsl.2022.100908
+    edit : Semple KE, Zhou C, Rojas OJ et al (2022) Molded pulp fibers for disposable food packaging: a state-of-the-art review. Food Packag Shelf Life 33:100908. https://doi.org/10.1016/j.fpsl.2022.100908
+
+#794 REJECT (reference entry (verified record))
+    kept : Szymańska-Chargot M, Chylińska M, Pertile G et al (2019) Influence of chitosan addition on the mechanical and antibacterial properties of carrot cellulose nanofiber film. Cellulose 26:9613–9629. https://doi.org/10.1007/s10570-019-
+    edit : Szymańska-Chargot M, Chylińska M, Pertile G et al (2019) Influence of chitosan addition on the mechanical and antibacterial properties of carrot cellulose nanofiber film. Cellulose 26:9613–9629. https://doi.org/10.1007/s10570-019-
+
+#800 REJECT (reference entry (verified record))
+    kept : Yang W, Jiao L, Liu W et al (2019) Manufacture of highly transparent and hazy cellulose nanofibril films via coating TEMPO-oxidized wood fibers. Nanomaterials 9:107. https://doi.org/10.3390/nano9010107
+    edit : Yang W, Jiao L, Liu W et al (2019) Manufacture of highly transparent and hazy cellulose nanofibril films by coating TEMPO-oxidized wood fibers. Nanomaterials 9:107. https://doi.org/10.3390/nano9010107

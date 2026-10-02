@@ -22,7 +22,7 @@ All numbers in the manuscript are read from `code/results.json` at build time.
 code/         model (tncc_model.py), 58 verification checks, analysis, figure scripts, results.json
 code/figure_data/   CSV tables behind Figures 2-7
 figures/      Figures 1-7 as 600 dpi PNG and LZW TIFF
-manuscript/   manuscript v3, Supplementary Information, cover letter (.docx) and their build scripts
+manuscript/   manuscript v5 (v3 build + reviewed language edit), Supplementary Information, cover letter (.docx), build scripts, language_edit/
 references/   Crossref-resolved reference list (refs.py), harvest and audit tooling, documented literature searches
 tools/        Zenodo deposit scripts used for archiving
 requirements.txt   pinned software versions
@@ -40,6 +40,7 @@ python code/export_figure_data.py  # code/figure_data/*.csv
 python manuscript/build_manuscript.py
 python manuscript/build_si.py
 python manuscript/build_cover_letter.py
+python manuscript/finalize_package.py   # merges the reviewed language edit -> manuscript v5; American spelling in SI and letter
 ```
 
 The manuscript build refuses to run if verification fails. `results.json` is deterministic given the seed: a clean clone reproduces the committed file. The reference audit (`python references/audit_refs.py`) queries Crossref, PubMed, OpenAlex and Semantic Scholar and so needs network access. PDF rendering of the `.docx` files used LibreOffice and is not part of the build.
@@ -59,6 +60,8 @@ Code: MIT (`LICENSE`). Manuscript, Supplementary Information, cover letter and f
 Claude (Anthropic) was used as an assistive tool for code drafting, code review, figure-script drafting, literature-record retrieval scripts, and drafting and language editing of the manuscript text. The author defined the research question, requirements and assumptions, directed the workflow and verification, reviewed the literature interpretation and approved all conclusions. This is documented in Methods Section 5.5 of the manuscript.
 
 ## Changelog
+
+- **v1.1.1** (2 October 2026): a third-party language edit of v1.1.0 was merged paragraph by paragraph (`manuscript/merge_language_edit.py`). 47 of the 104 paragraphs the edit changed were accepted; 57 were kept from the source because the edit changed meaning (a dropped symbol, "caps" to "decreases", "ambient" to "ambient temperature", a deleted list of verification checks) or altered verified reference titles. American spelling throughout. No change to model, results, figures or tests.
 
 - **v1.1.0** (2 October 2026): response to review. Surface-scattering and coarse-population sensitivity of the optical screen; seven prior schemes; thickness coupling of the optical and stiffness screens; bounded wax-layer sensitivity; requirement for the cup; Figures 6 and 7; figure-data tables; final reference audit; Data availability and AI statements revised; 58 verification checks (was 43). Results of v1.0.0 (sections A–G of `results.json`) are unchanged.
 - **v1.0.0** (2 October 2026): first release.
